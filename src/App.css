@@ -1,3 +1,17 @@
+.App {
+  width: 100vw;
+  min-height: calc(100vh - 183px);
+  position: relative;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .App {
+    width: 393px;
+    margin: 0 auto;
+    min-height: calc(100vh - 183px);
+  }
+}
+
 img {
   width: auto;
   height: 100%;
