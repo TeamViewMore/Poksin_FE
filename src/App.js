@@ -25,41 +25,41 @@ function App() {
   const location = useLocation();
 
   const getTitle = () => {
-    switch (location.pathname) {
+    const path = location.pathname;
+
+    if (/^\/chat\/\d+$/.test(path)) {
+      return "상담하기";
+    }
+    if (/^\/profile\/\d+$/.test(path) || /^\/profile\/update\/\d+$/.test(path)) {
+      return "프로필";
+    }
+    if (/^\/calender\/\d+$/.test(path) || path === "/calender") {
+      return "기록하기";
+    }
+
+    switch (path) {
       case "/":
-        return "스플래시";
+      case "/main":
+      case "/fake":
+        return "";
       case "/login":
         return "로그인";
       case "/signup":
         return "회원가입";
-      case "/main":
-        return "";
-      case "/calender/:id":
-        return "기록하기";
-      case "/calender":
-        return "기록하기";
       case "/upload":
-        return "자료 업로드";
       case "/upload-form":
-        return "자료 업로드";
       case "/upload-ai":
         return "자료 업로드";
       case "/guide":
         return "가이드라인";
-      case "/chat/:id":
-        return "상담하기";
       case "/poksin/admin/chat-list":
         return "상담자 목록";
       case "/profile/:id":
-        return "프로필";
       case "/profile/update/:id":
         return "프로필";
       case "/self":
-        return "연애 건강도 자가진단";
       case "/self/result":
-        return "연애 건강도 자가진단t";
-      case "/fake":
-        return "";
+        return "연애 건강도 자가진단";
       default:
         return "";
     }
