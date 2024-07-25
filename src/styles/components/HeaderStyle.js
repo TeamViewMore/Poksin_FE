@@ -11,11 +11,13 @@ export const Logo = styled.div`
     width: 34px;
     height: 43px;
     padding-left: 1px;
+    cursor: pointer;
 `;
 
 export const Back = styled.div`
     width: 23px;
     height: 25px;
+    cursor: pointer;
 `;
 
 export const Title = styled.div`
@@ -34,4 +36,5 @@ export const Title = styled.div`
 export const Menu = styled.div`
     width: 21.326px;
     height: 14.667px;
+    cursor: pointer;
 `;
