@@ -17,6 +17,7 @@ export const Logo = styled.div`
 export const Back = styled.div`
     width: 34px;
     height: 43px;
+    padding-left: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
