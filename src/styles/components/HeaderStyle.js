@@ -15,8 +15,15 @@ export const Logo = styled.div`
 `;
 
 export const Back = styled.div`
-    width: 23px;
-    height: 25px;
+    width: 34px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+        width: 23px;
+        height: 25px;
+    }
     cursor: pointer;
 `;
 
