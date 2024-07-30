@@ -34,7 +34,12 @@ export const Title = styled.div`
 `;
 
 export const Menu = styled.div`
-    width: 21.326px;
-    height: 14.667px;
+    width: 35px;
+    height: 43px;
     cursor: pointer;
+`;
+
+export const None = styled.div`
+    width: 35px;
+    height: 43px;
 `;
