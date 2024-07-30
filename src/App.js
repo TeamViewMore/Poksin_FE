@@ -36,6 +36,9 @@ function App() {
     if (/^\/calender\/\d+$/.test(path) || path === "/calender") {
       return "기록하기";
     }
+    if (/^\/analysis\/\d+$/.test(path)) {
+      return "분석 결과";
+    }
 
     switch (path) {
       case "/":
@@ -48,15 +51,11 @@ function App() {
         return "회원가입";
       case "/upload":
       case "/upload-form":
-      case "/upload-ai":
         return "자료 업로드";
       case "/guide":
         return "가이드라인";
       case "/poksin/admin/chat-list":
         return "상담자 목록";
-      case "/profile/:id":
-      case "/profile/update/:id":
-        return "프로필";
       case "/self":
       case "/self/result":
         return "연애 건강도 자가진단";
@@ -79,7 +78,7 @@ function App() {
         <Route exact path="/calender" element={<CalenderList />} />
         <Route exact path="/upload" element={<Upload />} />
         <Route exact path="/upload-form" element={<UploadForm />} />
-        <Route exact path="/upload-ai" element={<AI />} />
+        <Route exact path="/analysis/:id" element={<AI />} />
         <Route exact path="/guide" element={<Guide />} />
         <Route exact path="/chat/:id" element={<Chat />} />
         <Route exact path="/poksin/admin/chat-list" element={<ChatList />} />
