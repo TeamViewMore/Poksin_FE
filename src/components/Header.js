@@ -12,7 +12,7 @@ function Header({ title }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
     const location = useLocation();
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const handleNavLinkClick = (path) => {
         navigate(path);
@@ -45,12 +45,15 @@ function Header({ title }) {
         "/self",
         "/fake"
     ];
-    
+
     const matchChat = useMatch("/chat/:id");
     const matchProfile = useMatch("/profile/:id");
 
     const showLogo = logoPages.includes(location.pathname) || matchChat || matchProfile;
     const showBack = !showLogo;
+
+    // login과 signup 페이지에서는 Menu 컴포넌트를 표시하지 않음
+    const hideMenu = location.pathname === "/login" || location.pathname === "/signup";
 
     return (
         <>
@@ -66,19 +69,24 @@ function Header({ title }) {
                     </H.Back>
                 )}
                 <H.Title>{title}</H.Title>
-                <H.Menu onClick={toggleMenu}>
-                    <img src={menu} alt="메뉴" />
-                </H.Menu>
+                {!hideMenu && (
+                    <H.Menu onClick={toggleMenu}>
+                        <img src={menu} alt="메뉴" />
+                    </H.Menu>
+                )}
+                {hideMenu && (
+                    <H.None></H.None>
+                )}
             </H.Header>
-            {isMenuOpen && (
-                <Menu 
-                    closeMenu={handleMenuClose} 
+            {isMenuOpen && !hideMenu && (
+                <Menu
+                    closeMenu={handleMenuClose}
                     isClosing={isClosing}
-                    onNavClick={handleNavLinkClick} 
+                    onNavClick={handleNavLinkClick}
                     onProfileClick={() => handleNavLinkClick(`/profile/1`)} // 임시로 1로 설정
                     nickname="닉네임" // 임시로 닉네임으로 설정
                     id="1" // 임시로 1로 설정
-                /> 
+                />
             )}
         </>
     );
