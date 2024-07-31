@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import * as C from "../../styles/calender/CalenderStyle";
+import * as B from "../../styles/calender/BottomSheetStyle";
 import { useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
 import moment from "moment";
@@ -12,15 +12,17 @@ import audioPreview from "../../img/audioSample.m4a";
 import checkedMini from "../../img/check_checked_mini.png";
 import More from "../../components/More";
 import more from "../../img/more.png";
-import ImgModal from "../../components/ImgModal";
-import VideoModal from "../../components/VideoModal";
-import PlusBtn from "../../components/PlusBtn";
+// import useBottomSheet from "../../pages/calender/useBottomSheet";
 
-function Calender() {
+function BottomSheet() {
+    const MIN_Y = 60;
+    const MAX_Y = window.innerHeight - 160;
+    const BOTTOM_SHEET_HEIGHT = window.innerHeight - MIN_Y;
+
     const [value, onChange] = useState(new Date());
     const nextDay = moment(value).add(1, "day").toDate();
+    // const { sheet } = useBottomSheet();
 
-    // 탭 버튼
     let [tab, setTab] = useState(0);
 
     // 게시물 상세 버튼
@@ -39,28 +41,12 @@ function Calender() {
         setShowMore(false);
     };
 
-    // 이미지 상세보기
-    const [selectedImg, setSelectedImg] = useState(null);
-    const [selectedVideo, setSelectedVideo] = useState(null);
-    const handleImgClick = (src) => {
-        setSelectedImg(src);
-    };
-    const handleVideoClick = (src) => {
-        setSelectedVideo(src);
-    };
-    const handleCloseImgModal = () => {
-        setSelectedImg(null);
-    };
-    const handleCloseVideoModal = () => {
-        setSelectedVideo(null);
-    };
-
     return (
         <>
-            <C.Calender>
-                <C.Header>{moment(value).format("YYYY. MM. DD.")}</C.Header>
-                <C.Contents>
-                    <C.TabBar>
+            <B.Wrapper>
+                <B.Header>{moment(value).format("YYYY. MM. DD.")}</B.Header>
+                <B.Contents>
+                    <B.TabBar>
                         <div className={`videoTab nameTab ${tab === 0 ? "selected" : ""}`} onClick={() => setTab(0)}>
                             동영상
                         </div>
@@ -76,15 +62,15 @@ function Calender() {
                         <div className={`diaTab nameTab ${tab === 4 ? "selected" : ""}`} onClick={() => setTab(4)}>
                             진단서
                         </div>
-                    </C.TabBar>
-                    <C.TabContent>
+                    </B.TabBar>
+                    <B.TabContent>
                         {tab === 0 && (
-                            <C.videoContent>
+                            <B.videoContent>
                                 <div className="top">
                                     <div className="title">폭행 cctv 영상</div>
-                                    <C.More onClick={handleMoreClick}>
+                                    <B.More onClick={handleMoreClick}>
                                         <img src={more} alt="더보기" />
-                                    </C.More>
+                                    </B.More>
                                     {showMore && (
                                         <div
                                             ref={moreRef}
@@ -109,15 +95,15 @@ function Calender() {
                                     <span>폭력 발생 횟수 2회, 폭력 지속 시간 12초</span>
                                 </div>
                                 <div className="media">
-                                    <video onClick={() => handleVideoClick(videoPreview)}>
+                                    <video controls>
                                         <source src={videoPreview} type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>
-                            </C.videoContent>
+                            </B.videoContent>
                         )}
                         {tab === 1 && (
-                            <C.recordContent>
+                            <B.recordContent>
                                 <div className="top">
                                     <div className="title">폭언 녹음</div>
                                     <button className="delete">삭제</button>
@@ -129,44 +115,41 @@ function Calender() {
                                         Your browser does not support the audio element.
                                     </audio>
                                 </div>
-                            </C.recordContent>
+                            </B.recordContent>
                         )}
                         {tab === 2 && (
-                            <C.picContent>
+                            <B.picContent>
                                 <div className="top">
                                     <div className="title">폭행 cctv 영상</div>
                                     <button className="delete">삭제</button>
                                 </div>
                                 <div className="explan">처음 맞은 거라 너무 무서웠고, 이때부터가 시작이었다...</div>
                                 <div className="media">
-                                    <img src={Pic} onClick={() => handleImgClick(Pic)}></img>
+                                    <img src={Pic}></img>
                                 </div>
-                            </C.picContent>
+                            </B.picContent>
                         )}
-                        {tab === 3 && <C.chatContent></C.chatContent>}
+                        {tab === 3 && <B.chatContent></B.chatContent>}
                         {tab === 4 && (
-                            <C.diaContent>
+                            <B.diaContent>
                                 <div className="top">
                                     <div className="title">진단서 1</div>
                                     <button className="delete">삭제</button>
                                 </div>
                                 <div className="explan">저번 주에 싸우고 병원가서 떼온 진단서</div>
                                 <div className="media">
-                                    <img src={Dia} onClick={() => handleImgClick(Dia)}></img>
-                                    <img src={Dia} onClick={() => handleImgClick(Dia)}></img>
-                                    <img src={Dia} onClick={() => handleImgClick(Dia)}></img>
-                                    <img src={Dia} onClick={() => handleImgClick(Dia)}></img>
+                                    <img src={Dia}></img>
+                                    <img src={Dia}></img>
+                                    <img src={Dia}></img>
+                                    <img src={Dia}></img>
                                 </div>
-                            </C.diaContent>
+                            </B.diaContent>
                         )}
-                    </C.TabContent>
-                </C.Contents>
-                {selectedImg && <ImgModal src={selectedImg} onClose={handleCloseImgModal} />}
-                {selectedVideo && <VideoModal src={selectedVideo} onClose={handleCloseVideoModal} />}
-                <PlusBtn></PlusBtn>
-            </C.Calender>
+                    </B.TabContent>
+                </B.Contents>
+            </B.Wrapper>
         </>
     );
 }
 
-export default Calender;
+export default BottomSheet;

@@ -15,8 +15,16 @@ export const Logo = styled.div`
 `;
 
 export const Back = styled.div`
-    width: 23px;
-    height: 25px;
+    width: 34px;
+    height: 43px;
+    padding-left: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+        width: 23px;
+        height: 25px;
+    }
     cursor: pointer;
 `;
 
@@ -34,7 +42,12 @@ export const Title = styled.div`
 `;
 
 export const Menu = styled.div`
-    width: 21.326px;
-    height: 14.667px;
+    width: 35px;
+    height: 43px;
     cursor: pointer;
+`;
+
+export const None = styled.div`
+    width: 35px;
+    height: 43px;
 `;
