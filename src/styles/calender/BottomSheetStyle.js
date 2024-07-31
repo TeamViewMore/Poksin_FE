@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+    transition: transform 150ms ease-out;
+`;
+
 export const Header = styled.div`
     height: 50px;
     padding-top: 30px;
@@ -13,7 +17,10 @@ export const Header = styled.div`
     font-size: 19px;
 `;
 
-export const Contents = styled.div``;
+export const Contents = styled.div`
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+`;
 
 export const TabBar = styled.div`
     display: flex;
@@ -105,6 +112,22 @@ export const videoContent = styled.div`
         margin-bottom: 10px;
     }
 
+    .videoResult {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .videoResult img {
+        width: 12px;
+        height: 12px;
+        margin-right: 5px;
+    }
+
+    .videoResult span {
+        font-size: small;
+    }
+
     .media {
         display: flex;
         flex-direction: row;
@@ -122,7 +145,61 @@ export const videoContent = styled.div`
     }
 `;
 
-export const recordContent = styled.div``;
+export const recordContent = styled.div`
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 0.5px solid #d9d9d9;
+    color: #424242;
+
+    .top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 0px 10px 0px;
+    }
+
+    .title {
+        font-weight: 500;
+        font-size: 19px;
+    }
+
+    .delete {
+        font-weight: 500;
+        font-size: 12px;
+        border: 1px solid #7a29ff;
+        border-radius: 50px;
+        background: none;
+        padding: 3px 5px;
+        margin: 0;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .explan {
+        font-weight: 400;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .media {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: scroll;
+        white-space: nowrap;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 60px;
+    }
+
+    .midea audio {
+        height: 95%;
+        width: auto;
+    }
+`;
 
 export const picContent = styled.div`
     width: 95%;
@@ -236,4 +313,16 @@ export const diaContent = styled.div`
         height: 95%;
         width: auto;
     }
+`;
+
+export const More = styled.div`
+    width: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+        width: 2px;
+        height: 12px;
+    }
+    cursor: pointer;
 `;
