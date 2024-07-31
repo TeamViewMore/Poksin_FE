@@ -4,7 +4,12 @@ import "react-calendar/dist/Calendar.css";
 import CalendarPrev from "../../img/arrow_left.png";
 import CalendarNext from "../../img/arrow_right.png";
 
-export const CalenderList = styled.div``;
+export const CalenderList = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+`;
 
 export const CalenderWrapper = styled.div`
     display: flex;
@@ -94,22 +99,61 @@ export const CalenderWrapper = styled.div`
         border-radius: 100px;
     }
 
-    .react-calendar__tile--now abbr {
-        border: 1px solid #7a29ff;
+    .react-calendar__tile--now {
+        background-color: #ded6ff;
+        color: #424242;
+        border-radius: 20px;
     }
 
-    .react-calendar__tile--now {
-        background-color: #ffffff;
+    .react-calendar__month-view__days__day:focus,
+    .react-calendar__month-view__days__day:hover,
+    .react-calendar__tile--active {
+        background-color: #ded6ff;
         color: #424242;
+        border-radius: 20px;
     }
 `;
 
 export const CalendarBox = styled(Calendar)``;
 
 export const BottomSheet = styled.div`
-    position: fixed;
-    z-index: 1;
-    top: 500px;
-    left: 0;
-    right: 0;
+    width: 100%;
+    flex-grow: 1;
+    padding-top: 15px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0 -7px 10px rgba(217, 217, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 17px;
+    margin-top: 20px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    /* Firefox */
+    .scrollable-element {
+        scrollbar-width: none; /* Firefox 스크롤바 숨기기 */
+    }
+    /* IE 및 Edge */
+    .scrollable-element {
+        -ms-overflow-style: none; /* IE 및 Edge 스크롤바 숨기기 */
+    }
+`;
+
+export const DayRecordBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 15px 30px;
+
+    .DayRecordBox-Date {
+        margin-bottom: 10px;
+    }
+
+    .DayRecordBox-Record {
+        font-weight: 300;
+        font-size: 15px;
+    }
 `;

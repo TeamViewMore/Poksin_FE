@@ -1,20 +1,28 @@
 import React from "react";
 import * as C from "../../styles/calender/CalenderListStyle";
+import PlusBtn from "../../components/PlusBtn";
 import BottomSheet from "../../pages/calender/BottomSheet";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function CalenderList() {
-    const MIN_Y = 60;
-    const MAX_Y = window.innerHeight - 160;
-    const BOTTOM_SHEET_HEIGHT = window.innerHeight - MIN_Y;
-
     const [value, onChange] = useState(new Date());
-    const nextDay = moment(value).add(1, "day").toDate();
-    // const { sheet } = useBottomSheet();
+
+    const navigate = useNavigate();
+
+    const handleDayRecordClick = (date) => {
+        navigate(`/calender/${moment(date).format("YYYY-MM-DD")}`);
+    };
+    const dates = [
+        moment(value).toDate(),
+        moment(value).add(1, "days").toDate(),
+        moment(value).add(2, "days").toDate(),
+        moment(value).add(3, "days").toDate(),
+    ];
 
     return (
         <>
@@ -35,7 +43,15 @@ function CalenderList() {
                         minDetail="year"
                     />
                 </C.CalenderWrapper>
-                <C.BottomSheet></C.BottomSheet>
+                <C.BottomSheet>
+                    {dates.map((date, index) => (
+                        <C.DayRecordBox key={index} onClick={() => handleDayRecordClick(date)}>
+                            <div className="DayRecordBox-Date">{moment(date).format("MM. DD.")}</div>
+                            <div className="DayRecordBox-Record">3개의 기록이 있습니다.</div>
+                        </C.DayRecordBox>
+                    ))}
+                </C.BottomSheet>
+                <PlusBtn></PlusBtn>
             </C.CalenderList>
         </>
     );

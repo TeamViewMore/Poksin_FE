@@ -28,18 +28,18 @@ function App() {
     const getTitle = () => {
         const path = location.pathname;
 
-    if (/^\/chat\/\d+$/.test(path)) {
-      return "상담하기";
-    }
-    if (/^\/profile\/\d+$/.test(path) || /^\/profile\/update\/\d+$/.test(path)) {
-      return "프로필";
-    }
-    if (/^\/calender\/\d+$/.test(path) || path === "/calender") {
-      return "기록하기";
-    }
-    if (/^\/analysis\/\d+$/.test(path)) {
-      return "분석 결과";
-    }
+        if (/^\/chat\/\d+$/.test(path)) {
+            return "상담하기";
+        }
+        if (/^\/profile\/\d+$/.test(path) || /^\/profile\/update\/\d+$/.test(path)) {
+            return "프로필";
+        }
+        if (/^\/calender\/\d+$/.test(path) || path === "/calender") {
+            return "기록하기";
+        }
+        if (/^\/analysis\/\d+$/.test(path)) {
+            return "분석 결과";
+        }
 
         switch (path) {
             case "/":
@@ -79,7 +79,7 @@ function App() {
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
                 <Route exact path="/main" element={<Main />} />
-                <Route exact path="/calender/:id" element={<Calender />} />
+                <Route exact path="/calender/:date" element={<Calender />} />
                 <Route exact path="/calender" element={<CalenderList />} />
                 <Route exact path="/bs" element={<BottomSheet />} />
                 <Route exact path="/upload" element={<Upload />} />

@@ -9,16 +9,6 @@ import SplashLogo4 from "../../img/splash_logo44.png";
 import SplashLogo5 from "../../img/splash_logo55.png";
 
 function Splash() {
-    // 자동으로 Main 넘어가기
-    /*
-    const navigate = useNavigate();
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            navigate("/main");
-        }, 6000);
-        return () => clearTimeout(timer);
-    }, [navigate]);
-    */
     return (
         <>
             <S.Splash>
