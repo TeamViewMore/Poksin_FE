@@ -1,10 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import * as C from "../../styles/calender/CalenderStyle";
 import { useNavigate } from "react-router-dom";
-import Calendar from "react-calendar";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
-import { motion } from "framer-motion";
 import Pic from "../../img/picEX.png";
 import Dia from "../../img/diaEX.png";
 import videoPreview from "../../img/videoEX.mp4";
@@ -17,8 +15,8 @@ import VideoModal from "../../components/VideoModal";
 import PlusBtn from "../../components/PlusBtn";
 
 function Calender() {
-    const [value, onChange] = useState(new Date());
-    const nextDay = moment(value).add(1, "day").toDate();
+    const [value] = useState(new Date());
+    // const nextDay = moment(value).add(1, "day").toDate();
 
     //게시물 id 임의로 지정, 연동할 때 수정해야함
     const id = 1;
@@ -31,16 +29,14 @@ function Calender() {
     const moreRef = useRef();
     const navigate = useNavigate();
     const handleMoreClick = () => {
-        setShowMore(prevShowMore => !prevShowMore);
+        setShowMore((prevShowMore) => !prevShowMore);
     };
     const handleMenuClick = (menu) => {
         if (menu === "분석 결과 보기") {
             navigate(`/analysis/${id}`);
-        } 
-        else if (menu === "기록 삭제") {
+        } else if (menu === "기록 삭제") {
             // D 연동
-        }
-        else {
+        } else {
             console.log(`${menu} Clicked`);
         }
         setShowMore(false);
@@ -74,19 +70,34 @@ function Calender() {
                 <C.Header>{moment(value).format("YYYY. MM. DD.")}</C.Header>
                 <C.Contents>
                     <C.TabBar>
-                        <div className={`videoTab nameTab ${tab === 0 ? "selected" : ""}`} onClick={() => handleTabClick(0)}>
+                        <div
+                            className={`videoTab nameTab ${tab === 0 ? "selected" : ""}`}
+                            onClick={() => handleTabClick(0)}
+                        >
                             동영상
                         </div>
-                        <div className={`recordTab nameTab ${tab === 1 ? "selected" : ""}`} onClick={() => handleTabClick(1)}>
+                        <div
+                            className={`recordTab nameTab ${tab === 1 ? "selected" : ""}`}
+                            onClick={() => handleTabClick(1)}
+                        >
                             녹취
                         </div>
-                        <div className={`picTab nameTab ${tab === 2 ? "selected" : ""}`} onClick={() => handleTabClick(2)}>
+                        <div
+                            className={`picTab nameTab ${tab === 2 ? "selected" : ""}`}
+                            onClick={() => handleTabClick(2)}
+                        >
                             사진
                         </div>
-                        <div className={`chatTab nameTab ${tab === 3 ? "selected" : ""}`} onClick={() => handleTabClick(3)}>
+                        <div
+                            className={`chatTab nameTab ${tab === 3 ? "selected" : ""}`}
+                            onClick={() => handleTabClick(3)}
+                        >
                             상담
                         </div>
-                        <div className={`diaTab nameTab ${tab === 4 ? "selected" : ""}`} onClick={() => handleTabClick(4)}>
+                        <div
+                            className={`diaTab nameTab ${tab === 4 ? "selected" : ""}`}
+                            onClick={() => handleTabClick(4)}
+                        >
                             진단서
                         </div>
                     </C.TabBar>
@@ -95,16 +106,30 @@ function Calender() {
                             <C.videoContent>
                                 <div className="top">
                                     <div className="title">폭행 cctv 영상</div>
-                                    <C.More onClick={handleMoreClick}><img src={more} alt='더보기' /></C.More>
+                                    <C.More onClick={handleMoreClick}>
+                                        <img src={more} alt="더보기" />
+                                    </C.More>
                                     {showMore && (
-                                        <div ref={moreRef} style={{ position: 'absolute', top: 'calc(100% + 9px)', right: 0, zIndex: 1000 }}>
-                                            <More menu1="기록 삭제" menu2="분석 결과 보기" onMenuClick={handleMenuClick} />
+                                        <div
+                                            ref={moreRef}
+                                            style={{
+                                                position: "absolute",
+                                                top: "calc(100% + 9px)",
+                                                right: 0,
+                                                zIndex: 1000,
+                                            }}
+                                        >
+                                            <More
+                                                menu1="기록 삭제"
+                                                menu2="분석 결과 보기"
+                                                onMenuClick={handleMenuClick}
+                                            />
                                         </div>
                                     )}
                                 </div>
                                 <div className="explan">처음 맞은 거라 너무 무서웠고, 이때부터가 시작이었다...</div>
                                 <div className="videoResult">
-                                    <img src={checkedMini}></img>
+                                    <img src={checkedMini} alt=''></img>
                                     <span>폭력 발생 횟수 2회, 폭력 지속 시간 12초</span>
                                 </div>
                                 <div className="media">
@@ -119,9 +144,19 @@ function Calender() {
                             <C.recordContent>
                                 <div className="top">
                                     <div className="title">폭언 녹음</div>
-                                    <C.More onClick={handleMoreClick}><img src={more} alt='더보기' /></C.More>
+                                    <C.More onClick={handleMoreClick}>
+                                        <img src={more} alt="더보기" />
+                                    </C.More>
                                     {showMore && (
-                                        <div ref={moreRef} style={{ position: 'absolute', top: 'calc(100% + 9px)', right: 0, zIndex: 1000 }}>
+                                        <div
+                                            ref={moreRef}
+                                            style={{
+                                                position: "absolute",
+                                                top: "calc(100% + 9px)",
+                                                right: 0,
+                                                zIndex: 1000,
+                                            }}
+                                        >
                                             <More menu="기록 삭제" onMenuClick={handleMenuClick} />
                                         </div>
                                     )}
@@ -139,16 +174,26 @@ function Calender() {
                             <C.picContent>
                                 <div className="top">
                                     <div className="title">폭행 cctv 영상</div>
-                                    <C.More onClick={handleMoreClick}><img src={more} alt='더보기' /></C.More>
+                                    <C.More onClick={handleMoreClick}>
+                                        <img src={more} alt="더보기" />
+                                    </C.More>
                                     {showMore && (
-                                        <div ref={moreRef} style={{ position: 'absolute', top: 'calc(100% + 9px)', right: 0, zIndex: 1000 }}>
+                                        <div
+                                            ref={moreRef}
+                                            style={{
+                                                position: "absolute",
+                                                top: "calc(100% + 9px)",
+                                                right: 0,
+                                                zIndex: 1000,
+                                            }}
+                                        >
                                             <More menu="기록 삭제" onMenuClick={handleMenuClick} />
                                         </div>
                                     )}
                                 </div>
                                 <div className="explan">처음 맞은 거라 너무 무서웠고, 이때부터가 시작이었다...</div>
                                 <div className="media">
-                                    <img src={Pic} onClick={() => handleImgClick(Pic)}></img>
+                                    <img src={Pic} onClick={() => handleImgClick(Pic)} alt="기록된 이미지"></img>
                                 </div>
                             </C.picContent>
                         )}
@@ -157,19 +202,29 @@ function Calender() {
                             <C.diaContent>
                                 <div className="top">
                                     <div className="title">진단서 1</div>
-                                    <C.More onClick={handleMoreClick}><img src={more} alt='더보기' /></C.More>
+                                    <C.More onClick={handleMoreClick}>
+                                        <img src={more} alt="더보기" />
+                                    </C.More>
                                     {showMore && (
-                                        <div ref={moreRef} style={{ position: 'absolute', top: 'calc(100% + 9px)', right: 0, zIndex: 1000 }}>
+                                        <div
+                                            ref={moreRef}
+                                            style={{
+                                                position: "absolute",
+                                                top: "calc(100% + 9px)",
+                                                right: 0,
+                                                zIndex: 1000,
+                                            }}
+                                        >
                                             <More menu="기록 삭제" onMenuClick={handleMenuClick} />
                                         </div>
                                     )}
                                 </div>
                                 <div className="explan">저번 주에 싸우고 병원가서 떼온 진단서</div>
                                 <div className="media">
-                                    <img src={Dia} onClick={() => handleImgClick(Dia)}></img>
-                                    <img src={Dia} onClick={() => handleImgClick(Dia)}></img>
-                                    <img src={Dia} onClick={() => handleImgClick(Dia)}></img>
-                                    <img src={Dia} onClick={() => handleImgClick(Dia)}></img>
+                                    <img src={Dia} onClick={() => handleImgClick(Dia)} alt="기록된 진단서"></img>
+                                    <img src={Dia} onClick={() => handleImgClick(Dia)} alt="기록된 진단서"></img>
+                                    <img src={Dia} onClick={() => handleImgClick(Dia)} alt="기록된 진단서"></img>
+                                    <img src={Dia} onClick={() => handleImgClick(Dia)} alt="기록된 진단서"></img>
                                 </div>
                             </C.diaContent>
                         )}

@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import * as U from "../../styles/upload/UploadFormStyle";
@@ -12,7 +11,6 @@ function UploadForm() {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const navigate = useNavigate();
 
     // 프리뷰 보이게 하기
     const handleFileChange = (event) => {

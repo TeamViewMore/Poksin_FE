@@ -38,7 +38,7 @@ const CloseButton = styled.img`
 
 const VideoModal = ({ src, onClose }) => (
     <ModalBackground onClick={onClose}>
-        <CloseButton src={closeBtn} onClick={onClose}></CloseButton>
+        <CloseButton src={closeBtn} onClick={onClose} alt="모달 창 닫기"></CloseButton>
         <ModalContent onClick={(e) => e.stopPropagation()}>
             <video controls>
                 <source src={src} type="video/mp4" />
