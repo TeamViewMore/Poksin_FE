@@ -20,6 +20,9 @@ function Calender() {
     const [value, onChange] = useState(new Date());
     const nextDay = moment(value).add(1, "day").toDate();
 
+    //게시물 id 임의로 지정, 연동할 때 수정해야함
+    const id = 1;
+
     // 탭 버튼
     let [tab, setTab] = useState(0);
 
@@ -28,12 +31,16 @@ function Calender() {
     const moreRef = useRef();
     const navigate = useNavigate();
     const handleMoreClick = () => {
-        setShowMore((prevShowMore) => !prevShowMore);
+        setShowMore(prevShowMore => !prevShowMore);
     };
     const handleMenuClick = (menu) => {
         if (menu === "분석 결과 보기") {
-            navigate(`/upload-ai`);
-        } else {
+            navigate(`/analysis/${id}`);
+        } 
+        else if (menu === "기록 삭제") {
+            // D 연동
+        }
+        else {
             console.log(`${menu} Clicked`);
         }
         setShowMore(false);
@@ -82,24 +89,10 @@ function Calender() {
                             <C.videoContent>
                                 <div className="top">
                                     <div className="title">폭행 cctv 영상</div>
-                                    <C.More onClick={handleMoreClick}>
-                                        <img src={more} alt="더보기" />
-                                    </C.More>
+                                    <C.More onClick={handleMoreClick}><img src={more} alt='더보기' /></C.More>
                                     {showMore && (
-                                        <div
-                                            ref={moreRef}
-                                            style={{
-                                                position: "absolute",
-                                                top: "calc(100% + 9px)",
-                                                right: 0,
-                                                zIndex: 1000,
-                                            }}
-                                        >
-                                            <More
-                                                menu1="기록 삭제"
-                                                menu2="분석 결과 보기"
-                                                onMenuClick={handleMenuClick}
-                                            />
+                                        <div ref={moreRef} style={{ position: 'absolute', top: 'calc(100% + 9px)', right: 0, zIndex: 1000 }}>
+                                            <More menu1="기록 삭제" menu2="분석 결과 보기" onMenuClick={handleMenuClick} />
                                         </div>
                                     )}
                                 </div>

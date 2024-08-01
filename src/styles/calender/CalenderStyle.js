@@ -68,6 +68,7 @@ export const videoContent = styled.div`
     color: #424242;
 
     .top {
+        position: relative;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
