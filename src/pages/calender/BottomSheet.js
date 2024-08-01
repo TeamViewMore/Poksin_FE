@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import * as B from "../../styles/calender/BottomSheetStyle";
 import { useNavigate } from "react-router-dom";
-import Calendar from "react-calendar";
+// import Calendar from "react-calendar";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import Pic from "../../img/picEX.png";
 import Dia from "../../img/diaEX.png";
 import videoPreview from "../../img/videoEX.mp4";
@@ -15,12 +15,12 @@ import more from "../../img/more.png";
 // import useBottomSheet from "../../pages/calender/useBottomSheet";
 
 function BottomSheet() {
-    const MIN_Y = 60;
-    const MAX_Y = window.innerHeight - 160;
-    const BOTTOM_SHEET_HEIGHT = window.innerHeight - MIN_Y;
+    // const MIN_Y = 60;
+    // const MAX_Y = window.innerHeight - 160;
+    // const BOTTOM_SHEET_HEIGHT = window.innerHeight - MIN_Y;
 
-    const [value, onChange] = useState(new Date());
-    const nextDay = moment(value).add(1, "day").toDate();
+    // const [value, onChange] = useState(new Date());
+    // const nextDay = moment(value).add(1, "day").toDate();
     // const { sheet } = useBottomSheet();
 
     let [tab, setTab] = useState(0);
@@ -91,7 +91,7 @@ function BottomSheet() {
                                 </div>
                                 <div className="explan">처음 맞은 거라 너무 무서웠고, 이때부터가 시작이었다...</div>
                                 <div className="videoResult">
-                                    <img src={checkedMini}></img>
+                                    <img src={checkedMini} alt='체크'></img>
                                     <span>폭력 발생 횟수 2회, 폭력 지속 시간 12초</span>
                                 </div>
                                 <div className="media">
@@ -125,7 +125,7 @@ function BottomSheet() {
                                 </div>
                                 <div className="explan">처음 맞은 거라 너무 무서웠고, 이때부터가 시작이었다...</div>
                                 <div className="media">
-                                    <img src={Pic}></img>
+                                    <img src={Pic} alt=''></img>
                                 </div>
                             </B.picContent>
                         )}
@@ -138,10 +138,10 @@ function BottomSheet() {
                                 </div>
                                 <div className="explan">저번 주에 싸우고 병원가서 떼온 진단서</div>
                                 <div className="media">
-                                    <img src={Dia}></img>
-                                    <img src={Dia}></img>
-                                    <img src={Dia}></img>
-                                    <img src={Dia}></img>
+                                    <img src={Dia} alt=''></img>
+                                    <img src={Dia} alt=''></img>
+                                    <img src={Dia} alt=''></img>
+                                    <img src={Dia} alt=''></img>
                                 </div>
                             </B.diaContent>
                         )}
