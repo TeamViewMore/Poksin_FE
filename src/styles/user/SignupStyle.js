@@ -97,7 +97,7 @@ export const CheckBox = styled.div`
     text-align: left;
     margin-left: 10px;
     margin-top: 5px;
-    align-item: center;
+    align-items: center;
     display: flex;
     color: rgb(66, 66, 66);
     font-size: 10pt;
