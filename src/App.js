@@ -34,7 +34,7 @@ function App() {
         if (/^\/profile\/\d+$/.test(path) || /^\/profile\/update\/\d+$/.test(path)) {
             return "프로필";
         }
-        if (/^\/calender\/\d+$/.test(path) || path === "/calender") {
+        if (/^\/calender\/[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(path) || path === "/calender") {
             return "기록하기";
         }
         if (/^\/analysis\/\d+$/.test(path)) {
@@ -52,7 +52,6 @@ function App() {
                 return "회원가입";
             case "/upload":
             case "/upload-form":
-            case "/upload-ai":
                 return "자료 업로드";
             case "/guide":
                 return "가이드라인";
@@ -84,7 +83,7 @@ function App() {
                 <Route exact path="/bs" element={<BottomSheet />} />
                 <Route exact path="/upload" element={<Upload />} />
                 <Route exact path="/upload-form" element={<UploadForm />} />
-                <Route exact path="/upload-ai" element={<AI />} />
+                <Route exact path="/analysis/:id" element={<AI />} />
                 <Route exact path="/guide" element={<Guide />} />
                 <Route exact path="/chat/:id" element={<Chat />} />
                 <Route exact path="/poksin/admin/chat-list" element={<ChatList />} />
