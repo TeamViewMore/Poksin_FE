@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
 import * as U from "../../styles/upload/UploadStyle";
 import Icon1 from "../../img/upload_paper.png";
 import Icon2 from "../../img/upload_capture.png";
@@ -13,24 +12,24 @@ function Upload() {
                 <U.Btns>
                     <U.BtnSection>
                         <U.Btn1 to="/upload-form">
-                            <img className="BtnIcon" src={Icon1}></img>
+                            <img className="BtnIcon" src={Icon1} alt="BtnIcon"></img>
                             <div className="BtnName">서면 자료</div>
                             <div className="BtnDes">진단서 및 진술서 등</div>
                         </U.Btn1>
                         <U.Btn2 to="/upload-form">
-                            <img className="BtnIcon" src={Icon2}></img>
+                            <img className="BtnIcon" src={Icon2} alt="BtnIcon"></img>
                             <div className="BtnName">캡쳐 자료</div>
                             <div className="BtnDes">메신저 및 메시지 내용 등</div>
                         </U.Btn2>
                     </U.BtnSection>
                     <U.BtnSection>
                         <U.Btn2 to="/upload-form">
-                            <img className="BtnIcon" src={Icon3}></img>
+                            <img className="BtnIcon" src={Icon3} alt="BtnIcon"></img>
                             <div className="BtnName">사진 자료</div>
                             <div className="BtnDes">상처 사진 및 망가진 물건 사진 등</div>
                         </U.Btn2>
                         <U.Btn1 to="/upload-form">
-                            <img className="BtnIcon" src={Icon4}></img>
+                            <img className="BtnIcon" src={Icon4} alt="BtnIcon"></img>
                             <div className="BtnName">영상/음성 자료</div>
                             <div className="BtnDes">폭행 장면이 들어간 영상 등</div>
                         </U.Btn1>

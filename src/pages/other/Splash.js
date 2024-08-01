@@ -1,6 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import * as S from "../../styles/other/SplashStyle";
 import SplashLogo1 from "../../img/splash_logo1.png";
 import SplashLogo2 from "../../img/splash_logo22.png";

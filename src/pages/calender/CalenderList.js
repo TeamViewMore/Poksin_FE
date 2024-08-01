@@ -1,12 +1,9 @@
 import React from "react";
 import * as C from "../../styles/calender/CalenderListStyle";
 import PlusBtn from "../../components/PlusBtn";
-import BottomSheet from "../../pages/calender/BottomSheet";
 import { useState } from "react";
-import Calendar from "react-calendar";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 function CalenderList() {
@@ -14,7 +11,7 @@ function CalenderList() {
 
     const navigate = useNavigate();
 
-    const handleDayRecordClick = (date) => {
+    const handleDayClick = (date) => {
         navigate(`/calender/${moment(date).format("YYYY-MM-DD")}`);
     };
     const dates = [
@@ -41,11 +38,12 @@ function CalenderList() {
                         next2Label={null}
                         prev2Label={null}
                         minDetail="year"
+                        onClickDay={(date) => handleDayClick(date)}
                     />
                 </C.CalenderWrapper>
                 <C.BottomSheet>
                     {dates.map((date, index) => (
-                        <C.DayRecordBox key={index} onClick={() => handleDayRecordClick(date)}>
+                        <C.DayRecordBox key={index} onClick={() => handleDayClick(date)}>
                             <div className="DayRecordBox-Date">{moment(date).format("MM. DD.")}</div>
                             <div className="DayRecordBox-Record">3개의 기록이 있습니다.</div>
                         </C.DayRecordBox>

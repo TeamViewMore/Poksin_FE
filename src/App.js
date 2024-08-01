@@ -9,7 +9,6 @@ import Signup from "./pages/user/Signup";
 import Main from "./pages/other/Main";
 import Calender from "./pages/calender/Calender";
 import CalenderList from "./pages/calender/CalenderList";
-import BottomSheet from "./pages/calender/BottomSheet";
 import Upload from "./pages/upload/Upload";
 import UploadForm from "./pages/upload/UploadForm";
 import AI from "./pages/upload/AI";
@@ -80,7 +79,6 @@ function App() {
                 <Route exact path="/main" element={<Main />} />
                 <Route exact path="/calender/:date" element={<Calender />} />
                 <Route exact path="/calender" element={<CalenderList />} />
-                <Route exact path="/bs" element={<BottomSheet />} />
                 <Route exact path="/upload" element={<Upload />} />
                 <Route exact path="/upload-form" element={<UploadForm />} />
                 <Route exact path="/analysis/:id" element={<AI />} />
