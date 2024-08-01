@@ -172,6 +172,7 @@ export const recordContent = styled.div`
     color: #424242;
 
     .top {
+        position: relative;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -237,6 +238,7 @@ export const picContent = styled.div`
     color: #424242;
 
     .top {
+        position: relative;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -308,6 +310,7 @@ export const diaContent = styled.div`
     color: #424242;
 
     .top {
+        position: relative;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
