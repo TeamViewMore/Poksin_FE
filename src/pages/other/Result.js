@@ -2,10 +2,20 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import * as R from "../../styles/other/ResultStyle";
 import check_result from "../../img/check_result.png";
+import { useNavigate } from "react-router-dom";
 
 function Result() {
     const location = useLocation();
     const { checkedCount } = location.state || { checkedCount: 0 };
+    const navigate = useNavigate();
+
+    const goToSelf = () => {
+        navigate("/self");
+    };
+
+    const goToMain = () => {
+        navigate("/main");
+    };
     /*보통이에요 */
     const Acceptable = () => (
         <R.Container>
@@ -27,8 +37,8 @@ function Result() {
                 <br /> *여성긴급전화 1336
             </R.Detail>
             <R.Re>
-                <R.Button1>다시 하기</R.Button1>
-                <R.Button2>메인으로 돌아가기</R.Button2>
+                <R.Button1 onClick={goToSelf}>다시 하기</R.Button1>
+                <R.Button2 onClick={goToMain}>메인으로 돌아가기</R.Button2>
             </R.Re>
         </R.Container>
     );

@@ -9,30 +9,54 @@ export const Main = styled.div``;
 export const Happen = styled.div`
     display: flex;
     flex-direction: column;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    color: rgb(66, 66, 66);
+    font-size: 11pt;
+    margin-top: 18px;
+`;
+
+export const UploadBox = styled.div`
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 `;
 
-export const UploadBox = styled.div``;
+export const PreciousId = styled.div`
+    font-weight: bold;
+    font-size: 11pt;
+    line-height: 12px;
+    color: rgb(66, 66, 66);
+`;
 
 export const Precious = styled.div`
     margin-top: 23px;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     font-size: 11pt;
+    line-height: 12px;
+    margin-left: 35px;
+    color: rgb(66, 66, 66);
+    margin-bottom: 22px;
 `;
 
 export const Want = styled.div`
-    margin-top: 54px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    color: rgb(66, 66, 66);
+    font-size: 11pt;
+`;
+
+export const GuideBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 `;
-
-export const GuideBox = styled.div``;
 
 export const CalenderList = styled.div`
     display: flex;
@@ -48,7 +72,7 @@ export const CalenderWrapper = styled.div`
     color: #424242;
     font-weight: 500;
     font-size: 19px;
-    margin: 15px 0px;
+    margin: 10px 0px;
 
     .react-calendar {
         border: none;
@@ -66,6 +90,10 @@ export const CalenderWrapper = styled.div`
         display: none;
     }
 
+    .react-calendar__navigation__prev-button {
+        display: none; /* prev 버튼 숨기기 */
+    }
+
     .react-calendar__navigation__next-button {
         background-size: contain;
         background-repeat: no-repeat;
@@ -73,19 +101,20 @@ export const CalenderWrapper = styled.div`
         border: none;
         cursor: pointer;
         width: 8px;
-        height: 14px;
+        height: 12px;
         padding: 0;
         margin: 0;
+
         cursor: pointer;
         background-image: url(${require("../../img/chevron.left.png")});
     }
 
     .react-calendar__navigation__label {
         display: flex;
-        justify-content: center;
         align-items: center;
-        font-weight: 550;
-        font-size: 19px;
+        font-weight: 300;
+        font-size: 15px;
+        margin-left: 10px;
         pointer-events: none;
     }
 
@@ -109,8 +138,8 @@ export const CalenderWrapper = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
         border-radius: 100px;
     }
 
