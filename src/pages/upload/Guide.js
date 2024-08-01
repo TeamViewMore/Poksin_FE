@@ -1,10 +1,14 @@
 import React from "react";
 import { keyframes } from "styled-components";
-
+import { useNavigate } from "react-router-dom";
 import * as G from "../../styles/upload/GuideStyle";
 import lightbulb from "../../img/lightbulb.svg";
 
 function Guide() {
+    const navigate = useNavigate();
+    const goToUpload = () => {
+        navigate("/upload");
+    };
     return (
         <>
             <G.Guide>
@@ -136,7 +140,7 @@ function Guide() {
                     증거 자료를 모아보세요.
                 </G.Detail>
                 <G.ButtonBox>
-                    <G.Button>자료 업로드 바로 가기</G.Button>
+                    <G.Button onClick={goToUpload}>자료 업로드 바로 가기</G.Button>
                 </G.ButtonBox>
             </G.Guide>
         </>

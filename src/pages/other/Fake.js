@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // react-router-dom 임포트
 import * as F from "../../styles/other/FakeStyle";
 import fake from "../../img/fake.png";
 
 function Fake() {
+    const navigate = useNavigate(); // useNavigate 훅 사용
+
+    const handleExit = () => {
+        // 종료 버튼 클릭 시 페이지를 홈 또는 다른 페이지로 리다이렉트
+        window.location.href = "https://google.com"; // 다른 페이지로 이동
+    };
+
     return (
         <>
             <F.Fake>
@@ -23,7 +31,7 @@ function Fake() {
                 </F.Detail>
 
                 <F.Re>
-                    <F.Button1>종료</F.Button1>
+                    <F.Button1 onClick={handleExit}>종료</F.Button1>
                 </F.Re>
             </F.Fake>
         </>

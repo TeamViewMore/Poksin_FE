@@ -1,5 +1,5 @@
 import React from "react";
-import PlusBtn from "../../components/PlusBtn";
+import PlusBtn from "../../components/ChatBtn";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import * as M from "../../styles/other/MainStyle";
 import Group6 from "../../img/Group6.svg";
-
 import Group7 from "../../img/Group7.svg";
 
 function Main() {
@@ -16,6 +15,15 @@ function Main() {
 
     const navigate = useNavigate();
 
+    const goToUpload = () => {
+        navigate("/upload");
+    };
+    const goToGuide = () => {
+        navigate("/guide");
+    };
+    const goToChat = () => {
+        navigate("/chat");
+    };
     const handleDayRecordClick = (date) => {
         navigate(`/calender/${moment(date).format("YYYY-MM-DD")}`);
     };
@@ -29,7 +37,7 @@ function Main() {
         <>
             <M.Main>
                 <M.Precious>
-                    <b>id 님,</b>
+                    <M.PreciousId>id 님,</M.PreciousId>
                     <br />
                     당신은 소중한 사람이에요. 누구도 당신을 해칠 수 없어요.
                 </M.Precious>
@@ -50,19 +58,17 @@ function Main() {
                             minDetail="year"
                         />
                     </M.CalenderWrapper>
-                    <M.Happen>
-                        어떤 일이 있었나요?
-                        <M.UploadBox>
-                            <img src={Group6} alt="logo" style={{ width: "345px", height: "93px" }} />
-                        </M.UploadBox>
-                    </M.Happen>
-                    <M.Want>
-                        폭신폭신은 여러분을 돕고 싶습니다.
-                        <M.GuideBox>
-                            <img src={Group7} alt="logo" style={{ width: "345px", height: "93px" }} />
-                        </M.GuideBox>
-                    </M.Want>
-                    <PlusBtn></PlusBtn>
+                    <M.Happen>어떤 일이 있었나요? </M.Happen>
+                    <M.UploadBox onClick={goToUpload}>
+                        <img src={Group6} alt="logo" style={{ width: "345px", height: "93px" }} />
+                    </M.UploadBox>
+
+                    <M.Want>폭신폭신은 여러분을 돕고 싶습니다.</M.Want>
+                    <M.GuideBox onClick={goToGuide}>
+                        <img src={Group7} alt="logo" style={{ width: "345px", height: "93px" }} />
+                    </M.GuideBox>
+
+                    <PlusBtn onClick={goToChat}></PlusBtn>
                 </M.CalenderList>
             </M.Main>
         </>
