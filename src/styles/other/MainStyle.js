@@ -4,7 +4,12 @@ import "react-calendar/dist/Calendar.css";
 import CalendarPrev from "../../img/arrow_left.png";
 import CalendarNext from "../../img/arrow_right.png";
 
-export const Main = styled.div``;
+export const Main = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
 export const Happen = styled.div`
     display: flex;
@@ -158,7 +163,12 @@ export const CalenderWrapper = styled.div`
     }
 `;
 
-export const CalendarBox = styled(Calendar)``;
+export const CalendarBox = styled(Calendar)`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
 export const DayRecordBox = styled.div`
     display: flex;
