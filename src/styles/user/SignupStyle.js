@@ -151,3 +151,9 @@ export const CheckCustom = styled.input`
             no-repeat center;
     }
 `;
+export const Yet = styled.div`
+    text-align: center;
+    color: rgb(66, 66, 66);
+    margin-top: 19px;
+    line-height: 22px;
+`;
