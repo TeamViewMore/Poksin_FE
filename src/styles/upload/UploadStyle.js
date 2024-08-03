@@ -59,6 +59,7 @@ export const Btn1 = styled(Link)`
     .BtnName {
         font-weight: 500;
         font-size: 18px;
+        margin-bottom: 3px;
     }
 
     .BtnDes {
@@ -88,10 +89,35 @@ export const Btn2 = styled(Link)`
     .BtnName {
         font-weight: 500;
         font-size: 18px;
+        margin-bottom: 3px;
     }
 
     .BtnDes {
         font-weight: 500;
         font-size: 10px;
     }
+`;
+
+export const GoToUploadButton = styled(Link)`
+    width: 320px;
+    height: 51px;
+    border-radius: 20px;
+    border: none;
+    color: #ffffff;
+    background-color: #7a29ff;
+    font-weight: bolder;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 40px;
+`;
+
+export const GoToGuide = styled(Link)`
+    color: #7a29ff;
+    font-weight: bolder;
+    text-decoration: underline;
+    cursor: pointer;
 `;

@@ -109,8 +109,8 @@ const animBtn = keyframes`
 `;
 
 export const Login = styled(Link)`
-    width: 345px;
-    height: 45px;
+    width: 320px;
+    height: 51px;
     border: 1px solid #7a29ff;
     border-radius: 20px;
     color: #424242;
@@ -129,13 +129,13 @@ export const Login = styled(Link)`
 `;
 
 export const Signup = styled(Link)`
-    width: 345px;
-    height: 45px;
+    width: 320px;
+    height: 51px;
     border: 1px solid #7a29ff;
     border-radius: 20px;
     color: #424242;
     font-weight: bolder;
-    margin-top: 40px;
+    margin-top: 45px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
