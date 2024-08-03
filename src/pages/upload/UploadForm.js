@@ -45,8 +45,8 @@ function UploadForm() {
         <div
             onClick={onClick}
             style={{
-                width: "315px",
-                height: "19px",
+                width: "305px",
+                height: "51px",
                 borderRadius: "20px",
                 border: "none",
                 color: "#818181",
@@ -54,7 +54,7 @@ function UploadForm() {
                 fontWeight: "300",
                 fontSize: "14px",
                 marginTop: "20px",
-                padding: "15px",
+                paddingLeft: "15px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
