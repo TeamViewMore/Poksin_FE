@@ -59,6 +59,7 @@ export const Btn1 = styled(Link)`
     .BtnName {
         font-weight: 500;
         font-size: 18px;
+        margin-bottom: 3px;
     }
 
     .BtnDes {
@@ -88,6 +89,7 @@ export const Btn2 = styled(Link)`
     .BtnName {
         font-weight: 500;
         font-size: 18px;
+        margin-bottom: 3px;
     }
 
     .BtnDes {
@@ -110,8 +112,7 @@ export const GoToUploadButton = styled(Link)`
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    position: absolute;
-    bottom: 40px;
+    margin-top: 40px;
 `;
 
 export const GoToGuide = styled(Link)`

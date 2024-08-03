@@ -97,6 +97,7 @@ export const CalenderWrapper = styled.div`
         width: 35px;
         height: 35px;
         border-radius: 100px;
+        color: #424242;
     }
 
     .react-calendar__tile--now {
