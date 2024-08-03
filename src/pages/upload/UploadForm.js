@@ -11,6 +11,7 @@ function UploadForm() {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
 
     // 프리뷰 보이게 하기
     const handleFileChange = (event) => {
@@ -45,16 +46,16 @@ function UploadForm() {
         <div
             onClick={onClick}
             style={{
-                width: "315px",
-                height: "19px",
+                width: "305px",
+                height: "51px",
                 borderRadius: "20px",
                 border: "none",
                 color: "#818181",
                 backgroundColor: "#ebebeb",
                 fontWeight: "300",
                 fontSize: "14px",
-                marginTop: "20px",
-                padding: "15px",
+                marginTop: "15px",
+                paddingLeft: "15px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -75,6 +76,22 @@ function UploadForm() {
         setModalIsOpen(false);
     };
 
+    // 카테고리 선택
+    const getAcceptType = () => {
+        switch (category) {
+            case "image":
+                return "image/*";
+            case "video":
+                return "video/*";
+            case "audio":
+                return "audio/*";
+            case "document":
+                return "image/*,.pdf,.txt,.doc,.docx";
+            default:
+                return "*";
+        }
+    };
+
     return (
         <>
             <U.UploadForm>
@@ -93,9 +110,32 @@ function UploadForm() {
                         })}
                     </U.Preview>
 
-                    <U.FileInput onClick={filePlusClick}>
-                        {selectedFiles.length > 0 ? selectedFiles.map((file) => file.name).join(", ") : "파일 선택"}
-                    </U.FileInput>
+                    <U.CategorySelect value={category} onChange={(e) => setCategory(e.target.value)}>
+                        <option value="">카테고리 선택</option>
+                        <option value="image">사진 자료</option>
+                        <option value="video">영상 자료</option>
+                        <option value="audio">음성 자료</option>
+                        <option value="document">진단서</option>
+                    </U.CategorySelect>
+
+                    {category && (
+                        <>
+                            <U.FileInput onClick={filePlusClick}>
+                                {selectedFiles.length > 0
+                                    ? selectedFiles.map((file) => file.name).join(", ")
+                                    : "파일 선택"}
+                            </U.FileInput>
+                            <input
+                                type="file"
+                                multiple
+                                ref={filePlus}
+                                onChange={handleFileChange}
+                                style={{ display: "none" }}
+                                accept={getAcceptType()}
+                            />
+                        </>
+                    )}
+
                     <input
                         type="file"
                         multiple

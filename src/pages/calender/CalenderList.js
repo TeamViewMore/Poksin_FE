@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as C from "../../styles/calender/CalenderListStyle";
 import PlusBtn from "../../components/PlusBtn";
-import { useState } from "react";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function CalenderList() {
     const [value, onChange] = useState(new Date());
@@ -19,6 +19,8 @@ function CalenderList() {
         moment(value).add(1, "days").toDate(),
         moment(value).add(2, "days").toDate(),
         moment(value).add(3, "days").toDate(),
+        moment(value).add(4, "days").toDate(),
+        moment(value).add(5, "days").toDate(),
     ];
 
     return (

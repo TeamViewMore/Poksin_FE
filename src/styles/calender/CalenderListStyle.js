@@ -7,7 +7,7 @@ import CalendarNext from "../../img/arrow_right.png";
 export const CalenderList = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 93vh;
     margin: 0;
 `;
 
@@ -97,6 +97,7 @@ export const CalenderWrapper = styled.div`
         width: 35px;
         height: 35px;
         border-radius: 100px;
+        color: #424242;
     }
 
     .react-calendar__tile--now {
@@ -128,7 +129,7 @@ export const BottomSheet = styled.div`
     font-weight: 500;
     font-size: 17px;
     margin-top: 20px;
-    overflow-y: auto;
+    overflow-y: scroll;
 
     &::-webkit-scrollbar {
         display: none;

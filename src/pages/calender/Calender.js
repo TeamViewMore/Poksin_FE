@@ -129,7 +129,7 @@ function Calender() {
                                 </div>
                                 <div className="explan">처음 맞은 거라 너무 무서웠고, 이때부터가 시작이었다...</div>
                                 <div className="videoResult">
-                                    <img src={checkedMini} alt=''></img>
+                                    <img src={checkedMini} alt=""></img>
                                     <span>폭력 발생 횟수 2회, 폭력 지속 시간 12초</span>
                                 </div>
                                 <div className="media">
