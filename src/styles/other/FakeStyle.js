@@ -33,7 +33,12 @@ export const Detail = styled.div`
     font-size: 10pt;
     margin-top: 37px;
 `;
-export const Re = styled.div``;
+export const Re = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+`;
 export const Button1 = styled.button`
     width: 343px;
     height: 51px;
