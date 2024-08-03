@@ -17,7 +17,7 @@ export const UploadForm = styled.div`
 `;
 
 export const Preview = styled.div`
-    width: 83%;
+    width: 300px;
     height: 230px;
     border: 1px solid #7a29ff;
     border-radius: 20px;
@@ -61,7 +61,8 @@ export const Preview = styled.div`
 `;
 
 export const FileInput = styled.button`
-    width: 345px;
+    width: 320px;
+    height: 51px;
     border-radius: 20px;
     border: none;
     color: #424242;
@@ -107,8 +108,8 @@ export const DateInput = styled.div`
 `;
 
 export const Input = styled.input`
-    width: 330px;
-    height: 47px;
+    width: 290px;
+    height: 49px;
     border-radius: 20px;
     border: none;
     color: #424242;
@@ -116,6 +117,7 @@ export const Input = styled.input`
     font-weight: 500;
     margin-top: 20px;
     padding-left: 15px;
+    padding-right: 15px;
 
     &:focus {
         outline: none;
@@ -127,8 +129,8 @@ export const Input = styled.input`
 `;
 
 export const Textarea = styled.textarea`
-    width: 315px;
-    height: 100px;
+    width: 290px;
+    height: 120px;
     border-radius: 20px;
     border: none;
     color: #424242;
@@ -148,16 +150,18 @@ export const Textarea = styled.textarea`
 `;
 
 export const UploadButton = styled.button`
-    width: 345px;
-    height: 45px;
+    width: 320px;
+    height: 51px;
     border-radius: 20px;
     border: none;
     color: #ffffff;
     background-color: #7a29ff;
     font-weight: bolder;
-    margin-top: 20px;
-    padding-right: 5px;
+    position: absolute;
+    bottom: 40px;
     cursor: pointer;
     outline: none;
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
