@@ -30,27 +30,23 @@ function Login() {
                     "Content-Type": "multipart/form-data",
                 },
             });
+            console.log("Response:", response.data);
 
-            if (response.data.token) {
-                setCookie("authToken", response.data.token, { path: "/" });
+            const accessToken = response.headers["access-token"];
+            const refreshToken = response.headers["refresh-token"];
+            if (accessToken && refreshToken) {
+                setCookie("authToken", accessToken, { path: "/" });
+                setCookie("refreshToken", refreshToken, { path: "/" });
                 alert("로그인 성공!");
                 navigate("/main");
-            } else if (response.data.message) {
-                alert(`로그인 성공: ${response.data.message}`);
-                navigate("/main");
-                // 헤더에 토큰이 있는 경우 처리
-                const token = response.headers["auth-token"];
-                if (token) {
-                    setCookie("authToken", token, { path: "/" });
-                    navigate("/main");
-                }
             } else {
-                alert("로그인 실패: 서버에서 반환된 토큰이 없습니다.");
+                alert("로그인 성공!");
+                navigate("/main");
             }
         } catch (error) {
             console.error("로그인 실패:", error);
             if (error.response && error.response.data) {
-                console.log("Error data:", error.response.data); // 에러 데이터를 콘솔에 출력
+                console.log("Error data:", error.response.data);
                 alert(`로그인 실패: ${error.response.data.message}`);
             } else {
                 alert("로그인 실패: 서버에 연결할 수 없습니다.");
