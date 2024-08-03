@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const Login = styled.div``;
+export const Login = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
 export const Logo1 = styled.div`
     display: flex;
@@ -8,7 +13,7 @@ export const Logo1 = styled.div`
     justify-content: center;
     align-items: center;
 `;
-export const InputBox = styled.div`
+export const InputBox = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
