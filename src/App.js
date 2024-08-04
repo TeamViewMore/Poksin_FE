@@ -30,9 +30,6 @@ function App() {
         if (/^\/chat\/\d+$/.test(path)) {
             return "상담하기";
         }
-        if (/^\/profile\/\d+$/.test(path) || /^\/profile\/update\/\d+$/.test(path)) {
-            return "프로필";
-        }
         if (/^\/calender\/[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(path) || path === "/calender") {
             return "기록하기";
         }
@@ -49,6 +46,9 @@ function App() {
                 return "로그인";
             case "/signup":
                 return "회원가입";
+            case "/profile":
+            case "/profile/update":
+                return "프로필";
             case "/upload":
             case "/upload-form":
                 return "자료 업로드";
@@ -85,8 +85,8 @@ function App() {
                 <Route exact path="/guide" element={<Guide />} />
                 <Route exact path="/chat/:id" element={<Chat />} />
                 <Route exact path="/poksin/admin/chat-list" element={<ChatList />} />
-                <Route exact path="/profile/:id" element={<Profile />} />
-                <Route exact path="/profile/update/:id" element={<ProfileUpdate />} />
+                <Route exact path="/profile" element={<Profile />} />
+                <Route exact path="/profile/update" element={<ProfileUpdate />} />
                 <Route exact path="/self" element={<Self />} />
                 <Route exact path="/self/result" element={<Result />} />
                 <Route exact path="/fake" element={<Fake />} />

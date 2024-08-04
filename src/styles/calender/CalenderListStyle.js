@@ -100,15 +100,38 @@ export const CalenderWrapper = styled.div`
         color: #424242;
     }
 
-    .react-calendar__tile--now {
-        background-color: #ded6ff;
+    .high-evidence abbr {
+        background-color: #7a29ff;
+        color: #ffffff;
+    }
+
+    .medium-evidence abbr {
+        background-color: #ae7cff;
+    }
+
+    .low-evidence abbr {
+        background-color: #e3d1ff;
+    }
+
+    .react-calendar__tile--now abbr,
+    .react-calendar__tile--active {
         color: #424242;
-        border-radius: 20px;
+        border: 1px solid #7a29ff;
+        background-color: #ffffff;
+    }
+
+    .react-calendar__tile--range,
+    .react-calendar__tile--rangeStart,
+    .react-calendar__tile--rangeEnd,
+    .react-calendar__tile--rangeBothEnds,
+    .react-calendar__month-view__days__day {
+        color: #424242;
+        border: none;
+        background-color: #ffffff;
     }
 
     .react-calendar__month-view__days__day:focus,
-    .react-calendar__month-view__days__day:hover,
-    .react-calendar__tile--active {
+    .react-calendar__month-view__days__day:hover {
         background-color: #ded6ff;
         color: #424242;
         border-radius: 20px;
