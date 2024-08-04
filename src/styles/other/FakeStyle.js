@@ -40,8 +40,8 @@ export const Re = styled.div`
     align-items: center;
 `;
 export const Button1 = styled.button`
-    width: 343px;
-    height: 51px;
+    width: 320px;
+    height: 52px;
     border-radius: 20px;
     background-color: rgb(122, 41, 255);
     color: white;
