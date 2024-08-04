@@ -1,18 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useMatch } from "react-router-dom";
-import * as H from "../styles/components/HeaderStyle";
+import { useCookies } from 'react-cookie';
 
+import * as H from "../styles/components/HeaderStyle";
 import Menu from "./Menu";
 
 import headerLogo from "../img/logo_mini.png";
 import back from "../img/back.png";
 import menu from "../img/hamburger.png";
+import { fetchUserData } from '../utils/userApi';
 
 function Header({ title }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+    const [cookies] = useCookies(["accessToken"]);
+    const [username, setUsername] = useState();
     const location = useLocation();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const token = cookies.accessToken;
+                if (!token) {
+                    throw new Error("토큰을 찾을 수 없음");
+                }
+                const data = await fetchUserData(token);
+                setUsername(data.username);
+            } catch (error) {
+                console.error("헤더에서 에러:", error);
+            }
+        };
+
+        fetchUser();
+    }, [cookies.accessToken]);
 
     const handleNavLinkClick = (path) => {
         navigate(path);
@@ -43,16 +64,15 @@ function Header({ title }) {
         "/chat",
         "/poksin/admin/chat-list",
         "/self",
-        "/fake"
+        "/fake",
+        "/profile"
     ];
 
     const matchChat = useMatch("/chat/:id");
-    const matchProfile = useMatch("/profile/:id");
 
-    const showLogo = logoPages.includes(location.pathname) || matchChat || matchProfile;
+    const showLogo = logoPages.includes(location.pathname) || matchChat;
     const showBack = !showLogo;
 
-    // login과 signup 페이지에서는 Menu 컴포넌트를 표시하지 않음
     const hideMenu = location.pathname === "/login" || location.pathname === "/signup";
 
     return (
@@ -83,9 +103,9 @@ function Header({ title }) {
                     closeMenu={handleMenuClose}
                     isClosing={isClosing}
                     onNavClick={handleNavLinkClick}
-                    onProfileClick={() => handleNavLinkClick(`/profile/1`)} // 임시로 1로 설정
-                    nickname="닉네임" // 임시로 닉네임으로 설정
-                    id="1" // 임시로 1로 설정
+                    onProfileClick={() => handleNavLinkClick(`/profile`)}
+                    nickname={username}
+                    roomid="1" // 임시로 1로 설정
                 />
             )}
         </>

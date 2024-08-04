@@ -1,47 +1,39 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import * as P from "../../styles/chat/ProfileStyle";
-import More from "../../components/More";
-import profile from "../../img/profile_big.png";
-import more from "../../img/more.png";
+import * as P from '../../styles/chat/ProfileStyle';
+import More from '../../components/More';
+import profile from '../../img/profile_big.png';
+import more from '../../img/more.png';
+import { fetchUserData } from '../../utils/userApi';
 
 function Profile() {
-    const [profileData, setProfileData] = useState(null);
-    const [cookies] = useCookies(['authToken']);
+    const [profileData, setProfileData] = useState({});
     const [showMore, setShowMore] = useState(false);
     const moreRef = useRef();
     const navigate = useNavigate();
+    const [cookies] = useCookies(["accessToken"]);
 
     useEffect(() => {
-        const fetchProfileData = async () => {
-            const token = cookies.authToken;
-            if (!token) {
-                console.error("No access token found");
-                return;
-            }
-
+        const fetchProfile = async () => {
             try {
-                const response = await axios.get('https://poksin-backend.store/user/mypage', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-
-                if (response.data.code === "SUCCESS_RETRIEVE_USER") {
-                    setProfileData(response.data.data);
+                const token = cookies.accessToken;
+                if (!token) {
+                    throw new Error("토큰을 찾을 수 없음");
                 }
+                const data = await fetchUserData(token);
+                console.log(data);
+                setProfileData(data);
             } catch (error) {
-                console.error("Error fetching user data:", error);
+                console.error('프로필 정보를 가져오는 데 실패했습니다:', error);
             }
         };
 
-        fetchProfileData();
-    }, [cookies]);
+        fetchProfile();
+    }, [cookies.accessToken]);
 
     const handleMoreClick = () => {
-        setShowMore(prevShowMore => !prevShowMore);
+        setShowMore((prevShowMore) => !prevShowMore);
     };
 
     const handleClickOutside = (event) => {
@@ -51,8 +43,8 @@ function Profile() {
     };
 
     const handleMenuClick = (menu) => {
-        if (menu === "프로필 수정") {
-            navigate(`/profile/update/${profileData?.id}`);
+        if (menu === '프로필 수정') {
+            navigate(`/profile/update`);
         } else {
             console.log(`${menu} Clicked`);
         }
@@ -60,15 +52,20 @@ function Profile() {
     };
 
     useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener('mousedown', handleClickOutside);
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
 
-    if (!profileData) {
-        return <div>Loading...</div>;
-    }
+    // 날짜 포맷팅 함수
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}. ${month}. ${day}.`;
+    };
 
     const { username, phoneNum, emergencyNum, address, createdAt } = profileData;
 
@@ -88,25 +85,25 @@ function Profile() {
                 <P.Middle>
                     <P.Detail>
                         <div>전화번호</div>
-                        <div>{phoneNum || "비공개"}</div>
+                        <div>{phoneNum}</div>
                     </P.Detail>
                     <P.Detail>
                         <div>긴급 연락처</div>
-                        <div>{emergencyNum || "비공개"}</div>
+                        <div>{emergencyNum}</div>
                     </P.Detail>
                     <P.Detail>
                         <div>주소</div>
-                        <div>{address || "비공개"}</div>
+                        <div>{address}</div>
                     </P.Detail>
                 </P.Middle>
                 <P.Bottom>
                     <P.Date>
                         <div className='title'>가입일</div>
-                        <div className='date'>{new Date(createdAt).toLocaleDateString()}</div>
+                        <div className='date'>{createdAt ? formatDate(createdAt) : '정보 없음'}</div>
                     </P.Date>
                     <P.Date>
                         <div className='title'>최근 상담</div>
-                        <div className='date'>{new Date().toLocaleDateString()}</div>
+                        <div className='date'>{createdAt ? formatDate(createdAt) : '정보 없음'}</div>
                     </P.Date>
                 </P.Bottom>
             </P.Box>
