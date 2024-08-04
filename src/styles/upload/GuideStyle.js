@@ -183,8 +183,8 @@ export const ButtonBox = styled.div`
 `;
 
 export const Button = styled.button`
-    width: 343px;
-    height: 51px;
+    width: 320px;
+    height: 52px;
     background-color: rgb(122, 41, 243);
     color: rgb(255, 255, 255);
     text-align: center;
