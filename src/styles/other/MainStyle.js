@@ -111,7 +111,7 @@ export const CalenderWrapper = styled.div`
         margin: 0;
 
         cursor: pointer;
-        background-image: url(${require("../../img/chevron.left.png")});
+        background-image: url(${require("../../img/chevron_left.png")});
     }
 
     .react-calendar__navigation__label {
