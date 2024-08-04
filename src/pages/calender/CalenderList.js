@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import * as C from "../../styles/calender/CalenderListStyle";
 import PlusBtn from "../../components/PlusBtn";
 import moment from "moment";
@@ -12,39 +12,43 @@ function CalenderList() {
     const [clickMonth, setClickMonth] = useState(new Date());
     const navigate = useNavigate();
     const [evidenceData, setEvidenceData] = useState([]);
-    const [cookies] = useCookies(["accessToken"]);
+    const [cookies] = useCookies(["authToken"]);
+
+    //의존성 문제 해결을 위해 useCallback 사용
+    const fetchEvidenceData = useCallback(
+        async (date) => {
+            try {
+                const year = moment(date).year();
+                const month = moment(date).month() + 1;
+                const token = cookies.accessToken;
+
+                if (!token) {
+                    console.error("No access token found in cookies");
+                    return;
+                }
+
+                const response = await axios.get("https://poksin-backend.store/evidence/get-month-evidence", {
+                    params: { year, month },
+                    headers: {
+                        Authorization: `${token}`, // 인증 토큰
+                    },
+                });
+                if (response.data.code === "SUCCESS_RETRIEVE_MONTH_EVIDENCE") {
+                    console.log("Fetch Evidence Data Response:", response);
+                    setEvidenceData(response.data.data);
+                }
+            } catch (error) {
+                console.error("Error fetching evidence data:", error);
+            }
+        },
+        [cookies]
+    );
 
     useEffect(() => {
         if (clickMonth) {
             fetchEvidenceData(clickMonth);
         }
-    }, [clickMonth]);
-
-    const fetchEvidenceData = async (date) => {
-        try {
-            const year = moment(date).year();
-            const month = moment(date).month() + 1;
-            const token = cookies.accessToken;
-
-            if (!token) {
-                console.error("No access token found in cookies");
-                return;
-            }
-
-            const response = await axios.get("https://poksin-backend.store/evidence/get-month-evidence", {
-                params: { year, month },
-                headers: {
-                    Authorization: `${token}`, // 인증 토큰
-                },
-            });
-            if (response.data.code === "SUCCESS_RETRIEVE_MONTH_EVIDENCE") {
-                console.log("Fetch Evidence Data Response:", response);
-                setEvidenceData(response.data.data);
-            }
-        } catch (error) {
-            console.error("Error fetching evidence data:", error);
-        }
-    };
+    }, [clickMonth, fetchEvidenceData]);
 
     // 달 바뀔 때 호출하는 함수
     const handleActiveStartDateChange = ({ activeStartDate }) => {
