@@ -5,8 +5,10 @@ import profile from "../../img/profile_big.png";
 import Input from '../../components/Input';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
+import { fetchUserData } from '../../utils/userApi';
 
 function ProfileUpdate() {
+    const APIUrl = process.env.REACT_APP_API_URL;
     const [checkedStates, setCheckedStates] = useState({
         phone: false,
         emergency: false,
@@ -18,45 +20,38 @@ function ProfileUpdate() {
         emergencyNum: '',
         address: '',
     });
-
-    const [cookies] = useCookies(['authToken']);
+    const [cookies] = useCookies(["accessToken"]);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProfileData = async () => {
-            const token = cookies.authToken;
-            if (!token) {
-                console.error("No access token found");
-                return;
-            }
-
             try {
-                const response = await axios.get('https://poksin-backend.store/user/mypage', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const token = cookies.accessToken;
+                if (!token) {
+                    throw new Error("토큰을 찾을 수 없음");
+                }
+                const data = await fetchUserData(token);
 
-                if (response.data.code === "SUCCESS_RETRIEVE_USER") {
-                    const data = response.data.data;
+                if (data.code === "SUCCESS_RETRIEVE_USER") {
+                    const userData = data.data;
                     setFormValues({
-                        phoneNum: data.phoneNum || '',
-                        emergencyNum: data.emergencyNum || '',
-                        address: data.address || '',
+                        phoneNum: userData.phoneNum || '',
+                        emergencyNum: userData.emergencyNum || '',
+                        address: userData.address || '',
                     });
                     setCheckedStates({
-                        phone: data.phoneNum !== null,
-                        emergency: data.emergencyNum !== null,
-                        address: data.address !== null,
+                        phone: userData.phoneNum !== null,
+                        emergency: userData.emergencyNum !== null,
+                        address: userData.address !== null,
                     });
                 }
             } catch (error) {
-                console.error("Error fetching user data:", error);
+                console.error("프로필 업데이트에서 프로필 가져오기 에러:", error);
             }
         };
 
         fetchProfileData();
-    }, [cookies]);
+    }, [cookies.accessToken]);
 
     const handleCheckboxChange = (type) => {
         setCheckedStates((prevState) => ({
@@ -74,14 +69,14 @@ function ProfileUpdate() {
     };
 
     const handleSubmit = async () => {
-        const token = cookies.authToken;
+        const token = cookies.accessToken;
         if (!token) {
-            console.error("No access token found");
+            console.error("토큰을 찾을 수 없음");
             return;
         }
 
         try {
-            const response = await axios.put('https://poksin-backend.store/user/update', {
+            const response = await axios.put(`${APIUrl}/user/update`, {
                 phoneNum: formValues.phoneNum,
                 emergencyNum: formValues.emergencyNum,
                 address: formValues.address,
@@ -90,7 +85,7 @@ function ProfileUpdate() {
                 addressOpen: checkedStates.address
             }, {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `${token}`
                 }
             });
 
@@ -99,7 +94,7 @@ function ProfileUpdate() {
                 navigate('/profile'); // Navigate back to profile page after successful update
             }
         } catch (error) {
-            console.error("Error updating user information:", error);
+            console.error("프로필 업데이트에서 프로필 업데이트 에러:", error);
         }
     };
 
