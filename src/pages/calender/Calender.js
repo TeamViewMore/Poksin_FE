@@ -94,34 +94,37 @@ function Calender() {
         if (currentCategory) {
             fetchEvidenceData(date, currentCategory);
         }
-    }, [date, currentCategory]);
+    }, [date, currentCategory, fetchEvidenceData]);
 
-    const fetchEvidenceData = useCallback(async (date, category) => {
-        try {
-            const year = moment(date).year();
-            const month = moment(date).month() + 1;
-            const day = moment(date).date();
-            const token = cookies.accessToken;
+    const fetchEvidenceData = useCallback(
+        async (date, category) => {
+            try {
+                const year = moment(date).year();
+                const month = moment(date).month() + 1;
+                const day = moment(date).date();
+                const token = cookies.accessToken;
 
-            if (!token) {
-                console.error("No access token found in cookies");
-                return;
+                if (!token) {
+                    console.error("No access token found in cookies");
+                    return;
+                }
+
+                const response = await axios.get("https://poksin-backend.store/evidence/get-day-evidence", {
+                    params: { year, month, day, category },
+                    headers: {
+                        Authorization: `${token}`, // 인증 토큰
+                    },
+                });
+                if (response.data.code === "SUCCESS_RETRIEVE_DAY_EVIDENCE") {
+                    console.log("Fetch Evidence Data Response:", response);
+                    setEvidenceDayData(response.data.data);
+                }
+            } catch (error) {
+                console.error("Error fetching evidence data:", error);
             }
-
-            const response = await axios.get("https://poksin-backend.store/evidence/get-day-evidence", {
-                params: { year, month, day, category },
-                headers: {
-                    Authorization: `${token}`, // 인증 토큰
-                },
-            });
-            if (response.data.code === "SUCCESS_RETRIEVE_DAY_EVIDENCE") {
-                console.log("Fetch Evidence Data Response:", response);
-                setEvidenceDayData(response.data.data);
-            }
-        } catch (error) {
-            console.error("Error fetching evidence data:", error);
-        }
-    });
+        },
+        [cookies.accessToken]
+    );
 
     return (
         <>
