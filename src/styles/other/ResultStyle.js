@@ -5,6 +5,8 @@ export const Result = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Pretendard-SemiBold.woff2";
+    font-size: 11pt;
 `;
 export const Container = styled.div`
     margin-top: 96px;
@@ -30,6 +32,7 @@ export const Detail = styled.div`
     text-align: center;
     font-size: 10pt;
     margin-top: 41px;
+    font-family: "Pretendard-Regular.woff2";
 `;
 export const Re = styled.div`
     margin-top: 51px;

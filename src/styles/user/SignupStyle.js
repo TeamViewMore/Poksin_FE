@@ -5,6 +5,7 @@ export const Signup = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Pretendard-Regular.woff2";
 `;
 
 export const Logo1 = styled.div`
@@ -29,6 +30,7 @@ export const InputId = styled.input`
     justify-content: center;
     align-items: center;
     outline: none;
+    font-size: 10pt;
 
     /* 포커스 시 스타일 */
     &:focus {
@@ -37,6 +39,7 @@ export const InputId = styled.input`
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
+        font-size: 10pt;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
@@ -45,6 +48,7 @@ export const InputId = styled.input`
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
+        font-size: 10pt;
     }
 `;
 export const InputPw = styled.input`
@@ -61,6 +65,7 @@ export const InputPw = styled.input`
     justify-content: center;
     align-items: center;
     outline: none;
+    font-size: 10pt;
 
     /* 포커스 시 스타일 */
     &:focus {
@@ -69,6 +74,7 @@ export const InputPw = styled.input`
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
+        font-size: 10pt;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
@@ -77,6 +83,7 @@ export const InputPw = styled.input`
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
+        font-size: 10pt;
     }
 `;
 export const InputPwCheck = styled.input`
@@ -93,6 +100,7 @@ export const InputPwCheck = styled.input`
     justify-content: center;
     align-items: center;
     outline: none;
+    font-size: 10pt;
 
     /* 포커스 시 스타일 */
     &:focus {
@@ -101,6 +109,7 @@ export const InputPwCheck = styled.input`
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
+        font-size: 10pt;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
@@ -109,6 +118,7 @@ export const InputPwCheck = styled.input`
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
+        font-size: 10pt;
     }
 `;
 export const InputNumber = styled.input`
@@ -125,6 +135,7 @@ export const InputNumber = styled.input`
     justify-content: center;
     align-items: center;
     outline: none;
+    font-size: 10pt;
 
     /* 포커스 시 스타일 */
     &:focus {
@@ -133,6 +144,7 @@ export const InputNumber = styled.input`
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
+        font-size: 10pt;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
@@ -141,6 +153,7 @@ export const InputNumber = styled.input`
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
+        font-size: 10pt;
     }
 `;
 export const InputAlert = styled.input`
@@ -157,6 +170,7 @@ export const InputAlert = styled.input`
     justify-content: center;
     align-items: center;
     outline: none;
+    font-size: 10pt;
 
     /* 포커스 시 스타일 */
     &:focus {
@@ -165,6 +179,7 @@ export const InputAlert = styled.input`
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
+        font-size: 10pt;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
@@ -173,6 +188,7 @@ export const InputAlert = styled.input`
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
+        font-size: 10pt;
     }
 `;
 export const InputAddress = styled.input`
@@ -189,6 +205,7 @@ export const InputAddress = styled.input`
     justify-content: center;
     align-items: center;
     outline: none;
+    font-size: 10pt;
 
     /* 포커스 시 스타일 */
     &:focus {
@@ -197,9 +214,12 @@ export const InputAddress = styled.input`
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
+        font-size: 10pt;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
+        font-size: 10pt;
+
         width: 296.67px;
         height: 52px;
         background-color: rgb(235, 235, 235) !important;
@@ -234,6 +254,8 @@ export const LoginButton = styled.button`
     text-align: center;
     border-radius: 20px;
     border: 0px;
+    font-family: "Pretendard-SemiBold.woff2" !important;
+    font-size: 11pt;
 `;
 export const CheckCustom = styled.input`
     width: 15px;
@@ -271,4 +293,5 @@ export const Yet = styled.div`
     color: rgb(66, 66, 66);
     margin-top: 19px;
     line-height: 22px;
+    font-size: 10pt;
 `;

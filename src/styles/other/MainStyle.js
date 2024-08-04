@@ -7,6 +7,7 @@ export const Main = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Pretendard-Regular.woff2";
 `;
 
 export const Happen = styled.div`
@@ -31,20 +32,22 @@ export const PreciousId = styled.div`
     font-size: 11pt;
     line-height: 12px;
     color: rgb(66, 66, 66);
+    text-align: left;
 `;
 
 export const Precious = styled.div`
     margin-top: 23px;
     flex-direction: column;
     align-items: center;
-    font-size: 11pt;
+    font-size: 10pt;
     line-height: 12px;
     color: rgb(66, 66, 66);
     margin-bottom: 22px;
+    text-align: center;
 `;
 
 export const Want = styled.div`
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     margin-left: 30px;

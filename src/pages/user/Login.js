@@ -57,7 +57,7 @@ function Login() {
     return (
         <L.Login>
             <L.Logo1>
-                <img src={logo_big} alt="logo" style={{ width: "530px", height: "275px" }} />
+                <img src={logo_big} alt="logo" style={{ width: "510px", height: "285px" }} />
             </L.Logo1>
             <L.InputBox onSubmit={handleLogin}>
                 <L.InputId
@@ -83,6 +83,7 @@ function Login() {
                 <br />
                 <b onClick={goToSignup}>회원가입</b>
             </L.Yet>
+            <br />
         </L.Login>
     );
 }
