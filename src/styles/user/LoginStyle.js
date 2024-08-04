@@ -23,18 +23,47 @@ export const InputId = styled.input`
     width: 320px;
     height: 52px;
     background-color: rgb(235, 235, 235);
-
-    margin-top: 21px;
+    padding-left: 20px;
+    margin-top: 55px;
     border-radius: 20px;
     border: 0px;
+    outline: none;
+
+    /* 포커스 시 스타일 */
+    &:focus {
+        background-color: rgb(235, 235, 235);
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+    /* 자동완성 스타일 */
+    &:-webkit-autofill {
+        background-color: rgb(235, 235, 235) !important;
+        color: #000 !important;
+        border: 1px solid transparent !important;
+    }
 `;
 export const InputPw = styled.input`
     width: 320px;
     height: 52px;
     background-color: rgb(235, 235, 235);
+    padding-left: 20px;
     border-radius: 20px;
     border: 0px;
     margin-top: 14px;
+    outline: none;
+
+    /* 포커스 시 스타일 */
+    &:focus {
+        background-color: rgb(235, 235, 235);
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+    /* 자동완성 스타일 */
+    &:-webkit-autofill {
+        background-color: rgb(235, 235, 235) !important;
+        color: #000 !important;
+        border: 1px solid transparent !important;
+    }
 `;
 
 export const LoginButtonBox = styled.div`

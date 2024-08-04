@@ -67,7 +67,7 @@ function Signup() {
     return (
         <S.Signup>
             <S.Logo1>
-                <img src={logo_big} alt="logo" style={{ width: "423px", height: "225px" }} />
+                <img src={logo_big} alt="logo" style={{ width: "435px", height: "230px" }} />
             </S.Logo1>
             <S.InputBox>
                 <S.InputId placeholder="아이디" value={username} onChange={(e) => setUsername(e.target.value)} />

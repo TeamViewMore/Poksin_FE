@@ -100,9 +100,9 @@ function Result() {
         </R.Container>
     );
     let ResultComponent;
-    if (checkedCount >= 8) {
+    if (checkedCount >= 5) {
         ResultComponent = VeryDangerous;
-    } else if (checkedCount >= 4) {
+    } else if (checkedCount >= 3) {
         ResultComponent = Dangerous;
     } else {
         ResultComponent = Acceptable;
