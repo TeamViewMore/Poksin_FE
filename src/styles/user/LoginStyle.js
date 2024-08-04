@@ -20,8 +20,8 @@ export const InputBox = styled.form`
     align-items: center;
 `;
 export const InputId = styled.input`
-    width: 341px;
-    height: 51px;
+    width: 320px;
+    height: 52px;
     background-color: rgb(235, 235, 235);
 
     margin-top: 21px;
@@ -29,8 +29,8 @@ export const InputId = styled.input`
     border: 0px;
 `;
 export const InputPw = styled.input`
-    width: 341px;
-    height: 51px;
+    width: 320px;
+    height: 52px;
     background-color: rgb(235, 235, 235);
     border-radius: 20px;
     border: 0px;
@@ -45,8 +45,8 @@ export const LoginButtonBox = styled.div`
 `;
 
 export const LoginButton = styled.button`
-    width: 343px;
-    height: 51px;
+    width: 320px;
+    height: 52px;
     background-color: rgb(122, 41, 243);
     color: rgb(255, 255, 255);
     text-align: center;
