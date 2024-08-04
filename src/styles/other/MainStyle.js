@@ -1,8 +1,8 @@
 import Calendar from "react-calendar";
 import styled from "styled-components";
 import "react-calendar/dist/Calendar.css";
-import CalendarPrev from "../../img/arrow_left.png";
-import CalendarNext from "../../img/arrow_right.png";
+// import CalendarPrev from "../../img/arrow_left.png";
+// import CalendarNext from "../../img/arrow_right.png";
 
 export const Main = styled.div`
     display: flex;
