@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import * as C from "../../styles/calender/CalenderListStyle";
 import PlusBtn from "../../components/PlusBtn";
 import moment from "moment";
@@ -21,14 +21,9 @@ function CalenderList() {
     // 해당 달의 증거 날짜, 증거 개수
     const [evidenceData, setEvidenceData] = useState([]);
     const [cookies] = useCookies(["authToken"]);
-
-    useEffect(() => {
-        if (clickMonth) {
-            fetchEvidenceData(clickMonth);
-        }
-    }, [clickMonth]);
-
-    const fetchEvidenceData = async (date) => {
+    
+    //의존성 문제 해결을 위해 useCallback 사용
+    const fetchEvidenceData = useCallback(async (date) => {
         try {
             const year = moment(date).year();
             const month = moment(date).month() + 1;
@@ -52,7 +47,13 @@ function CalenderList() {
         } catch (error) {
             console.error("Error fetching evidence data:", error);
         }
-    };
+    }, [cookies]);
+
+    useEffect(() => {
+        if (clickMonth) {
+            fetchEvidenceData(clickMonth);
+        }
+    }, [clickMonth, fetchEvidenceData]);
 
     // 달 바뀔 때 호출하는 함수
     const handleActiveStartDateChange = ({ activeStartDate }) => {
