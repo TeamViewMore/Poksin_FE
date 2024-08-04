@@ -56,7 +56,7 @@ function Login() {
     return (
         <L.Login>
             <L.Logo1>
-                <img src={logo_big} alt="logo" style={{ width: "423px", height: "225px" }} />
+                <img src={logo_big} alt="logo" style={{ width: "530px", height: "275px" }} />
             </L.Logo1>
             <L.InputBox onSubmit={handleLogin}>
                 <L.InputId
@@ -67,7 +67,7 @@ function Login() {
                 />
                 <L.InputPw
                     type="password"
-                    placeholder="비밀번호"
+                    placeholder="&nbsp;비밀번호"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
