@@ -1,8 +1,6 @@
 import Calendar from "react-calendar";
 import styled from "styled-components";
 import "react-calendar/dist/Calendar.css";
-// import CalendarPrev from "../../img/arrow_left.png";
-// import CalendarNext from "../../img/arrow_right.png";
 
 export const Main = styled.div`
     display: flex;
@@ -14,7 +12,7 @@ export const Main = styled.div`
 export const Happen = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 40px;
+    margin-left: 30px;
     margin-bottom: 10px;
     color: rgb(66, 66, 66);
     font-size: 11pt;
@@ -50,7 +48,7 @@ export const Want = styled.div`
     margin-top: 50px;
     display: flex;
     flex-direction: column;
-    margin-left: 40px;
+    margin-left: 30px;
     margin-bottom: 10px;
     color: rgb(66, 66, 66);
     font-size: 11pt;
@@ -88,6 +86,7 @@ export const CalenderWrapper = styled.div`
     .react-calendar__navigation {
         display: flex;
         align-items: center;
+        justify-content: space-around;
     }
 
     .react-calendar__navigation__prev2-button,
@@ -96,22 +95,11 @@ export const CalenderWrapper = styled.div`
     }
 
     .react-calendar__navigation__prev-button {
-        display: none; /* prev 버튼 숨기기 */
+        display: none;
     }
 
     .react-calendar__navigation__next-button {
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        border: none;
-        cursor: pointer;
-        width: 8px;
-        height: 12px;
-        padding: 0;
-        margin: 0;
-
-        cursor: pointer;
-        background-image: url(${require("../../img/chevron_left.png")});
+        display: none;
     }
 
     .react-calendar__navigation__label {
