@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // react-router-dom 임포트
+// import { useNavigate } from "react-router-dom"; // react-router-dom 임포트
 import * as F from "../../styles/other/FakeStyle";
 import fake from "../../img/fake.png";
 
