@@ -80,16 +80,8 @@ function CalenderList() {
         return null;
     };
 
-    // 해당 날짜의 증거 개수 세기
-    const getEvidenceCountForDate = (date) => {
-        const dateString = moment(date).format("YYYY-MM-DD");
-        const highlightedDates = getHighlightedDates();
-        return highlightedDates[dateString];
-    };
-
     // 캘린더 날짜 선택 시 디테일로 이동
     const handleDayClick = (date) => {
-        const evidenceCount = getEvidenceCountForDate(date);
         navigate(`/calender/${moment(date).format("YYYY-MM-DD")}`);
     };
 

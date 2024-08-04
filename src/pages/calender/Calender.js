@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import * as C from "../../styles/calender/CalenderStyle";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
@@ -96,7 +96,7 @@ function Calender() {
         }
     }, [date, currentCategory]);
 
-    const fetchEvidenceData = async (date, category) => {
+    const fetchEvidenceData = useCallback(async (date, category) => {
         try {
             const year = moment(date).year();
             const month = moment(date).month() + 1;
@@ -121,7 +121,7 @@ function Calender() {
         } catch (error) {
             console.error("Error fetching evidence data:", error);
         }
-    };
+    });
 
     return (
         <>
