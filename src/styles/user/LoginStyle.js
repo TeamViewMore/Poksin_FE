@@ -20,7 +20,7 @@ export const InputBox = styled.form`
     align-items: center;
 `;
 export const InputId = styled.input`
-    width: 320px;
+    width: 296.67px;
     height: 52px;
     background-color: rgb(235, 235, 235);
     padding-left: 20px;
@@ -31,19 +31,23 @@ export const InputId = styled.input`
 
     /* 포커스 시 스타일 */
     &:focus {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
     }
 `;
 export const InputPw = styled.input`
-    width: 320px;
+    width: 296.67px;
     height: 52px;
     background-color: rgb(235, 235, 235);
     padding-left: 20px;
@@ -54,12 +58,16 @@ export const InputPw = styled.input`
 
     /* 포커스 시 스타일 */
     &:focus {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;

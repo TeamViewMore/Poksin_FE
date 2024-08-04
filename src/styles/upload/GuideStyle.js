@@ -190,8 +190,7 @@ export const Button = styled.button`
     text-align: center;
     border-radius: 20px;
     border: 0px;
-    position: fixed;
-    bottom: 30px;
+    margin-top: 30px;
     font-weight: bold;
 `;
 

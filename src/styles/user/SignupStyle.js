@@ -17,7 +17,7 @@ export const InputBox = styled.div`
     margin-top: 29px;
 `;
 export const InputId = styled.input`
-    width: 320px;
+    width: 296.67px;
     height: 52px;
     background-color: rgb(235, 235, 235);
     border-radius: 20px;
@@ -32,19 +32,23 @@ export const InputId = styled.input`
 
     /* 포커스 시 스타일 */
     &:focus {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
     }
 `;
 export const InputPw = styled.input`
-    width: 320px;
+    width: 296.67px;
     height: 52px;
     background-color: rgb(235, 235, 235);
     border-radius: 20px;
@@ -60,19 +64,23 @@ export const InputPw = styled.input`
 
     /* 포커스 시 스타일 */
     &:focus {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
     }
 `;
 export const InputPwCheck = styled.input`
-    width: 320px;
+    width: 296.67px;
     height: 52px;
     background-color: rgb(235, 235, 235);
     border-radius: 20px;
@@ -88,19 +96,23 @@ export const InputPwCheck = styled.input`
 
     /* 포커스 시 스타일 */
     &:focus {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
     }
 `;
 export const InputNumber = styled.input`
-    width: 320px;
+    width: 296.67px;
     height: 52px;
     background-color: rgb(235, 235, 235);
     border-radius: 20px;
@@ -116,19 +128,23 @@ export const InputNumber = styled.input`
 
     /* 포커스 시 스타일 */
     &:focus {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
     }
 `;
 export const InputAlert = styled.input`
-    width: 320px;
+    width: 296.67px;
     height: 52px;
     background-color: rgb(235, 235, 235);
     border-radius: 20px;
@@ -144,19 +160,23 @@ export const InputAlert = styled.input`
 
     /* 포커스 시 스타일 */
     &:focus {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;
     }
 `;
 export const InputAddress = styled.input`
-    width: 320px;
+    width: 296.67px;
     height: 52px;
     background-color: rgb(235, 235, 235);
     border-radius: 20px;
@@ -172,12 +192,16 @@ export const InputAddress = styled.input`
 
     /* 포커스 시 스타일 */
     &:focus {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235);
         border: 1px solid transparent;
         box-shadow: none;
     }
     /* 자동완성 스타일 */
     &:-webkit-autofill {
+        width: 296.67px;
+        height: 52px;
         background-color: rgb(235, 235, 235) !important;
         color: #000 !important;
         border: 1px solid transparent !important;

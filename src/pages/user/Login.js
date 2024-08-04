@@ -30,13 +30,14 @@ function Login() {
                     "Content-Type": "multipart/form-data",
                 },
             });
-
+            console.log("Response data:", response.data);
             const accessToken = response.headers["accesstoken"];
             const refreshToken = response.headers["refreshtoken"];
 
             if (accessToken && refreshToken) {
                 setCookie("accessToken", accessToken, { path: "/" });
                 setCookie("refreshToken", refreshToken, { path: "/" });
+                setCookie("username", username, { path: "/" });
                 alert("로그인 성공!");
                 navigate("/main");
             } else {

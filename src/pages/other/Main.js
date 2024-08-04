@@ -9,8 +9,8 @@ import Group6 from "../../img/Group6.svg";
 import Group7 from "../../img/Group7.svg";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { fetchUserData } from "../../utils/userApi";
 
-// 증거 개수에 따라 색상 변경 유틸리티 함수
 const getHighlightedDates = (evidenceData) => {
     const dateMap = {};
     evidenceData.forEach((evidence) => {
@@ -38,9 +38,27 @@ const tileClassName =
 function Main() {
     const [value, onChange] = useState(new Date());
     const [evidenceData, setEvidenceData] = useState([]);
+    const [username, setUsername] = useState("");
     const [cookies] = useCookies(["accessToken"]);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const token = cookies.accessToken;
+                if (!token) {
+                    throw new Error("Token is missing");
+                }
+                const data = await fetchUserData(token);
+                setUsername(data.username); // Ensure `data` is what you expect
+            } catch (error) {
+                console.error("Failed to fetch profile:", error);
+            }
+        };
+        fetchProfile();
+    }, [cookies.accessToken]);
+
+    //의존성 문제 해결을 위해 useCallback 사용
     // 증거 데이터 가져오기
     const fetchEvidenceData = useCallback(async () => {
         try {
@@ -77,46 +95,44 @@ function Main() {
     };
 
     return (
-        <>
-            <M.Main>
-                <M.Precious>
-                    <M.PreciousId>id 님,</M.PreciousId>
-                    <br />
-                    당신은 소중한 사람이에요. 누구도 당신을 해칠 수 없어요.
-                </M.Precious>
-                <M.CalenderList>
-                    <M.CalenderWrapper>
-                        <Calendar
-                            onChange={onChange}
-                            value={value}
-                            formatDay={(locale, date) => moment(date).format("D")}
-                            formatMonthYear={(locale, date) => moment(date).format("YYYY. MM.")}
-                            formatYear={(locale, date) => moment(date).format("YYYY")}
-                            calendarType="gregory"
-                            showNeighboringMonth={false}
-                            nextLabel=""
-                            prevLabel=""
-                            next2Label={null}
-                            prev2Label={null}
-                            minDetail="year"
-                            onClickDay={handleDayClick}
-                            tileClassName={tileClassName(evidenceData)} // 증거 개수에 따른 클래스명 적용
-                        />
-                    </M.CalenderWrapper>
-                    <M.Happen>어떤 일이 있었나요?</M.Happen>
-                    <M.UploadBox onClick={goToUpload}>
-                        <img src={Group6} alt="logo" style={{ width: "345px", height: "93px" }} />
-                    </M.UploadBox>
+        <M.Main>
+            <M.Precious>
+                <M.PreciousId>{username} 님,</M.PreciousId>
+                <br />
+                당신은 소중한 사람이에요. 누구도 당신을 해칠 수 없어요.
+            </M.Precious>
+            <M.CalenderList>
+                <M.CalenderWrapper>
+                    <Calendar
+                        onChange={onChange}
+                        value={value}
+                        formatDay={(locale, date) => moment(date).format("D")}
+                        formatMonthYear={(locale, date) => moment(date).format("YYYY. MM.")}
+                        formatYear={(locale, date) => moment(date).format("YYYY")}
+                        calendarType="gregory"
+                        showNeighboringMonth={false}
+                        nextLabel=""
+                        prevLabel=""
+                        next2Label={null}
+                        prev2Label={null}
+                        minDetail="year"
+                        onClickDay={handleDayClick}
+                        tileClassName={tileClassName(evidenceData)}
+                    />
+                </M.CalenderWrapper>
+                <M.Happen>어떤 일이 있었나요?</M.Happen>
+                <M.UploadBox onClick={goToUpload}>
+                    <img src={Group6} alt="logo" style={{ width: "345px", height: "93px" }} />
+                </M.UploadBox>
 
-                    <M.Want>폭신폭신은 여러분을 돕고 싶습니다.</M.Want>
-                    <M.GuideBox onClick={goToGuide}>
-                        <img src={Group7} alt="logo" style={{ width: "345px", height: "93px" }} />
-                    </M.GuideBox>
+                <M.Want>폭신폭신은 여러분을 돕고 싶습니다.</M.Want>
+                <M.GuideBox onClick={goToGuide}>
+                    <img src={Group7} alt="logo" style={{ width: "345px", height: "93px" }} />
+                </M.GuideBox>
 
-                    <PlusBtn onClick={goToChat}></PlusBtn>
-                </M.CalenderList>
-            </M.Main>
-        </>
+                <PlusBtn onClick={goToChat} />
+            </M.CalenderList>
+        </M.Main>
     );
 }
 

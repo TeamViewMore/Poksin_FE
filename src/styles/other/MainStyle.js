@@ -39,7 +39,6 @@ export const Precious = styled.div`
     align-items: center;
     font-size: 11pt;
     line-height: 12px;
-    margin-left: 35px;
     color: rgb(66, 66, 66);
     margin-bottom: 22px;
 `;
