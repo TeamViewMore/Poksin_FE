@@ -22,10 +22,26 @@ export const InputId = styled.input`
     background-color: rgb(235, 235, 235);
     border-radius: 20px;
     border: 0px;
+    padding-left: 20px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    outline: none;
+
+    /* 포커스 시 스타일 */
+    &:focus {
+        background-color: rgb(235, 235, 235);
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+    /* 자동완성 스타일 */
+    &:-webkit-autofill {
+        background-color: rgb(235, 235, 235) !important;
+        color: #000 !important;
+        border: 1px solid transparent !important;
+    }
 `;
 export const InputPw = styled.input`
     width: 320px;
@@ -34,11 +50,26 @@ export const InputPw = styled.input`
     border-radius: 20px;
     border: 0px;
     margin-top: 17px;
+    padding-left: 20px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    outline: none;
+
+    /* 포커스 시 스타일 */
+    &:focus {
+        background-color: rgb(235, 235, 235);
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+    /* 자동완성 스타일 */
+    &:-webkit-autofill {
+        background-color: rgb(235, 235, 235) !important;
+        color: #000 !important;
+        border: 1px solid transparent !important;
+    }
 `;
 export const InputPwCheck = styled.input`
     width: 320px;
@@ -47,11 +78,26 @@ export const InputPwCheck = styled.input`
     border-radius: 20px;
     border: 0px;
     margin-top: 17px;
+    padding-left: 20px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    outline: none;
+
+    /* 포커스 시 스타일 */
+    &:focus {
+        background-color: rgb(235, 235, 235);
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+    /* 자동완성 스타일 */
+    &:-webkit-autofill {
+        background-color: rgb(235, 235, 235) !important;
+        color: #000 !important;
+        border: 1px solid transparent !important;
+    }
 `;
 export const InputNumber = styled.input`
     width: 320px;
@@ -60,11 +106,26 @@ export const InputNumber = styled.input`
     border-radius: 20px;
     border: 0px;
     margin-top: 17px;
+    padding-left: 20px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    outline: none;
+
+    /* 포커스 시 스타일 */
+    &:focus {
+        background-color: rgb(235, 235, 235);
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+    /* 자동완성 스타일 */
+    &:-webkit-autofill {
+        background-color: rgb(235, 235, 235) !important;
+        color: #000 !important;
+        border: 1px solid transparent !important;
+    }
 `;
 export const InputAlert = styled.input`
     width: 320px;
@@ -73,11 +134,26 @@ export const InputAlert = styled.input`
     border-radius: 20px;
     border: 0px;
     margin-top: 17px;
+    padding-left: 20px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    outline: none;
+
+    /* 포커스 시 스타일 */
+    &:focus {
+        background-color: rgb(235, 235, 235);
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+    /* 자동완성 스타일 */
+    &:-webkit-autofill {
+        background-color: rgb(235, 235, 235) !important;
+        color: #000 !important;
+        border: 1px solid transparent !important;
+    }
 `;
 export const InputAddress = styled.input`
     width: 320px;
@@ -86,11 +162,26 @@ export const InputAddress = styled.input`
     border-radius: 20px;
     border: 0px;
     margin-top: 17px;
+    padding-left: 20px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    outline: none;
+
+    /* 포커스 시 스타일 */
+    &:focus {
+        background-color: rgb(235, 235, 235);
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+    /* 자동완성 스타일 */
+    &:-webkit-autofill {
+        background-color: rgb(235, 235, 235) !important;
+        color: #000 !important;
+        border: 1px solid transparent !important;
+    }
 `;
 
 export const CheckBox = styled.div`
