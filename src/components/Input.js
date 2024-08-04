@@ -4,7 +4,7 @@ import * as I from "../styles/components/InputStyle";
 import checked from "../img/check_checked_mini.png";
 import none from "../img/check_none_mini.png";
 
-function Input({ title, isChecked, onCheckboxChange }) {
+function Input({ title, value, isChecked, onCheckboxChange, onChange }) {
     const setTitle = (title) => {
         if (title === "전화번호") {
             return "전화번호 공개";
@@ -20,7 +20,7 @@ function Input({ title, isChecked, onCheckboxChange }) {
 
     return (
         <I.InputBox>
-            <I.Text><input type='text' placeholder={title} /></I.Text>
+            <I.Text><input type='text' placeholder={title} value={value} onChange={onChange} /></I.Text>
             <I.Checkbox onClick={onCheckboxChange}>
                 <div className='title'>{setTitle(title)}</div>
                 <div className='check'><img src={isChecked ? checked : none} alt='선택' /></div>
