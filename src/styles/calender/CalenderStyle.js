@@ -166,6 +166,7 @@ export const recordContent = styled.div`
     width: 90%;
     display: flex;
     flex-direction: column;
+    overflow-x: scroll;
     justify-content: center;
     border-bottom: 0.5px solid #d9d9d9;
     color: #424242;
@@ -208,7 +209,7 @@ export const recordContent = styled.div`
         white-space: nowrap;
         margin-top: 10px;
         margin-bottom: 10px;
-        height: 60px;
+        min-height: 60px;
         &::-webkit-scrollbar {
             display: none;
         }
@@ -222,9 +223,10 @@ export const recordContent = styled.div`
         }
     }
 
-    .midea audio {
-        height: 95%;
-        width: auto;
+    .media audio {
+        height: 57px;
+        width: 300px;
+        margin-top: 5px;
     }
 `;
 
@@ -290,9 +292,10 @@ export const picContent = styled.div`
         }
     }
 
-    .midea img {
+    .media img {
         height: 95%;
         width: auto;
+        margin-right: 10px;
     }
 `;
 
@@ -362,9 +365,10 @@ export const diaContent = styled.div`
         }
     }
 
-    .midea img {
+    .media img {
         height: 95%;
         width: auto;
+        margin-right: 10px;
     }
 `;
 
@@ -378,4 +382,13 @@ export const More = styled.div`
         height: 12px;
     }
     cursor: pointer;
+`;
+
+export const NoContent = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    color: #424242;
 `;
