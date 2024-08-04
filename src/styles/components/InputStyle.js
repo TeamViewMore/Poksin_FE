@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const InputBox = styled.div`
     width: 320px;
+    margin-bottom: 12px;
 `;
 
 export const Text = styled.div`
@@ -29,7 +30,7 @@ export const Text = styled.div`
 export const Checkbox = styled.div`
     width: 100%;
     margin-left: 16px;
-    margin-top: 6px;
+    margin-top: 14px;
     margin-bottom: 6px;
     display: flex;
     align-items: center;
@@ -42,9 +43,13 @@ export const Checkbox = styled.div`
         line-height: normal;
     }
     & .check {
-        width: 18px;
-        height: 18px;
+        width: 15px;
+        height: 15px;
         margin-left: 7px;
+        margin-top: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     & .check img {
         width: 100%;
