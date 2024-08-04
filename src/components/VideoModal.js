@@ -9,6 +9,7 @@ const ModalBackground = styled.div`
     width: 100vw;
     height: 100vh;
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     background: rgba(139, 139, 139, 0.1);
     display: flex;
     justify-content: center;
@@ -40,7 +41,7 @@ const VideoModal = ({ src, onClose }) => (
     <ModalBackground onClick={onClose}>
         <CloseButton src={closeBtn} onClick={onClose} alt="모달 창 닫기"></CloseButton>
         <ModalContent onClick={(e) => e.stopPropagation()}>
-            <video controls>
+            <video preload="metadata" src={`${src}#t=0.2`} playsInline controls>
                 <source src={src} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>

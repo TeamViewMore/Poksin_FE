@@ -36,9 +36,9 @@ function Upload() {
                     </U.BtnSection>
                 </U.Btns>
                 <div className="des">
-                    {`증거 자료를 날짜별로 기록해보세요.\n영상 자료는 폭신폭신의 폭력 검출 기능으로\n중요 부분만 잘라드려요.\n만약, 어떤 증거를 수집해야 할지 고민이라면\n`}
+                    {`증거 자료를 날짜별로 기록해 보세요.\n영상 자료는 폭신폭신만의 폭력 검출 기능으로\n중요 부분만 편집해 드려요.\n만약, 어떤 증거를 수집해야 할지 고민이라면\n`}
                     <span>
-                        폭신폭신의 <U.GoToGuide to="/guide">가이드라인</U.GoToGuide>을 참고해보세요!
+                        폭신폭신의 <U.GoToGuide to="/guide">가이드라인</U.GoToGuide>을 참고해 보세요!
                     </span>
                 </div>
                 <U.GoToUploadButton to="/upload-form">기록하러 가기</U.GoToUploadButton>
