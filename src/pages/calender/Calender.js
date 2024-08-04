@@ -90,12 +90,6 @@ function Calender() {
     const categories = ["VIDEO", "AUDIO", "IMAGE", "CONSULTATION", "DIAGNOSIS"];
     const currentCategory = categories[tab];
 
-    useEffect(() => {
-        if (currentCategory) {
-            fetchEvidenceData(date, currentCategory);
-        }
-    }, [date, currentCategory, fetchEvidenceData]);
-
     const fetchEvidenceData = useCallback(
         async (date, category) => {
             try {
@@ -125,6 +119,12 @@ function Calender() {
         },
         [cookies.accessToken]
     );
+
+    useEffect(() => {
+        if (currentCategory) {
+            fetchEvidenceData(date, currentCategory);
+        }
+    }, [date, currentCategory, fetchEvidenceData]);
 
     return (
         <>
