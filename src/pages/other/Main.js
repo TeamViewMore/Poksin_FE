@@ -1,10 +1,10 @@
 import React from "react";
 import PlusBtn from "../../components/ChatBtn";
 import { useState } from "react";
-import Calendar from "react-calendar";
+// import Calendar from "react-calendar";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import * as M from "../../styles/other/MainStyle";
 import Group6 from "../../img/Group6.svg";
@@ -24,15 +24,15 @@ function Main() {
     const goToChat = () => {
         navigate("/chat");
     };
-    const handleDayRecordClick = (date) => {
-        navigate(`/calender/${moment(date).format("YYYY-MM-DD")}`);
-    };
-    const dates = [
-        moment(value).toDate(),
-        moment(value).add(1, "days").toDate(),
-        moment(value).add(2, "days").toDate(),
-        moment(value).add(3, "days").toDate(),
-    ];
+    // const handleDayRecordClick = (date) => {
+    //     navigate(`/calender/${moment(date).format("YYYY-MM-DD")}`);
+    // };
+    // const dates = [
+    //     moment(value).toDate(),
+    //     moment(value).add(1, "days").toDate(),
+    //     moment(value).add(2, "days").toDate(),
+    //     moment(value).add(3, "days").toDate(),
+    // ];
     return (
         <>
             <M.Main>

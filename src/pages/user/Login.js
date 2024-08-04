@@ -9,7 +9,7 @@ function Login() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [cookies, setCookie] = useCookies(["authToken"]);
+    const [, setCookie] = useCookies(["authToken"]);
     const apiUrl = process.env.REACT_APP_API_URL;
     const loginUrl = `${apiUrl}/login`;
 
