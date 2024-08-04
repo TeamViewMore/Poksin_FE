@@ -35,8 +35,8 @@ export const Re = styled.div`
     margin-top: 51px;
 `;
 export const Button1 = styled.button`
-    width: 343px;
-    height: 51px;
+    width: 320px;
+    height: 52px;
     border-radius: 20px;
     background-color: rgb(122, 41, 255);
     color: white;
@@ -46,8 +46,8 @@ export const Button1 = styled.button`
     align-items: center;
 `;
 export const Button2 = styled.button`
-    width: 343px;
-    height: 51px;
+    width: 320px;
+    height: 52px;
     border-radius: 20px;
     border: 1px solid rgb(122, 41, 255);
     color: rgb(66, 66, 66);
