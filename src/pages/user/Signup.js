@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function Signup() {
     const navigate = useNavigate();
-    const [setCookie] = useCookies(["authToken"]);
+    const [, setCookie] = useCookies(["authToken"]);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
