@@ -129,7 +129,8 @@ function Main() {
                 <M.GuideBox onClick={goToGuide}>
                     <img src={Group7} alt="logo" style={{ width: "345px", height: "93px" }} />
                 </M.GuideBox>
-
+                <br />
+                <br />
                 <PlusBtn onClick={goToChat} />
             </M.CalenderList>
         </M.Main>
