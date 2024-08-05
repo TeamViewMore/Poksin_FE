@@ -14,6 +14,7 @@ function ProfileUpdate() {
         emergency: false,
         address: false,
     });
+    console.log("프로필: " + [checkedStates.phone, checkedStates.emergency, checkedStates.address]);
 
     const [formValues, setFormValues] = useState({
         phoneNum: '',
@@ -54,21 +55,31 @@ function ProfileUpdate() {
     }, [cookies.accessToken]);
 
     const handleCheckboxChange = (type) => {
-        setCheckedStates((prevState) => ({
-            ...prevState,
-            [type]: !prevState[type],
-        }));
+        setCheckedStates((prevState) => {
+            const newState = {
+                ...prevState,
+                [type]: !prevState[type],
+            };
+            console.log("Checkbox State Changed:", newState);
+            return newState;
+        });
     };
 
     const handleInputChange = (e, type) => {
         const { value } = e.target;
-        setFormValues((prevState) => ({
-            ...prevState,
-            [type]: value,
-        }));
+        setFormValues((prevState) => {
+            const newState = {
+                ...prevState,
+                [type]: value,
+            };
+            console.log("Input Value Changed:", newState);
+            return newState;
+        });
     };
 
     const handleSubmit = async () => {
+        console.log("프로필 업데이트: ", checkedStates);
+        console.log("폼 값: ", formValues);
         const token = cookies.accessToken;
         if (!token) {
             console.error("토큰을 찾을 수 없음");
@@ -88,10 +99,10 @@ function ProfileUpdate() {
                     Authorization: `${token}`
                 }
             });
-
+            console.log("API 응답: ", response.data);
             if (response.data.code === "SUCCESS_UPDATE_USER") {
                 console.log("User information updated successfully:", response.data.data);
-                navigate('/profile'); // Navigate back to profile page after successful update
+                navigate('/profile');
             }
         } catch (error) {
             console.error("프로필 업데이트에서 프로필 업데이트 에러:", error);
@@ -109,21 +120,21 @@ function ProfileUpdate() {
                         isChecked={checkedStates.phone}
                         onCheckboxChange={() => handleCheckboxChange('phone')}
                         onChange={(e) => handleInputChange(e, 'phoneNum')}
-                        defaultValue={formValues.phoneNum}
+                        value={formValues.phoneNum}
                     />
                     <Input 
                         title="긴급 연락처"
                         isChecked={checkedStates.emergency}
                         onCheckboxChange={() => handleCheckboxChange('emergency')}
                         onChange={(e) => handleInputChange(e, 'emergencyNum')}
-                        defaultValue={formValues.emergencyNum}
+                        value={formValues.emergencyNum}
                     />
                     <Input 
                         title="주소"
                         isChecked={checkedStates.address}
                         onCheckboxChange={() => handleCheckboxChange('address')}
                         onChange={(e) => handleInputChange(e, 'address')}
-                        defaultValue={formValues.address}
+                        value={formValues.address}
                     />
                 </P.Middle>
                 <P.Bottom>
