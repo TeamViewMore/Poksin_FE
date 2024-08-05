@@ -81,7 +81,7 @@ function App() {
                 <Route exact path="/calender" element={<CalenderList />} />
                 <Route exact path="/upload" element={<Upload />} />
                 <Route exact path="/upload-form" element={<UploadForm />} />
-                <Route exact path="/analysis/:id" element={<AI />} />
+                <Route exact path="/analysis/:evidence_id" element={<AI />} />
                 <Route exact path="/guide" element={<Guide />} />
                 <Route exact path="/chat/:id" element={<Chat />} />
                 <Route exact path="/poksin/admin/chat-list" element={<ChatList />} />
