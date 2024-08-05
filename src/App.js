@@ -27,7 +27,7 @@ function App() {
     const getTitle = () => {
         const path = location.pathname;
 
-        if (/^\/chat\/\d+$/.test(path)) {
+        if (/^\/chat\/.*$/.test(path)) {
             return "상담하기";
         }
         if (/^\/calender\/[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(path) || path === "/calender") {
@@ -56,9 +56,6 @@ function App() {
                 return "가이드라인";
             case "/poksin/admin/chat-list":
                 return "상담자 목록";
-            case "/profile/:id":
-            case "/profile/update/:id":
-                return "프로필";
             case "/self":
             case "/self/result":
                 return "연애 건강도 자가진단";
