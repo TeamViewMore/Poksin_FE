@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import ChatBtn from "../../components/ChatBtn";
 import Calendar from "react-calendar";
 import moment from "moment";
+import "react-calendar/dist/Calendar.css";
 import { useNavigate } from "react-router-dom";
 import * as M from "../../styles/other/MainStyle";
 import Group6 from "../../img/Group6.svg";
@@ -102,14 +103,14 @@ function Main() {
     return (
         <M.Main>
             <M.Precious>
-                <M.PreciousId>{username} 님,</M.PreciousId>
+                <M.PreciousId>{username} 님</M.PreciousId>
                 <br />
                 당신은 소중한 사람이고, 누구도 당신을 해칠 수 없어요.
             </M.Precious>
             <M.CalenderList>
                 <M.CalenderWrapper>
-                    <button className="navigate-button" onClick={goToCalender}></button>
-                    <M.CalendarBox
+                    <Calendar
+                        onChange={onChange}
                         value={value}
                         formatDay={(locale, date) => moment(date).format("D")}
                         formatMonthYear={(locale, date) => moment(date).format("YYYY. MM.")}
@@ -118,7 +119,7 @@ function Main() {
                         showNeighboringMonth={false}
                         minDetail="year"
                         onClickDay={handleDayClick}
-                        tileClassName={() => "custom-tile"}
+                        tileClassName={tileClassName(evidenceData)}
                     />
                     <M.GoToMainBtn onClick={handleNextMonthClick} src={Right} alt="Right"></M.GoToMainBtn>
                 </M.CalenderWrapper>
