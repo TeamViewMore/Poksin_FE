@@ -121,6 +121,7 @@ function Self() {
                 <S.ButtonBox>
                     <S.Button onClick={handleSubmit}>결과 보기</S.Button>
                 </S.ButtonBox>
+                <br />
             </S.Self>
         </>
     );

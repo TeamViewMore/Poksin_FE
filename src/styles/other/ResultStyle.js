@@ -32,7 +32,7 @@ export const Detail = styled.div`
     text-align: center;
     font-size: 10pt;
     margin-top: 41px;
-    font-family: "Pretendard-Regular.woff2";
+    font-family: "Pretendard-Regular.woff2" !important;
 `;
 export const Re = styled.div`
     margin-top: 51px;
@@ -47,6 +47,8 @@ export const Button1 = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "Pretendard-SemiBold.woff2" !important;
+    font-size: 11pt;
 `;
 export const Button2 = styled.button`
     width: 320px;
@@ -59,6 +61,8 @@ export const Button2 = styled.button`
     justify-content: center;
     align-items: center;
     margin-top: 15px;
+    font-family: "Pretendard-SemiBold.woff2" !important;
+    font-size: 11pt;
 `;
 export const ColorPart1 = styled.b`
     font-size: 17pt;

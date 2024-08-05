@@ -53,4 +53,6 @@ export const Button1 = styled.button`
     justify-content: center;
     align-items: center;
     margin-top: 67px;
+    font-family: "Pretendard-SemiBold.woff2" !important;
+    font-size: 11pt;
 `;
