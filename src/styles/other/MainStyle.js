@@ -40,12 +40,12 @@ export const Precious = styled.div`
     margin-top: 23px;
     flex-direction: column;
     align-items: center;
-    font-size: 9pt;
+    font-size: 9.5pt;
     line-height: 12px;
     color: rgb(66, 66, 66);
     margin-bottom: 22px;
-    text-align: center;
     width: 328px;
+    margin-left: 10px;
 `;
 
 export const Want = styled.div`
@@ -106,15 +106,7 @@ export const CalenderWrapper = styled.div`
 
     .react-calendar__navigation__prev-button,
     .react-calendar__navigation__next-button {
-        background-size: contain;
-
-        cursor: pointer;
-
-        padding: 0;
-        margin: 0;
-        cursor: pointer;
-        margin-left: 188px;
-        pointer-events: none;
+        display: none;
     }
 
     .navigate-button {
@@ -265,5 +257,5 @@ export const GoToMainBtn = styled.img`
     width: 8px;
     height: 14px;
     margin-top: 15px;
-    margin-left: 320px;
+    margin-left: 310px;
 `;
