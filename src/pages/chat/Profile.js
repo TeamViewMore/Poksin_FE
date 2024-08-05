@@ -23,7 +23,7 @@ function Profile() {
                 }
                 const data = await fetchUserData(token);
                 console.log(data);
-                setProfileData(data);
+                setProfileData(data.user);
             } catch (error) {
                 console.error('프로필 정보를 가져오는 데 실패했습니다:', error);
             }
@@ -68,6 +68,7 @@ function Profile() {
     };
 
     const { username, phoneNum, emergencyNum, address, createdAt } = profileData;
+    console.log(profileData);
 
     return (
         <>
