@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import * as M from "../styles/components/MenuStyle";
@@ -53,7 +53,7 @@ function Menu({ closeMenu, isClosing, onNavClick, onProfileClick, nickname, room
     };
 
     // 인증되지 않은 사용자가 접근할 수 있는 페이지 경로
-    const publicRoutes = ["/", "/login", "/signup"];
+    const publicRoutes = useMemo(() => ["/", "/login", "/signup"], []);
 
     const isPublicRoute = useCallback((path) => publicRoutes.includes(path), [publicRoutes]);
 
