@@ -64,8 +64,8 @@ function Result() {
                 <br /> *여성긴급전화 1336
             </R.Detail>
             <R.Re>
-                <R.Button1>다시 하기</R.Button1>
-                <R.Button2>메인으로 돌아가기</R.Button2>
+                <R.Button1 onClick={goToSelf}>다시 하기</R.Button1>
+                <R.Button2 onClick={goToMain}>메인으로 돌아가기</R.Button2>
             </R.Re>
         </R.Container>
     );
@@ -94,8 +94,8 @@ function Result() {
             </R.Detail>
 
             <R.Re>
-                <R.Button1>다시 하기</R.Button1>
-                <R.Button2>메인으로 돌아가기</R.Button2>
+                <R.Button1 onClick={goToSelf}>다시 하기</R.Button1>
+                <R.Button2 onClick={goToMain}>메인으로 돌아가기</R.Button2>
             </R.Re>
         </R.Container>
     );
