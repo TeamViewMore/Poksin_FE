@@ -101,16 +101,16 @@ export const CalenderWrapper = styled.div`
     }
 
     .high-evidence abbr {
-        background-color: #7a29ff;
-        color: #ffffff;
+        background-color: #7a29ff !important;
+        color: #ffffff !important;
     }
 
     .medium-evidence abbr {
-        background-color: #ae7cff;
+        background-color: #ae7cff !important;
     }
 
     .low-evidence abbr {
-        background-color: #e3d1ff;
+        background-color: #e3d1ff !important;
     }
 
     .react-calendar__tile--now abbr,

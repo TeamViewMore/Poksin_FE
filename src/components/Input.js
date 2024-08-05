@@ -5,6 +5,8 @@ import checked from "../img/check_checked_mini.png";
 import none from "../img/check_none_mini.png";
 
 function Input({ title, value, isChecked, onCheckboxChange, onChange }) {
+    console.log("Input 컴포넌트:", { title, value, isChecked });
+
     const setTitle = (title) => {
         if (title === "전화번호") {
             return "전화번호 공개";
