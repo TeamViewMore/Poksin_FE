@@ -32,58 +32,58 @@ function Self() {
 
                 <S.AnswerBox>
                     <S.CheckBox>
-                        <S.CheckCustom type="checkbox" name="item1" onChange={handleCheckboxChange} /> &nbsp;큰 소리로
-                        호통을 친다.
+                        <S.CheckCustom type="checkbox" name="item1" onChange={handleCheckboxChange} /> 큰 소리로 호통을
+                        친다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
-                        <S.CheckCustom type="checkbox" name="item2" onChange={handleCheckboxChange} /> &nbsp;하루 종일
-                        많은 양의 전화와 문자를 한다.
+                        <S.CheckCustom type="checkbox" name="item2" onChange={handleCheckboxChange} />
+                        하루 종일 많은 양의 전화와 문자를 한다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
-                        <S.CheckCustom type="checkbox" name="item3" onChange={handleCheckboxChange} />{" "}
-                        &nbsp;통화내역이나 문자 등 휴대전화를 체크한다.
+                        <S.CheckCustom type="checkbox" name="item3" onChange={handleCheckboxChange} />
+                        통화내역이나 문자 등 휴대전화를 체크한다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
-                        <S.CheckCustom type="checkbox" name="item4" onChange={handleCheckboxChange} /> &nbsp;옷차림이나
+                        <S.CheckCustom type="checkbox" name="item4" onChange={handleCheckboxChange} /> 옷차림이나
                         헤어스타일 등을 <br />
-                        &nbsp;자기가 좋아하는 것으로 하게 한다.
+                        자기가 좋아하는 것으로 하게 한다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
-                        <S.CheckCustom type="checkbox" name="item5" onChange={handleCheckboxChange} /> &nbsp;다른
-                        사람들을 만나는 것을 싫어한다.
+                        <S.CheckCustom type="checkbox" name="item5" onChange={handleCheckboxChange} /> 다른 사람들을
+                        만나는 것을 싫어한다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
                         <S.CheckCustom type="checkbox" name="item6" onChange={handleCheckboxChange} />
-                        &nbsp; 날마다 만나자고 하거나 <br />
-                        &nbsp;기다리지 말라는 데도 기다린다.
+                        날마다 만나자고 하거나 <br />
+                        기다리지 말라는 데도 기다린다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
                         <S.CheckCustom type="checkbox" name="item7" onChange={handleCheckboxChange} />
-                        &nbsp; 만날 때마다 스킨쉽이나 성관계를 요구한다.
+                        만날 때마다 스킨쉽이나 성관계를 요구한다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
-                        <S.CheckCustom type="checkbox" name="item8" onChange={handleCheckboxChange} /> &nbsp;내 과거를
+                        <S.CheckCustom type="checkbox" name="item8" onChange={handleCheckboxChange} /> 내 과거를
                         끈질기게 캐묻는다.
                     </S.CheckBox>
                 </S.AnswerBox>
@@ -121,6 +121,7 @@ function Self() {
                 <S.ButtonBox>
                     <S.Button onClick={handleSubmit}>결과 보기</S.Button>
                 </S.ButtonBox>
+                <br />
             </S.Self>
         </>
     );

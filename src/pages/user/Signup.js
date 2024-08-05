@@ -128,6 +128,7 @@ function Signup() {
                 <br />
                 <b onClick={goToLogin}>로그인</b>
             </S.Yet>
+            <br />
         </S.Signup>
     );
 }

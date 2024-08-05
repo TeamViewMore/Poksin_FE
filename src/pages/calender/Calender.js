@@ -20,6 +20,7 @@ import { useCookies } from "react-cookie";
 function Calender() {
     const { date } = useParams();
     console.log(date);
+    const [cookies] = useCookies(["accessToken"]);
 
     // 탭 버튼
     let [tab, setTab] = useState(0);
@@ -30,42 +31,82 @@ function Calender() {
     const navigate = useNavigate();
 
     const handleMoreClick = (evidenceId) => {
+        console.log(evidenceId);
+        console.log(showMore[evidenceId]);
         setShowMore((prevShowMore) => ({
             ...prevShowMore,
             [evidenceId]: !prevShowMore[evidenceId],
         }));
     };
 
-    const handleMenuClick = async (menu, evidenceId) => {
-        if (menu === "분석 결과 보기") {
-            navigate(`/analysis/${evidenceId}`);
-        } else if (menu === "기록 삭제") {
-            try {
-                const response = await axios.delete(`https://poksin-backend.store/evidence/delete/${evidenceId}`, {
-                    headers: {
-                        Authorization: `${cookies.accessToken}`,
-                    },
-                });
-                if (response.data.code === "SUCCESS_DELETE_EVIDENCE") {
-                    setEvidenceDayData((prevData) => prevData.filter((item) => item.id !== evidenceId));
-                    console.log("Evidence deleted successfully.");
-                }
-            } catch (error) {
-                console.error("Error deleting evidence:", error);
-            }
-        } else {
-            console.log(`${menu} Clicked`);
+    const handleClickOutside = (event) => {
+        if (moreRef.current && !moreRef.current.contains(event.target)) {
+            setShowMore(false);
         }
-        setShowMore((prevShowMore) => ({
-            ...prevShowMore,
-            [evidenceId]: false,
-        }));
     };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const handleMenuClick = useCallback(
+        async (menu, evidenceId, videoUrl) => {
+            if (menu === "분석 결과 보기") {
+                try {
+                    const formData = new FormData();
+                    formData.append("file", videoUrl);
+
+                    const uploadResponse = await axios.post("https://poksin-backend.store/detect-violence", formData, {
+                        headers: {
+                            Authorization: `${cookies.accessToken}`,
+                            "Content-Type": "multipart/form-data",
+                        },
+                    });
+
+                    if (uploadResponse.data.message === "업로드가 완료되었습니다. 비디오 처리 중입니다.") {
+                        const videoId = uploadResponse.data.video_id;
+                        // const resultUrl = uploadResponse.data.s3_url;
+
+                        // 분석 결과 페이지로 이동
+                        navigate(`/analysis/${videoId}`);
+                    } else {
+                        console.error("Video processing failed or unexpected response");
+                    }
+                } catch (error) {
+                    console.error("Error processing video:", error);
+                }
+            } else if (menu === "기록 삭제") {
+                try {
+                    const response = await axios.delete(`https://poksin-backend.store/evidence/delete/${evidenceId}`, {
+                        headers: {
+                            Authorization: `${cookies.accessToken}`,
+                        },
+                    });
+                    if (response.data.code === "SUCCESS_DELETE_EVIDENCE") {
+                        setEvidenceDayData((prevData) => prevData.filter((item) => item.id !== evidenceId));
+                        console.log("Evidence deleted successfully.");
+                    }
+                } catch (error) {
+                    console.error("Error deleting evidence:", error);
+                }
+            } else {
+                console.log(`${menu} Clicked`);
+            }
+            setShowMore((prevShowMore) => ({
+                ...prevShowMore,
+                [evidenceId]: false,
+            }));
+        },
+        [cookies.accessToken, navigate, setShowMore]
+    );
 
     // 탭 변경 시 showMore 상태를 false로 변경
     const handleTabClick = (index) => {
         setTab(index);
-        setShowMore(false);
+        setShowMore({});
     };
 
     // 이미지 상세보기
@@ -85,7 +126,6 @@ function Calender() {
     };
 
     // 데이터 가져오기
-    const [cookies] = useCookies(["accessToken"]);
     const [evidenceDayData, setEvidenceDayData] = useState([]);
     const categories = ["VIDEO", "AUDIO", "IMAGE", "CONSULTATION", "DIAGNOSIS"];
     const currentCategory = categories[tab];
@@ -117,7 +157,7 @@ function Calender() {
                 console.error("Error fetching evidence data:", error);
             }
         },
-        [cookies.accessToken]
+        [cookies]
     );
 
     useEffect(() => {
@@ -151,7 +191,7 @@ function Calender() {
                                         <C.videoContent key={item.id}>
                                             <div className="top">
                                                 <div className="title">{item.title}</div>
-                                                <C.More onClick={handleMoreClick}>
+                                                <C.More onClick={() => handleMoreClick(item.id)}>
                                                     <img src={more} alt="더보기" />
                                                 </C.More>
                                                 {showMore[item.id] && (
@@ -169,6 +209,7 @@ function Calender() {
                                                             menu2="분석 결과 보기"
                                                             onMenuClick={handleMenuClick}
                                                             evidenceId={item.id}
+                                                            videoUrl={item.url[0]}
                                                         />
                                                     </div>
                                                 )}
@@ -205,7 +246,7 @@ function Calender() {
                                         <C.recordContent key={item.id}>
                                             <div className="top">
                                                 <div className="title">{item.title}</div>
-                                                <C.More onClick={handleMoreClick}>
+                                                <C.More onClick={() => handleMoreClick(item.id)}>
                                                     <img src={more} alt="더보기" />
                                                 </C.More>
                                                 {showMore[item.id] && (
@@ -249,7 +290,7 @@ function Calender() {
                                         <C.picContent key={item.id}>
                                             <div className="top">
                                                 <div className="title">{item.title}</div>
-                                                <C.More onClick={handleMoreClick}>
+                                                <C.More onClick={() => handleMoreClick(item.id)}>
                                                     <img src={more} alt="더보기" />
                                                 </C.More>
                                                 {showMore[item.id] && (
@@ -304,7 +345,7 @@ function Calender() {
                                         <C.diaContent key={item.id}>
                                             <div className="top">
                                                 <div className="title">{item.title}</div>
-                                                <C.More onClick={handleMoreClick}>
+                                                <C.More onClick={() => handleMoreClick(item.id)}>
                                                     <img src={more} alt="더보기" />
                                                 </C.More>
                                                 {showMore[item.id] && (

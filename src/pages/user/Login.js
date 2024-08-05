@@ -30,13 +30,14 @@ function Login() {
                     "Content-Type": "multipart/form-data",
                 },
             });
-
+            console.log("Response data:", response.data);
             const accessToken = response.headers["accesstoken"];
             const refreshToken = response.headers["refreshtoken"];
 
             if (accessToken && refreshToken) {
                 setCookie("accessToken", accessToken, { path: "/" });
                 setCookie("refreshToken", refreshToken, { path: "/" });
+                setCookie("username", username, { path: "/" });
                 alert("로그인 성공!");
                 navigate("/main");
             } else {
@@ -56,7 +57,7 @@ function Login() {
     return (
         <L.Login>
             <L.Logo1>
-                <img src={logo_big} alt="logo" style={{ width: "530px", height: "275px" }} />
+                <img src={logo_big} alt="logo" style={{ width: "510px", height: "285px" }} />
             </L.Logo1>
             <L.InputBox onSubmit={handleLogin}>
                 <L.InputId
@@ -82,6 +83,7 @@ function Login() {
                 <br />
                 <b onClick={goToSignup}>회원가입</b>
             </L.Yet>
+            <br />
         </L.Login>
     );
 }

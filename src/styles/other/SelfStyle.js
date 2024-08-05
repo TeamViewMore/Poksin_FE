@@ -5,12 +5,16 @@ export const Self = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Pretendard-Medium.woff2";
+    font-size: 10pt;
 `;
 export const Question = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 17px;
+    font-family: "Pretendard-Regular.woff2";
+    font-size: 11pt;
 `;
 export const AnswerBox = styled.div`
     width: 320px;
@@ -41,6 +45,8 @@ export const Button = styled.button`
     text-align: center;
     border-radius: 20px;
     border: 0px;
+    font-family: "Pretendard-SemiBold.woff2";
+    font-size: 11pt;
 `;
 export const CheckCustom = styled.input`
     width: 22px;
