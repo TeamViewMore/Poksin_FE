@@ -91,30 +91,30 @@ function Self() {
                 <S.AnswerBox>
                     <S.CheckBox>
                         <S.CheckCustom type="checkbox" name="item9" onChange={handleCheckboxChange} />
-                        &nbsp; 헤어지면 죽어버리겠다고 한다.
+                        헤어지면 죽어버리겠다고 한다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
-                        <S.CheckCustom type="checkbox" name="item10" onChange={handleCheckboxChange} /> &nbsp;둘이 있을
-                        때는 폭력적이지만
+                        <S.CheckCustom type="checkbox" name="item10" onChange={handleCheckboxChange} /> 둘이 있을 때는
+                        폭력적이지만
                         <br />
-                        &nbsp;다른 사람과 있으면 태도가 달라진다.
+                        다른 사람과 있으면 태도가 달라진다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
-                        <S.CheckCustom type="checkbox" name="item11" onChange={handleCheckboxChange} /> &nbsp;싸우다가
-                        외진 길에 나를 버려두고 간 적이 있다.
+                        <S.CheckCustom type="checkbox" name="item11" onChange={handleCheckboxChange} /> 싸우다가 외진
+                        길에 나를 버려두고 간 적이 있다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
                 <S.AnswerBox>
                     <S.CheckBox>
-                        <S.CheckCustom type="checkbox" name="item12" onChange={handleCheckboxChange} /> &nbsp;문을 발로
-                        차거나 물건을 던진다.
+                        <S.CheckCustom type="checkbox" name="item12" onChange={handleCheckboxChange} /> 문을 발로 차거나
+                        물건을 던진다.
                     </S.CheckBox>
                 </S.AnswerBox>
                 <br />
