@@ -16,7 +16,7 @@ import fileimg from "../../img/file.png";
 import send from "../../img/send.png";
 import close from "../../img/close.png";
 
-function Chat() {
+function Chat({ date }) {
     const [cookies] = useCookies(["accessToken"]);
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [roomId, setRoomId] = useState(null);
@@ -305,7 +305,15 @@ function Chat() {
         return groupedMessages;
     };
 
+    const filterMessagesByDate = (messages, date) => {
+        return messages.filter((msg) => {
+            const messageDate = new Date(msg.timestamp).toLocaleDateString('ko-KR', { year: 'numeric', month: 'numeric', day: 'numeric' });
+            return messageDate === date;
+        });
+    };
+
     const groupedMessages = groupMessagesByDate(messages);
+    const filteredMessages = date ? filterMessagesByDate(messages, date) : messages;
 
     useEffect(() => {
         const handleResize = () => {
@@ -333,6 +341,33 @@ function Chat() {
             setIsKeyboardVisible(false);
         }
     };
+
+    if (date) {
+        filterMessagesByDate(messages, date);
+        const hasMessagesForDate = filteredMessages.length > 0;
+        return (
+            <C.Chat ref={chatRef} style={{ height: isKeyboardVisible ? 'calc(100vh - 220px)' : 'calc(100vh - 100px)' }}>
+                {loadingMessages ? (
+                    <div style={{ width: '151px', margin: '300px auto',}}>메시지를 불러오는 중...</div>
+                ) : (
+                    <div>
+                        <C.Date>
+                            <div className='line'></div>
+                            <div className='date'>{date}</div>
+                            <div className='line'></div>
+                        </C.Date>
+                        {hasMessagesForDate ? (
+                            filteredMessages.map((msg) => (
+                                <ChatMessage key={msg.id} message={msg} loggedInUser={loggedInUser} />
+                            ))
+                        ) : (
+                            <div style={{display: 'flex', justifyContent: 'center',}}>앗, 해당 날짜의 상담 내용이 없어요!</div>
+                        )}
+                    </div>
+                )}
+            </C.Chat>
+        );
+    }
 
     return (
         <C.Background>
