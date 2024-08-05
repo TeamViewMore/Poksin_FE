@@ -1,5 +1,4 @@
-// src/components/Menu.js
-import React from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import * as M from "../styles/components/MenuStyle";
@@ -54,17 +53,17 @@ function Menu({ closeMenu, isClosing, onNavClick, onProfileClick, nickname, room
     };
 
     // 인증되지 않은 사용자가 접근할 수 있는 페이지 경로
-    const publicRoutes = ["/", "/login", "/signup"];
+    const publicRoutes = useMemo(() => ["/", "/login", "/signup"], []);
 
-    React.useEffect(() => {
+    const isPublicRoute = useCallback((path) => publicRoutes.includes(path), [publicRoutes]);
+
+    useEffect(() => {
         // 현재 URL을 가져와서 publicRoutes 목록에 없는 경우 리디렉션
         const currentPath = window.location.pathname;
         if (!isPublicRoute(currentPath) && !document.cookie.includes(COOKIE_KEY)) {
             navigate("/");
         }
-    }, [navigate]);
-
-    const isPublicRoute = (path) => publicRoutes.includes(path);
+    }, [navigate, isPublicRoute]);
 
     return (
         <>

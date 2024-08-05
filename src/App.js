@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useMemo, useCallback } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie";
 import "./App.css";
 
 import Header from "./components/Header";
@@ -25,12 +25,15 @@ import Fake from "./pages/other/Fake";
 
 function App() {
     const location = useLocation();
-    const [cookies] = useCookies(["accessToken"]);
 
-    const getTitle = () => {
+    // Define publicRoutes using useMemo to avoid re-creating it on every render
+    const publicRoutes = useMemo(() => ["/", "/login", "/signup"], []);
+
+    // Memoize getTitle function using useCallback to avoid re-creating it on every render
+    const getTitle = useCallback(() => {
         const path = location.pathname;
 
-        if (/^\/chat\/\d+$/.test(path)) {
+        if (/^\/chat\/.*$/.test(path)) {
             return "상담하기";
         }
         if (/^\/calender\/[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(path) || path === "/calender") {
@@ -70,11 +73,9 @@ function App() {
             default:
                 return "";
         }
-    };
+    }, [location.pathname]);
 
     const showHeader = location.pathname !== "/";
-
-    const publicRoutes = ["/", "/login", "/signup"];
 
     return (
         <div className="App">
