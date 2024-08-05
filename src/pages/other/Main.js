@@ -15,7 +15,7 @@ import Right from "../../img/right.png";
 function Main() {
     const [username, setUsername] = useState("");
     const [value, onChange] = useState(new Date());
-    const [clickMonth, setClickMonth] = useState(new Date());
+    const [clickMonth, ] = useState(new Date());
     const navigate = useNavigate();
     const [evidenceData, setEvidenceData] = useState([]);
     const [cookies] = useCookies(["accessToken"]);
