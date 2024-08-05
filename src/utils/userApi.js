@@ -4,31 +4,76 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 export const fetchUserData = async (accessToken) => {
     try {
-        const response = await axios.get(`${apiUrl}/user/mypage`, {
+        // 먼저 사용자 API를 호출
+        const userResponse = await axios.get(`${apiUrl}/user/mypage`, {
             headers: {
                 Authorization: `${accessToken}`,
             },
         });
-        // 데이터 반환
-        return response.data.data;
-    } catch (error) {
-        // 오류 응답이 있는 경우
-        if (error.response) {
-            switch (error.response.status) {
-                case 401:
-                    console.error('유효하지 않은 액세스 토큰입니다.');
-                    break;
-                case 404:
-                    console.error('사용자를 찾을 수 없습니다.');
-                    break;
-                default:
-                    console.error('유저 정보 조회 실패:', error.response.data.message);
+        const user = userResponse.data.data;
+        const roomId = await findOrCreateChatRoom(user.username, accessToken);
+        return { user, roomId };
+    } catch (userError) {
+        if (userError.response && userError.response.status === 404) {
+            // 사용자가 아닌 경우 상담사 API를 호출
+            try {
+                const counselorResponse = await axios.get(`${apiUrl}/counselor/mypage`, {
+                    headers: {
+                        Authorization: `${accessToken}`,
+                    },
+                });
+                const user = counselorResponse.data.data;
+                const roomId = await findOrCreateChatRoom(user.username, accessToken);
+                return { user, roomId };
+            } catch (counselorError) {
+                if (counselorError.response) {
+                    console.error('유저 정보 조회 실패:', counselorError.response.data.message);
+                } else {
+                    console.error('유저 정보 조회 실패:', counselorError.message);
+                }
+                throw counselorError;
             }
         } else {
-            // 오류 응답이 없는 경우
-            console.error('유저 정보 조회 실패:', error.message);
+            console.error('유저 정보 조회 실패:', userError.message);
+            throw userError;
         }
-        // 오류를 다시 던짐
+    }
+};
+
+const findOrCreateChatRoom = async (username, accessToken) => {
+    try {
+        const roomsResponse = await axios.get(`${apiUrl}/chat/rooms`, {
+            headers: {
+                Authorization: `${accessToken}`
+            }
+        });
+
+        if (roomsResponse.status !== 200) {
+            throw new Error('채팅방 목록을 가져오는 데 실패했습니다.');
+        }
+
+        const rooms = roomsResponse.data.data;
+        const existingRoom = rooms.find(room => room.name === username);
+
+        if (existingRoom) {
+            return existingRoom.roomId;
+        } else {
+            const createResponse = await axios.post(`${apiUrl}/chat`, { roomName: username }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `${accessToken}`
+                }
+            });
+
+            if (createResponse.status !== 201) {
+                throw new Error('채팅방 생성에 실패했습니다.');
+            }
+
+            const newRoom = createResponse.data.data;
+            return newRoom.roomId;
+        }
+    } catch (error) {
+        console.error('채팅방 생성/이동 중 에러 발생:', error);
         throw error;
     }
 };

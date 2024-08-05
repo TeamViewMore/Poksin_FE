@@ -15,6 +15,7 @@ function Header({ title }) {
     const [isClosing, setIsClosing] = useState(false);
     const [cookies] = useCookies(["accessToken"]);
     const [username, setUsername] = useState();
+    const [roomId, setRoomId] = useState(null);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -25,8 +26,9 @@ function Header({ title }) {
                 if (!token) {
                     throw new Error("토큰을 찾을 수 없음");
                 }
-                const data = await fetchUserData(token);
-                setUsername(data.username);
+                const { user, roomId } = await fetchUserData(token);
+                setUsername(user.username);
+                setRoomId(roomId);
             } catch (error) {
                 console.error("헤더에서 에러:", error);
             }
@@ -105,7 +107,7 @@ function Header({ title }) {
                     onNavClick={handleNavLinkClick}
                     onProfileClick={() => handleNavLinkClick(`/profile`)}
                     nickname={username}
-                    roomid="1" // 임시로 1로 설정
+                    roomid={roomId}
                 />
             )}
         </>
