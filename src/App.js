@@ -121,7 +121,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="/analysis/:id"
+                    path="/analysis/:evidence_id"
                     element={
                         <ProtectedRoute publicRoutes={publicRoutes}>
                             <AI />
