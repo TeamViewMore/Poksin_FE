@@ -131,6 +131,8 @@ export const PaperBox = styled.div`
     color: ${(props) => (props.isActive ? "white" : "black")};
     opacity: ${(props) => (props.isActive ? "1" : "0")};
     transition: opacity 1s ease-out;
+    overflow: hidden;
+    margin-right: -30px;
 `;
 
 export const PhotoBox = styled(PaperBox)`

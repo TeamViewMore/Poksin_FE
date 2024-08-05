@@ -45,6 +45,8 @@ export const Button = styled.button`
     text-align: center;
     border-radius: 20px;
     border: 0px;
+    font-family: "Pretendard-SemiBold.woff2";
+    font-size: 11pt;
 `;
 export const CheckCustom = styled.input`
     width: 22px;
