@@ -14,7 +14,7 @@ export const Logo1 = styled.div`
     justify-content: center;
     align-items: center;
 `;
-export const InputBox = styled.form`
+export const InputBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
