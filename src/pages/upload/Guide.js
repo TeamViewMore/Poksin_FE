@@ -189,6 +189,8 @@ function Guide() {
             <G.ButtonBox>
                 <G.Button onClick={goToUpload}>자료 업로드 바로 가기</G.Button>
             </G.ButtonBox>
+            <br />
+            <br />
         </G.Guide>
     );
 }

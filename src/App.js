@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useMemo, useCallback } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+// import { useCookies } from "react-cookie";
 import "./App.css";
 
 import Header from "./components/Header";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Splash from "./pages/other/Splash";
 import Login from "./pages/user/Login";
 import Signup from "./pages/user/Signup";
@@ -24,10 +26,14 @@ import Fake from "./pages/other/Fake";
 function App() {
     const location = useLocation();
 
-    const getTitle = () => {
+    // Define publicRoutes using useMemo to avoid re-creating it on every render
+    const publicRoutes = useMemo(() => ["/", "/login", "/signup"], []);
+
+    // Memoize getTitle function using useCallback to avoid re-creating it on every render
+    const getTitle = useCallback(() => {
         const path = location.pathname;
 
-        if (/^\/chat\/\d+$/.test(path)) {
+        if (/^\/chat\/.*$/.test(path)) {
             return "상담하기";
         }
         if (/^\/calender\/[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(path) || path === "/calender") {
@@ -56,16 +62,13 @@ function App() {
                 return "가이드라인";
             case "/poksin/admin/chat-list":
                 return "상담자 목록";
-            case "/profile/:id":
-            case "/profile/update/:id":
-                return "프로필";
             case "/self":
             case "/self/result":
                 return "연애 건강도 자가진단";
             default:
                 return "";
         }
-    };
+    }, [location.pathname]);
 
     const showHeader = location.pathname !== "/";
 
@@ -76,20 +79,119 @@ function App() {
                 <Route exact path="/" element={<Splash />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
-                <Route exact path="/main" element={<Main />} />
-                <Route exact path="/calender/:date" element={<Calender />} />
-                <Route exact path="/calender" element={<CalenderList />} />
-                <Route exact path="/upload" element={<Upload />} />
-                <Route exact path="/upload-form" element={<UploadForm />} />
-                <Route exact path="/analysis/:evidence_id" element={<AI />} />
-                <Route exact path="/guide" element={<Guide />} />
-                <Route exact path="/chat/:id" element={<Chat />} />
-                <Route exact path="/poksin/admin/chat-list" element={<ChatList />} />
-                <Route exact path="/profile" element={<Profile />} />
-                <Route exact path="/profile/update" element={<ProfileUpdate />} />
-                <Route exact path="/self" element={<Self />} />
-                <Route exact path="/self/result" element={<Result />} />
-                <Route exact path="/fake" element={<Fake />} />
+
+                <Route
+                    path="/main"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <Main />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/calender/:date"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <Calender />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/calender"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <CalenderList />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/upload"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <Upload />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/upload-form"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <UploadForm />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/analysis/:id"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <AI />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/guide"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <Guide />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/chat/:id"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <Chat />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/poksin/admin/chat-list"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <ChatList />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/profile"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <Profile />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/profile/update"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <ProfileUpdate />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/self"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <Self />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/self/result"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <Result />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/fake"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <Fake />
+                        </ProtectedRoute>
+                    }
+                />
             </Routes>
         </div>
     );

@@ -12,36 +12,13 @@ import { useCookies } from "react-cookie";
 import { fetchUserData } from "../../utils/userApi";
 import Right from "../../img/right.png";
 
-const getHighlightedDates = (evidenceData) => {
-    const dateMap = {};
-    evidenceData.forEach((evidence) => {
-        const dateString = moment(evidence.createdAt).format("YYYY-MM-DD");
-        dateMap[dateString] = evidence.evidenceCount;
-    });
-    return dateMap;
-};
-
-const tileClassName =
-    (evidenceData) =>
-    ({ date }) => {
-        const dateString = moment(date).format("YYYY-MM-DD");
-        const highlightedDates = getHighlightedDates(evidenceData);
-        const count = highlightedDates[dateString];
-
-        if (count) {
-            if (count >= 3) return "high-evidence";
-            if (count === 2) return "medium-evidence";
-            if (count === 1) return "low-evidence";
-        }
-        return null;
-    };
-
 function Main() {
-    const [value, onChange] = useState(new Date());
-    const [evidenceData, setEvidenceData] = useState([]);
     const [username, setUsername] = useState("");
-    const [cookies] = useCookies(["accessToken"]);
+    const [value, onChange] = useState(new Date());
+    const [clickMonth, ] = useState(new Date());
     const navigate = useNavigate();
+    const [evidenceData, setEvidenceData] = useState([]);
+    const [cookies] = useCookies(["accessToken"]);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -59,25 +36,41 @@ function Main() {
         fetchProfile();
     }, [cookies.accessToken]);
 
-    const fetchEvidenceData = useCallback(async () => {
-        try {
-            const response = await axios.get("https://poksin-backend.store/evidence/get-month-evidence", {
-                params: { year: moment().year(), month: moment().month() + 1 },
-                headers: {
-                    Authorization: `Bearer ${cookies.accessToken}`, // Added `Bearer`
-                },
-            });
-            if (response.data.code === "SUCCESS_RETRIEVE_MONTH_EVIDENCE") {
-                setEvidenceData(response.data.data);
+    // 의존성 문제 해결을 위해 useCallback 사용
+    const fetchEvidenceData = useCallback(
+        async (date) => {
+            try {
+                const year = moment(date).year();
+                const month = moment(date).month() + 1;
+                const token = cookies.accessToken;
+
+                if (!token) {
+                    console.error("No access token found in cookies");
+                    return;
+                }
+
+                const response = await axios.get("https://poksin-backend.store/evidence/get-month-evidence", {
+                    params: { year, month },
+                    headers: {
+                        Authorization: `${token}`, // 인증 토큰
+                    },
+                });
+                if (response.data.code === "SUCCESS_RETRIEVE_MONTH_EVIDENCE") {
+                    console.log("Fetch Evidence Data Response:", response);
+                    setEvidenceData(response.data.data);
+                }
+            } catch (error) {
+                console.error("Error fetching evidence data:", error);
             }
-        } catch (error) {
-            console.error("Error fetching evidence data:", error);
-        }
-    }, [cookies.accessToken]);
+        },
+        [cookies]
+    );
 
     useEffect(() => {
-        fetchEvidenceData();
-    }, [fetchEvidenceData]);
+        if (clickMonth) {
+            fetchEvidenceData(clickMonth);
+        }
+    }, [clickMonth, fetchEvidenceData]);
 
     const handleDayClick = (date) => {
         navigate(`/calender/${moment(date).format("YYYY-MM-DD")}`);
@@ -97,6 +90,28 @@ function Main() {
 
     const handleNextMonthClick = () => {
         navigate(`/calender`);
+    };
+
+    const getHighlightedDates = () => {
+        const dateMap = {};
+        evidenceData.forEach((evidence) => {
+            const dateString = moment(evidence.createdAt).format("YYYY-MM-DD");
+            dateMap[dateString] = evidence.evidenceCount;
+        });
+        return dateMap;
+    };
+
+    const tileClassName = ({ date }) => {
+        const dateString = moment(date).format("YYYY-MM-DD");
+        const highlightedDates = getHighlightedDates();
+        const count = highlightedDates[dateString];
+
+        if (count) {
+            if (count >= 3) return "high-evidence";
+            if (count === 2) return "medium-evidence";
+            if (count === 1) return "low-evidence";
+        }
+        return null;
     };
 
     return (
