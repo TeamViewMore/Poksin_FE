@@ -50,8 +50,8 @@ function Main() {
                 if (!token) {
                     throw new Error("Token is missing");
                 }
-                const data = await fetchUserData(token);
-                setUsername(data.username); // Ensure `data` is what you expect
+                const { user } = await fetchUserData(token); // Extract user object
+                setUsername(user.username); // Set username
             } catch (error) {
                 console.error("Failed to fetch profile:", error);
             }
@@ -59,14 +59,12 @@ function Main() {
         fetchProfile();
     }, [cookies.accessToken]);
 
-    //의존성 문제 해결을 위해 useCallback 사용
-    // 증거 데이터 가져오기
     const fetchEvidenceData = useCallback(async () => {
         try {
             const response = await axios.get("https://poksin-backend.store/evidence/get-month-evidence", {
                 params: { year: moment().year(), month: moment().month() + 1 },
                 headers: {
-                    Authorization: `${cookies.accessToken}`,
+                    Authorization: `Bearer ${cookies.accessToken}`, // Added `Bearer`
                 },
             });
             if (response.data.code === "SUCCESS_RETRIEVE_MONTH_EVIDENCE") {
@@ -88,14 +86,15 @@ function Main() {
     const goToUpload = () => {
         navigate("/upload");
     };
+
     const goToGuide = () => {
         navigate("/guide");
     };
+
     const goToChat = () => {
         navigate("/chat");
     };
 
-    // 캘린더로 넘어가는 버튼
     const handleNextMonthClick = () => {
         navigate(`/calender`);
     };
@@ -121,7 +120,7 @@ function Main() {
                         onClickDay={handleDayClick}
                         tileClassName={tileClassName(evidenceData)}
                     />
-                    <M.GoToMainBtn onClick={handleNextMonthClick} src={Right} alt="Right"></M.GoToMainBtn>
+                    <M.GoToMainBtn onClick={handleNextMonthClick} src={Right} alt="Right" />
                 </M.CalenderWrapper>
                 <M.Happen>어떤 일이 있었나요?</M.Happen>
                 <M.UploadBox onClick={goToUpload}>
