@@ -14,7 +14,7 @@ function CalenderList() {
     const [evidenceData, setEvidenceData] = useState([]);
     const [cookies] = useCookies(["accessToken"]);
 
-    //의존성 문제 해결을 위해 useCallback 사용
+    // 의존성 문제 해결을 위해 useCallback 사용
     const fetchEvidenceData = useCallback(
         async (date) => {
             try {

@@ -8,7 +8,7 @@ import profile from "../img/profile.png"
 import logout from "../img/logout.png"
 import copyright from "../img/copyright.png"
 
-function Menu({ closeMenu, isClosing, onNavClick, onProfileClick, nickname, id}) {
+function Menu({ closeMenu, isClosing, onNavClick, onProfileClick, nickname, roomid}) {
     return (
         <>
             <M.MenuContainer $isClosing={isClosing} onClick={closeMenu}>
@@ -27,7 +27,7 @@ function Menu({ closeMenu, isClosing, onNavClick, onProfileClick, nickname, id})
                     <Nav pagename="캘린더" onClick={() => onNavClick("/calender")} />
                     <Nav pagename="자료 업로드" onClick={() => onNavClick("/upload")} />
                     <Nav pagename="가이드라인" onClick={() => onNavClick("/guide")} />
-                    <Nav pagename="상담하기" onClick={() => onNavClick(`/chat/${id}`)} />
+                    <Nav pagename="상담하기" onClick={() => onNavClick(`/chat/${roomid}`)} />
                     <Nav pagename="연애 건강도 자가진단" onClick={() => onNavClick("/self")} />
                     <Nav pagename="서비스 숨기기" onClick={() => onNavClick("/fake")} />
                 </M.NavList>
