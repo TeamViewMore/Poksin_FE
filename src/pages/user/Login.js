@@ -57,27 +57,39 @@ function Login() {
     return (
         <L.Login>
             <L.Logo1>
-                <img src={logo_big} alt="logo" style={{ width: "510px", height: "285px" }} />
+                <img
+                    src={logo_big}
+                    alt="logo"
+                    style={{
+                        width: "510px",
+                        height: "285px",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItem: "center",
+                    }}
+                />
             </L.Logo1>
-            <L.InputBox onSubmit={handleLogin}>
-                <L.InputId
-                    placeholder="아이디"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-                <L.InputPw
-                    type="password"
-                    placeholder="&nbsp;비밀번호"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <L.LoginButtonBox>
-                    <L.LoginButton type="submit">로그인</L.LoginButton>
-                </L.LoginButtonBox>
-            </L.InputBox>
-
+            <form onSubmit={handleLogin}>
+                <L.InputBox>
+                    <L.InputId
+                        placeholder="아이디"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                    <L.InputPw
+                        type="password"
+                        placeholder="&nbsp;비밀번호"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <L.LoginButtonBox>
+                        <L.LoginButton type="submit">로그인</L.LoginButton>
+                    </L.LoginButtonBox>
+                </L.InputBox>
+            </form>
             <L.Yet>
                 아직 회원이 아니신가요?
                 <br />

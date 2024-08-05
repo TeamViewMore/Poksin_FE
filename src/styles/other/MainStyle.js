@@ -1,6 +1,6 @@
 import Calendar from "react-calendar";
 import styled from "styled-components";
-import "react-calendar/dist/Calendar.css";
+import NextButton from "../../img/chevron_left.png";
 
 export const Main = styled.div`
     display: flex;
@@ -33,17 +33,19 @@ export const PreciousId = styled.div`
     line-height: 12px;
     color: rgb(66, 66, 66);
     text-align: left;
+    width: 328px;
 `;
 
 export const Precious = styled.div`
     margin-top: 23px;
     flex-direction: column;
     align-items: center;
-    font-size: 10pt;
+    font-size: 9pt;
     line-height: 12px;
     color: rgb(66, 66, 66);
     margin-bottom: 22px;
     text-align: center;
+    width: 328px;
 `;
 
 export const Want = styled.div`
@@ -104,14 +106,52 @@ export const CalenderWrapper = styled.div`
 
     .react-calendar__navigation__prev-button,
     .react-calendar__navigation__next-button {
-        display: none;
+        background-size: contain;
+
+        cursor: pointer;
+
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        margin-left: 188px;
+        pointer-events: none;
     }
 
+    .navigate-button {
+        pointer-events: all;
+        background-color: rgb(255, 255, 255, 0);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+        background-image: url(${NextButton});
+        margin-left: 190px;
+        cursor: pointer; /* 커서 스타일 */
+        position: absolute;
+        top: 163px;
+        right: 47px;
+        width: 8px;
+        height: 14px;
+        /* 포커스 시 스타일 */
+        &:focus {
+            background-color: rgb(255, 255, 255, 0);
+            background-repeat: no-repeat;
+            background-position: center;
+            border: none;
+
+            box-shadow: none;
+        }
+    }
+
+    .react-calendar__navigation {
+        display: flex;
+        height: 44px;
+        margin-bottom: 0.2em !important;
+    }
     .react-calendar__navigation__label {
         display: flex;
         align-items: center;
         font-weight: 300;
-        font-size: 15px;
+        font-size: 17px;
         margin-left: 10px;
         pointer-events: none;
     }
@@ -159,13 +199,17 @@ export const CalenderWrapper = styled.div`
     .high-evidence abbr {
         background-color: #7a29ff !important;
         color: #ffffff !important;
+        background-color: #7a29ff !important;
+        color: #ffffff !important;
     }
 
     .medium-evidence abbr {
         background-color: #ae7cff !important;
+        background-color: #ae7cff !important;
     }
 
     .low-evidence abbr {
+        background-color: #e3d1ff !important;
         background-color: #e3d1ff !important;
     }
 

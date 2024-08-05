@@ -85,15 +85,15 @@ function Profile() {
                 <P.Middle>
                     <P.Detail>
                         <div>전화번호</div>
-                        <div>{phoneNum}</div>
+                        <div>{phoneNum !== null ? phoneNum : "(비공개)"}</div>
                     </P.Detail>
                     <P.Detail>
                         <div>긴급 연락처</div>
-                        <div>{emergencyNum}</div>
+                        <div>{emergencyNum !== null ? emergencyNum : "(비공개)"}</div>
                     </P.Detail>
                     <P.Detail>
                         <div>주소</div>
-                        <div>{address}</div>
+                        <div>{address !== null ? address : "(비공개)"}</div>
                     </P.Detail>
                 </P.Middle>
                 <P.Bottom>
