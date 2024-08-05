@@ -29,10 +29,11 @@ function Chat({ date }) {
     const [loadingMessages, setLoadingMessages] = useState(true);
     const [showMore, setShowMore] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [modalType, setModalType] = useState(''); // 'end' or 'resume'
+    const [modalType, setModalType] = useState('');
     const moreRef = useRef();
     const chatRef = useRef();
     const navigate = useNavigate();
+    // const [state, setState] = useState(true);
 
     const handleMoreClick = () => {
         setShowMore((prevShowMore) => !prevShowMore);
@@ -63,6 +64,7 @@ function Chat({ date }) {
                 }
             });
             if (response.status === 200) {
+                // setState(false);
                 alert("상담이 종료되었습니다.");
                 navigate(`/main`);
             } else {
@@ -84,6 +86,7 @@ function Chat({ date }) {
                 }
             });
             if (response.status === 200) {
+                // setState(true);
                 alert("상담이 재개되었습니다.");
                 setShowModal(false);
             } else {
@@ -133,6 +136,11 @@ function Chat({ date }) {
         if (!loggedInUser || !roomId) {
             setModalType('resume');
             setShowModal(true);
+            // if (!state) {
+            //     console.log(state);
+            //     setModalType('resume');
+            //     setShowModal(true);
+            // }
             return;
         }
 
