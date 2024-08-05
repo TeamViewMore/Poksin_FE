@@ -13,11 +13,11 @@ export const Main = styled.div`
 export const Happen = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
+    margin-left: 15px;
     margin-bottom: 10px;
     color: rgb(66, 66, 66);
-    font-size: 11pt;
-    margin-top: 18px;
+    font-size: 10pt;
+    margin-top: 10px;
 `;
 
 export const UploadBox = styled.div`
@@ -29,7 +29,7 @@ export const UploadBox = styled.div`
 
 export const PreciousId = styled.div`
     font-weight: bold;
-    font-size: 11pt;
+    font-size: 12pt;
     line-height: 12px;
     color: rgb(66, 66, 66);
     text-align: left;
@@ -47,13 +47,13 @@ export const Precious = styled.div`
 `;
 
 export const Want = styled.div`
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
     margin-bottom: 10px;
     color: rgb(66, 66, 66);
-    font-size: 11pt;
+    font-size: 10pt;
+    margin-left: 15px;
 `;
 
 export const GuideBox = styled.div`
@@ -73,7 +73,6 @@ export const CalenderList = styled.div`
 export const CalenderWrapper = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
     color: #424242;
     font-weight: 500;
     font-size: 19px;
@@ -81,14 +80,21 @@ export const CalenderWrapper = styled.div`
 
     .react-calendar {
         border: none;
-        max-width: 330px;
-        width: 90%;
+        max-width: 350px;
+        width: 100%;
     }
 
     .react-calendar__navigation {
         display: flex;
         align-items: center;
         justify-content: space-around;
+        margin-bottom: 0px;
+        padding: 10px 10px 10px 0px;
+    }
+
+    .react-calendar__navigation span {
+        font-size: 12pt;
+        font-weight: bold;
     }
 
     .react-calendar__navigation__prev2-button,
@@ -96,10 +102,7 @@ export const CalenderWrapper = styled.div`
         display: none;
     }
 
-    .react-calendar__navigation__prev-button {
-        display: none;
-    }
-
+    .react-calendar__navigation__prev-button,
     .react-calendar__navigation__next-button {
         display: none;
     }
@@ -122,7 +125,7 @@ export const CalenderWrapper = styled.div`
     }
 
     .react-calendar__month-view__weekdays {
-        margin-bottom: 10px;
+        margin-bottom: 0px;
     }
 
     .react-calendar__month-view__days__day--weekend {
@@ -154,16 +157,16 @@ export const CalenderWrapper = styled.div`
     }
 
     .high-evidence abbr {
-        background-color: #7a29ff;
-        color: #ffffff;
+        background-color: #7a29ff !important;
+        color: #ffffff !important;
     }
 
     .medium-evidence abbr {
-        background-color: #ae7cff;
+        background-color: #ae7cff !important;
     }
 
     .low-evidence abbr {
-        background-color: #e3d1ff;
+        background-color: #e3d1ff !important;
     }
 
     .react-calendar__tile--now abbr,
@@ -211,4 +214,12 @@ export const DayRecordBox = styled.div`
         font-weight: 300;
         font-size: 15px;
     }
+`;
+
+export const GoToMainBtn = styled.img`
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    margin-top: 15px;
+    margin-left: 320px;
 `;

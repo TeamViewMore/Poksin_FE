@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import PlusBtn from "../../components/PlusBtn";
+import ChatBtn from "../../components/ChatBtn";
 import Calendar from "react-calendar";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
@@ -10,6 +10,7 @@ import Group7 from "../../img/Group7.svg";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { fetchUserData } from "../../utils/userApi";
+import Right from "../../img/right.png";
 
 const getHighlightedDates = (evidenceData) => {
     const dateMap = {};
@@ -94,12 +95,17 @@ function Main() {
         navigate("/chat");
     };
 
+    // 캘린더로 넘어가는 버튼
+    const handleNextMonthClick = () => {
+        navigate(`/calender`);
+    };
+
     return (
         <M.Main>
             <M.Precious>
-                <M.PreciousId>{username} 님,</M.PreciousId>
+                <M.PreciousId>{username} 님</M.PreciousId>
                 <br />
-                당신은 소중한 사람이에요. 누구도 당신을 해칠 수 없어요.
+                당신은 소중한 사람이고, 누구도 당신을 해칠 수 없어요.
             </M.Precious>
             <M.CalenderList>
                 <M.CalenderWrapper>
@@ -111,27 +117,23 @@ function Main() {
                         formatYear={(locale, date) => moment(date).format("YYYY")}
                         calendarType="gregory"
                         showNeighboringMonth={false}
-                        nextLabel=""
-                        prevLabel=""
-                        next2Label={null}
-                        prev2Label={null}
                         minDetail="year"
                         onClickDay={handleDayClick}
                         tileClassName={tileClassName(evidenceData)}
                     />
+                    <M.GoToMainBtn onClick={handleNextMonthClick} src={Right} alt="Right"></M.GoToMainBtn>
                 </M.CalenderWrapper>
                 <M.Happen>어떤 일이 있었나요?</M.Happen>
                 <M.UploadBox onClick={goToUpload}>
-                    <img src={Group6} alt="logo" style={{ width: "345px", height: "93px" }} />
+                    <img src={Group6} alt="logo" style={{ width: "360px", height: "auto" }} />
                 </M.UploadBox>
-
                 <M.Want>폭신폭신은 여러분을 돕고 싶습니다.</M.Want>
                 <M.GuideBox onClick={goToGuide}>
-                    <img src={Group7} alt="logo" style={{ width: "345px", height: "93px" }} />
+                    <img src={Group7} alt="logo" style={{ width: "360px", height: "auto" }} />
                 </M.GuideBox>
                 <br />
                 <br />
-                <PlusBtn onClick={goToChat} />
+                <ChatBtn onClick={goToChat} />
             </M.CalenderList>
         </M.Main>
     );
