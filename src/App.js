@@ -59,6 +59,8 @@ function App() {
                 return "가이드라인";
             case "/poksin/admin/chat-list":
                 return "상담자 목록";
+            case "/analysis/:id":
+                return "분석 결과";
             case "/profile/:id":
             case "/profile/update/:id":
                 return "프로필";
