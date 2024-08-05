@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import PlusBtn from "../../components/PlusBtn";
 import Calendar from "react-calendar";
 import moment from "moment";
-import "react-calendar/dist/Calendar.css";
 import { useNavigate } from "react-router-dom";
 import * as M from "../../styles/other/MainStyle";
 import Group6 from "../../img/Group6.svg";
@@ -93,31 +92,34 @@ function Main() {
     const goToChat = () => {
         navigate("/chat");
     };
+    const goToCalender = () => {
+        navigate("/calender");
+    };
 
     return (
         <M.Main>
             <M.Precious>
-                <M.PreciousId>{username} 님,</M.PreciousId>
+                <M.PreciousId>&nbsp;&nbsp;{username} 님,</M.PreciousId>
                 <br />
                 당신은 소중한 사람이에요. 누구도 당신을 해칠 수 없어요.
             </M.Precious>
             <M.CalenderList>
                 <M.CalenderWrapper>
-                    <Calendar
-                        onChange={onChange}
+                    <button className="navigate-button" onClick={goToCalender}></button>
+                    <M.CalendarBox
                         value={value}
                         formatDay={(locale, date) => moment(date).format("D")}
                         formatMonthYear={(locale, date) => moment(date).format("YYYY. MM.")}
                         formatYear={(locale, date) => moment(date).format("YYYY")}
                         calendarType="gregory"
                         showNeighboringMonth={false}
-                        nextLabel=""
-                        prevLabel=""
+                        nextLabel="" // 기본 버튼 숨기기
+                        prevLabel="" // 기본 버튼 숨기기
                         next2Label={null}
                         prev2Label={null}
                         minDetail="year"
                         onClickDay={handleDayClick}
-                        tileClassName={tileClassName(evidenceData)}
+                        tileClassName={() => "custom-tile"}
                     />
                 </M.CalenderWrapper>
                 <M.Happen>어떤 일이 있었나요?</M.Happen>

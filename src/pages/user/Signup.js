@@ -18,19 +18,22 @@ function Signup() {
     const [isPhonePublic, setIsPhonePublic] = useState(false);
     const [isEmergencyContactPublic, setIsEmergencyContactPublic] = useState(false);
     const [isAddressPublic, setIsAddressPublic] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false); // 관리자 여부 추가
 
     const goToLogin = () => {
         navigate("/login");
     };
 
-    const handleSignup = async () => {
+    const handleSignup = async (event) => {
+        event.preventDefault(); // 기본 폼 제출 동작 방지
+
         if (password !== passwordConfirm) {
             alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
             return;
         }
 
         const apiUrl = process.env.REACT_APP_API_URL;
-        const signupUrl = `${apiUrl}/user/register`; // 서버 API 문서와 일치하는지 확인
+        const signupUrl = isAdmin ? `${apiUrl}/counselor/register` : `${apiUrl}/user/register`;
 
         try {
             const response = await axios.post(signupUrl, {
@@ -47,12 +50,22 @@ function Signup() {
 
             console.log("서버 응답:", response);
 
-            if (response.data.code === "SUCCESS_REGISTER") {
-                setCookie("authToken", response.data.authToken, { path: "/" });
-                alert(response.data.message); // 성공 메시지를 alert으로 표시
-                navigate("/login"); // 회원가입 후 로그인 페이지로 이동
+            if (isAdmin) {
+                if (response.data.code === "SUCCESS_COUNSELOR_REGISTER") {
+                    setCookie("authToken", response.data.authToken, { path: "/" });
+                    alert(response.data.message); // 성공 메시지 표시
+                    navigate("/login"); // 회원가입 후 로그인 페이지로 이동
+                } else {
+                    alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지 표시
+                }
             } else {
-                alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지를 alert으로 표시
+                if (response.data.code === "SUCCESS_REGISTER") {
+                    setCookie("authToken", response.data.authToken, { path: "/" });
+                    alert(response.data.message); // 성공 메시지 표시
+                    navigate("/login"); // 회원가입 후 로그인 페이지로 이동
+                } else {
+                    alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지 표시
+                }
             }
         } catch (error) {
             console.error("회원가입 실패:", error);
@@ -67,7 +80,18 @@ function Signup() {
     return (
         <S.Signup>
             <S.Logo1>
-                <img src={logo_big} alt="logo" style={{ width: "435px", height: "230px" }} />
+                <img
+                    src={logo_big}
+                    alt="logo"
+                    style={{
+                        width: "435px",
+                        height: "230px",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItem: "center",
+                    }}
+                />
             </S.Logo1>
             <S.InputBox>
                 <S.InputId placeholder="아이디" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -117,6 +141,10 @@ function Signup() {
                         checked={isAddressPublic}
                         onChange={(e) => setIsAddressPublic(e.target.checked)}
                     />
+                </S.CheckBox>
+                <S.CheckBox>
+                    관리자 등록&nbsp;
+                    <S.CheckCustom type="checkbox" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} />
                 </S.CheckBox>
             </S.InputBox>
 
