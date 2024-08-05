@@ -1,17 +1,23 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import * as U from "../../styles/upload/UploadFormStyle";
 import { ko } from "date-fns/locale";
 import UploadModal from "../../components/UploadModal";
+import axios from "axios";
+import { useCookies } from "react-cookie";
+import moment from "moment";
 
 function UploadForm() {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [filePreviews, setFilePreviews] = useState([]);
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
+
+    // 모든 필드가 채워졌는지 확인
+    const isFormValid = title && description && category && selectedFiles.length > 0 && selectedDate;
 
     // 프리뷰 보이게 하기
     const handleFileChange = (event) => {
@@ -38,6 +44,18 @@ function UploadForm() {
         event.preventDefault();
         if (filePlus.current) {
             filePlus.current.click();
+        }
+    };
+
+    // 카테고리 재설정 시 리셋
+    const handleCategoryChange = (e) => {
+        const newCategory = e.target.value;
+        console.log("Selected category:", newCategory);
+        setCategory(newCategory);
+        setSelectedFiles([]);
+        setFilePreviews([]);
+        if (filePlus.current) {
+            filePlus.current.value = "";
         }
     };
 
@@ -68,16 +86,16 @@ function UploadForm() {
     // 업로드 후 모달
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const handleClickModal = (event) => {
-        event.preventDefault();
-        setModalIsOpen(true);
-    };
+    // const handleClickModal = (event) => {
+    //     event.preventDefault();
+    //     setModalIsOpen(true);
+    // };
     const handleCloseModal = () => {
         setModalIsOpen(false);
     };
 
     // 카테고리 선택
-    const getAcceptType = () => {
+    const getAcceptType = useCallback(() => {
         switch (category) {
             case "image":
                 return "image/*";
@@ -90,7 +108,61 @@ function UploadForm() {
             default:
                 return "*";
         }
-    };
+    }, [category]);
+
+    // 연동
+    const [cookies] = useCookies(["accessToken"]);
+
+    const handleFormSubmit = useCallback(
+        async (event) => {
+            event.preventDefault();
+
+            if (!isFormValid) {
+                alert("파일을 다시 선택해주세요!");
+                return;
+            }
+
+            const formData = new FormData();
+
+            const formattedDate = moment(selectedDate).format("YYYY-MM-DD");
+            console.log("포맷된 날짜:", formattedDate);
+
+            formData.append(
+                "createEvidenceDTO",
+                JSON.stringify({
+                    title,
+                    description,
+                    type: category.toUpperCase(),
+                    createdAt: formattedDate,
+                })
+            );
+
+            selectedFiles.forEach((file) => {
+                formData.append("fileUrls", file);
+            });
+
+            try {
+                const response = await axios.post("https://poksin-backend.store/evidence/upload", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        Authorization: `${cookies.accessToken}`,
+                    },
+                });
+
+                if (response.data.code === "SUCCESS_CREATE_EVIDENCE") {
+                    console.log("업로드 성공:", response.data);
+                    // 업로드 성공 시 필요한 처리 추가
+                } else {
+                    console.error("업로드 실패:", response.data.message);
+                }
+            } catch (error) {
+                console.error("업로드 중 오류 발생:", error.response, error.response.data, error.message);
+            }
+
+            setModalIsOpen(true);
+        },
+        [title, description, category, selectedFiles, selectedDate, cookies.accessToken, isFormValid]
+    );
 
     return (
         <>
@@ -110,7 +182,7 @@ function UploadForm() {
                         })}
                     </U.Preview>
 
-                    <U.CategorySelect value={category} onChange={(e) => setCategory(e.target.value)}>
+                    <U.CategorySelect value={category} onChange={handleCategoryChange}>
                         <option value="">카테고리 선택</option>
                         <option value="image">사진 자료</option>
                         <option value="video">영상 자료</option>
@@ -136,13 +208,6 @@ function UploadForm() {
                         </>
                     )}
 
-                    <input
-                        type="file"
-                        multiple
-                        ref={filePlus}
-                        onChange={handleFileChange}
-                        style={{ display: "none" }}
-                    />
                     <U.DateInput>
                         <DatePicker
                             customInput={<CustomInput />}
@@ -159,7 +224,18 @@ function UploadForm() {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
-                    <U.UploadButton onClick={handleClickModal}>기록하기</U.UploadButton>
+                    <U.UploadButton
+                        type="submit"
+                        onClick={handleFormSubmit}
+                        style={{
+                            backgroundColor: isFormValid ? "#7a29ff" : "#ebebeb",
+                            color: isFormValid ? "#ffffff" : "#818181",
+                            cursor: isFormValid ? "pointer" : "not-allowed",
+                            pointerEvents: isFormValid ? "auto" : "none",
+                        }}
+                    >
+                        기록하기
+                    </U.UploadButton>
                 </form>
                 {modalIsOpen && <UploadModal onClose={handleCloseModal} />}
             </U.UploadForm>

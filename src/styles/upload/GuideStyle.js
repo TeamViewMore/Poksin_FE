@@ -131,6 +131,8 @@ export const PaperBox = styled.div`
     color: ${(props) => (props.isActive ? "white" : "black")};
     opacity: ${(props) => (props.isActive ? "1" : "0")};
     transition: opacity 1s ease-out;
+    overflow: hidden;
+    margin-right: -30px;
 `;
 
 export const PhotoBox = styled(PaperBox)`
@@ -190,8 +192,7 @@ export const Button = styled.button`
     text-align: center;
     border-radius: 20px;
     border: 0px;
-    position: fixed;
-    bottom: 30px;
+    margin-top: 30px;
     font-weight: bold;
 `;
 

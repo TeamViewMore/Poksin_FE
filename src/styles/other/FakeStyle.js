@@ -5,6 +5,8 @@ export const Fake = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Pretendard-SemiBold.woff2";
+    font-size: 11pt;
 `;
 export const Container = styled.div`
     margin-top: 96px;
@@ -32,6 +34,7 @@ export const Detail = styled.div`
     text-align: center;
     font-size: 10pt;
     margin-top: 37px;
+    font-family: "Pretendard-Regular.woff2";
 `;
 export const Re = styled.div`
     display: flex;
@@ -50,4 +53,6 @@ export const Button1 = styled.button`
     justify-content: center;
     align-items: center;
     margin-top: 67px;
+    font-family: "Pretendard-SemiBold.woff2" !important;
+    font-size: 11pt;
 `;
