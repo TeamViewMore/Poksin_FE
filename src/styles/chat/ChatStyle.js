@@ -55,7 +55,7 @@ export const Top = styled.div`
 export const Chat = styled.div`
     flex: 1;
     overflow-y: auto;
-    padding-bottom: 105px;
+    padding-bottom: 90px;
     padding-left: 19px;
     padding-right: 19px;
 `;
@@ -88,7 +88,7 @@ export const Bottom = styled.div`
     width: 100%;
     background: #F5F5F5;
     padding: 10px 0;
-    padding-bottom: 38px;
+    padding-bottom: 18px;
 `;
 
 export const InputArea = styled.div`
