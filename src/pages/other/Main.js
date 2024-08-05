@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import PlusBtn from "../../components/PlusBtn";
+import ChatBtn from "../../components/ChatBtn";
 import Calendar from "react-calendar";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
@@ -10,21 +10,100 @@ import Group7 from "../../img/Group7.svg";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { fetchUserData } from "../../utils/userApi";
+import Right from "../../img/right.png";
 
-const getHighlightedDates = (evidenceData) => {
-    const dateMap = {};
-    evidenceData.forEach((evidence) => {
-        const dateString = moment(evidence.createdAt).format("YYYY-MM-DD");
-        dateMap[dateString] = evidence.evidenceCount;
-    });
-    return dateMap;
-};
+function Main() {
+    const [username, setUsername] = useState("");
+    const [value, onChange] = useState(new Date());
+    const [clickMonth, setClickMonth] = useState(new Date());
+    const navigate = useNavigate();
+    const [evidenceData, setEvidenceData] = useState([]);
+    const [cookies] = useCookies(["accessToken"]);
 
-const tileClassName =
-    (evidenceData) =>
-    ({ date }) => {
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const token = cookies.accessToken;
+                if (!token) {
+                    throw new Error("Token is missing");
+                }
+                const { user } = await fetchUserData(token); // Extract user object
+                setUsername(user.username); // Set username
+            } catch (error) {
+                console.error("Failed to fetch profile:", error);
+            }
+        };
+        fetchProfile();
+    }, [cookies.accessToken]);
+
+    // 의존성 문제 해결을 위해 useCallback 사용
+    const fetchEvidenceData = useCallback(
+        async (date) => {
+            try {
+                const year = moment(date).year();
+                const month = moment(date).month() + 1;
+                const token = cookies.accessToken;
+
+                if (!token) {
+                    console.error("No access token found in cookies");
+                    return;
+                }
+
+                const response = await axios.get("https://poksin-backend.store/evidence/get-month-evidence", {
+                    params: { year, month },
+                    headers: {
+                        Authorization: `${token}`, // 인증 토큰
+                    },
+                });
+                if (response.data.code === "SUCCESS_RETRIEVE_MONTH_EVIDENCE") {
+                    console.log("Fetch Evidence Data Response:", response);
+                    setEvidenceData(response.data.data);
+                }
+            } catch (error) {
+                console.error("Error fetching evidence data:", error);
+            }
+        },
+        [cookies]
+    );
+
+    useEffect(() => {
+        if (clickMonth) {
+            fetchEvidenceData(clickMonth);
+        }
+    }, [clickMonth, fetchEvidenceData]);
+
+    const handleDayClick = (date) => {
+        navigate(`/calender/${moment(date).format("YYYY-MM-DD")}`);
+    };
+
+    const goToUpload = () => {
+        navigate("/upload");
+    };
+
+    const goToGuide = () => {
+        navigate("/guide");
+    };
+
+    const goToChat = () => {
+        navigate("/chat");
+    };
+
+    const handleNextMonthClick = () => {
+        navigate(`/calender`);
+    };
+
+    const getHighlightedDates = () => {
+        const dateMap = {};
+        evidenceData.forEach((evidence) => {
+            const dateString = moment(evidence.createdAt).format("YYYY-MM-DD");
+            dateMap[dateString] = evidence.evidenceCount;
+        });
+        return dateMap;
+    };
+
+    const tileClassName = ({ date }) => {
         const dateString = moment(date).format("YYYY-MM-DD");
-        const highlightedDates = getHighlightedDates(evidenceData);
+        const highlightedDates = getHighlightedDates();
         const count = highlightedDates[dateString];
 
         if (count) {
@@ -35,71 +114,12 @@ const tileClassName =
         return null;
     };
 
-function Main() {
-    const [value, onChange] = useState(new Date());
-    const [evidenceData, setEvidenceData] = useState([]);
-    const [username, setUsername] = useState("");
-    const [cookies] = useCookies(["accessToken"]);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchProfile = async () => {
-            try {
-                const token = cookies.accessToken;
-                if (!token) {
-                    throw new Error("Token is missing");
-                }
-                const data = await fetchUserData(token);
-                setUsername(data.username); // Ensure `data` is what you expect
-            } catch (error) {
-                console.error("Failed to fetch profile:", error);
-            }
-        };
-        fetchProfile();
-    }, [cookies.accessToken]);
-
-    //의존성 문제 해결을 위해 useCallback 사용
-    // 증거 데이터 가져오기
-    const fetchEvidenceData = useCallback(async () => {
-        try {
-            const response = await axios.get("https://poksin-backend.store/evidence/get-month-evidence", {
-                params: { year: moment().year(), month: moment().month() + 1 },
-                headers: {
-                    Authorization: `${cookies.accessToken}`,
-                },
-            });
-            if (response.data.code === "SUCCESS_RETRIEVE_MONTH_EVIDENCE") {
-                setEvidenceData(response.data.data);
-            }
-        } catch (error) {
-            console.error("Error fetching evidence data:", error);
-        }
-    }, [cookies.accessToken]);
-
-    useEffect(() => {
-        fetchEvidenceData();
-    }, [fetchEvidenceData]);
-
-    const handleDayClick = (date) => {
-        navigate(`/calender/${moment(date).format("YYYY-MM-DD")}`);
-    };
-
-    const goToUpload = () => {
-        navigate("/upload");
-    };
-    const goToGuide = () => {
-        navigate("/guide");
-    };
-    const goToChat = () => {
-        navigate("/chat");
-    };
-
     return (
         <M.Main>
             <M.Precious>
-                <M.PreciousId>{username} 님,</M.PreciousId>
+                <M.PreciousId>{username} 님</M.PreciousId>
                 <br />
-                당신은 소중한 사람이에요. 누구도 당신을 해칠 수 없어요.
+                당신은 소중한 사람이고, 누구도 당신을 해칠 수 없어요.
             </M.Precious>
             <M.CalenderList>
                 <M.CalenderWrapper>
@@ -111,27 +131,23 @@ function Main() {
                         formatYear={(locale, date) => moment(date).format("YYYY")}
                         calendarType="gregory"
                         showNeighboringMonth={false}
-                        nextLabel=""
-                        prevLabel=""
-                        next2Label={null}
-                        prev2Label={null}
                         minDetail="year"
                         onClickDay={handleDayClick}
                         tileClassName={tileClassName(evidenceData)}
                     />
+                    <M.GoToMainBtn onClick={handleNextMonthClick} src={Right} alt="Right" />
                 </M.CalenderWrapper>
                 <M.Happen>어떤 일이 있었나요?</M.Happen>
                 <M.UploadBox onClick={goToUpload}>
-                    <img src={Group6} alt="logo" style={{ width: "345px", height: "93px" }} />
+                    <img src={Group6} alt="logo" style={{ width: "360px", height: "auto" }} />
                 </M.UploadBox>
-
                 <M.Want>폭신폭신은 여러분을 돕고 싶습니다.</M.Want>
                 <M.GuideBox onClick={goToGuide}>
-                    <img src={Group7} alt="logo" style={{ width: "345px", height: "93px" }} />
+                    <img src={Group7} alt="logo" style={{ width: "360px", height: "auto" }} />
                 </M.GuideBox>
                 <br />
                 <br />
-                <PlusBtn onClick={goToChat} />
+                <ChatBtn onClick={goToChat} />
             </M.CalenderList>
         </M.Main>
     );

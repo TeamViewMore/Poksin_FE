@@ -36,6 +36,10 @@ export const Detail = styled.div`
 `;
 export const Re = styled.div`
     margin-top: 51px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 export const Button1 = styled.button`
     width: 320px;
