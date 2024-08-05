@@ -55,7 +55,7 @@ export const Top = styled.div`
 export const Chat = styled.div`
     flex: 1;
     overflow-y: auto;
-    padding-bottom: 90px;
+    margin-bottom: 90px;
     padding-left: 19px;
     padding-right: 19px;
 `;
