@@ -67,7 +67,7 @@ function Profile() {
         return `${year}. ${month}. ${day}.`;
     };
 
-    const { username, phoneNum, emergencyNum, address, createdAt } = profileData;
+    const { username, phoneNum, emergencyNum, address, createdAt, lastChated } = profileData;
     console.log(profileData);
 
     return (
@@ -104,7 +104,7 @@ function Profile() {
                     </P.Date>
                     <P.Date>
                         <div className='title'>최근 상담</div>
-                        <div className='date'>{createdAt ? formatDate(createdAt) : '정보 없음'}</div>
+                        <div className='date'>{lastChated ? formatDate(lastChated) : '정보 없음'}</div>
                     </P.Date>
                 </P.Bottom>
             </P.Box>
