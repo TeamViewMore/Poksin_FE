@@ -7,7 +7,7 @@ function ChatBtn() {
     const navigate = useNavigate();
 
     const goToUploadForm = () => {
-        navigate("/chat");
+        navigate("/chat/:id");
     };
 
     return (

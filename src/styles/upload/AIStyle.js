@@ -94,6 +94,7 @@ export const VideoDetail = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
 
     .des {
@@ -106,13 +107,11 @@ export const VideoDetail = styled.div`
     }
 
     video {
-        width: 70%;
+        width: 330px;
         height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 15px;
-        margin-left: 15%;
-        margin-right: 15%;
     }
 `;
