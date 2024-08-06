@@ -189,19 +189,15 @@ export const CalenderWrapper = styled.div`
     }
 
     .high-evidence abbr {
-        background-color: #7a29ff !important;
-        color: #ffffff !important;
-        background-color: #7a29ff !important;
-        color: #ffffff !important;
+        background-color: #7a29ff;
+        color: #ffffff;
     }
 
     .medium-evidence abbr {
         background-color: #ae7cff !important;
-        background-color: #ae7cff !important;
     }
 
     .low-evidence abbr {
-        background-color: #e3d1ff !important;
         background-color: #e3d1ff !important;
     }
 
