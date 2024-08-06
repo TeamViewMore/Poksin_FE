@@ -12,20 +12,19 @@ function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
-    const [phoneNum, setPhoneNum] = useState(""); // 상태 변수 이름 'phoneNum'
-    const [emergencyNum, setEmergencyNum] = useState(""); // 상태 변수 이름 'emergencyNum'
+    const [phoneNum, setPhoneNum] = useState("");
+    const [emergencyNum, setEmergencyNum] = useState("");
     const [address, setAddress] = useState("");
     const [phoneOpen, setphoneOpen] = useState(false);
     const [emergencyOpen, setemergencyOpen] = useState(false);
     const [addressOpen, setaddressOpen] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false); // 관리자 여부 추가
 
     const goToLogin = () => {
         navigate("/login");
     };
 
     const handleSignup = async (event) => {
-        event.preventDefault(); // 기본 폼 제출 동작 방지
+        event.preventDefault(); // Prevent default form submission
 
         if (password !== passwordConfirm) {
             alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
@@ -33,13 +32,12 @@ function Signup() {
         }
 
         const apiUrl = process.env.REACT_APP_API_URL;
-        const signupUrl = isAdmin ? `${apiUrl}/counselor/register` : `${apiUrl}/user/register`;
+        const signupUrl = `${apiUrl}/user/register`;
 
         try {
             const response = await axios.post(signupUrl, {
                 username,
                 password,
-                passwordConfirm,
                 phoneNum,
                 emergencyNum,
                 address,
@@ -49,34 +47,13 @@ function Signup() {
             });
 
             console.log("서버 응답:", response);
-            console.log({
-                username,
-                password,
-                passwordConfirm,
-                phoneNum,
-                emergencyNum,
-                address,
-                phoneOpen,
-                emergencyOpen,
-                addressOpen,
-            });
 
-            if (isAdmin) {
-                if (response.data.code === "SUCCESS_COUNSELOR_REGISTER") {
-                    setCookie("authToken", response.data.authToken, { path: "/" });
-                    alert(response.data.message); // 성공 메시지 표시
-                    navigate("/login"); // 회원가입 후 로그인 페이지로 이동
-                } else {
-                    alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지 표시
-                }
+            if (response.data.code === "SUCCESS_REGISTER") {
+                setCookie("authToken", response.data.authToken, { path: "/" });
+                alert(response.data.message); // Display success message
+                navigate("/login"); // Redirect to login page
             } else {
-                if (response.data.code === "SUCCESS_REGISTER") {
-                    setCookie("authToken", response.data.authToken, { path: "/" });
-                    alert(response.data.message); // 성공 메시지 표시
-                    navigate("/login"); // 회원가입 후 로그인 페이지로 이동
-                } else {
-                    alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지 표시
-                }
+                alert(`회원가입 실패: ${response.data.message}`); // Display failure message
             }
         } catch (error) {
             console.error("회원가입 실패:", error);

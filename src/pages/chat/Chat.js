@@ -35,6 +35,10 @@ function Chat({ date }) {
     const navigate = useNavigate();
     const [blocked, setBlocked] = useState(false);
 
+    const handleProfileClick = () => {
+        navigate('/admin/profile');
+    };
+
     const handleMoreClick = () => {
         setShowMore((prevShowMore) => !prevShowMore);
     };
@@ -386,7 +390,7 @@ function Chat({ date }) {
         <C.Background>
             <C.Top>
                 <div className='left'>
-                    <img src={profile} alt='프로필' />
+                    <img src={profile} alt='프로필' onClick={handleProfileClick} />
                     <div>폭신폭신</div>
                 </div>
                 <div className='right' onClick={handleMoreClick}><img src={more} alt='더보기' /></div>
