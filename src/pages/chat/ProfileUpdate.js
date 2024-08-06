@@ -91,7 +91,7 @@ function ProfileUpdate() {
                 phoneNum: formValues.phoneNum,
                 emergencyNum: formValues.emergencyNum,
                 address: formValues.address,
-                getphoneOpen: checkedStates.phone,
+                phoneOpen: checkedStates.phone,
                 emergencyOpen: checkedStates.emergency,
                 addressOpen: checkedStates.address
             }, {
