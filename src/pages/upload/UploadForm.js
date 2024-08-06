@@ -175,7 +175,7 @@ function UploadForm() {
                             if (file.type.startsWith("image/")) {
                                 return <img key={index} src={file.url} alt={`File preview ${index + 1}`} />;
                             } else if (file.type.startsWith("video/")) {
-                                return <video key={index} src={file.url} controls />;
+                                return <video key={index} preload="metadata" src={`${file.url}#t=0.2`} controls />;
                             } else if (file.type.startsWith("audio/")) {
                                 return <audio key={index} src={file.url} controls />;
                             } else {
