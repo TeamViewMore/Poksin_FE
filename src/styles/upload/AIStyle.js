@@ -58,26 +58,6 @@ export const VideoBox = styled.div`
     flex-direction: column;
     justify-content: center;
     margin-bottom: 40px;
-
-    .des {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: 400;
-        color: #424242;
-        font-size: 14px;
-    }
-
-    video {
-        width: 70%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 15px;
-        margin-left: 15%;
-        margin-right: 15%;
-    }
 `;
 
 export const CategoryTitleText = styled.div`
@@ -107,5 +87,32 @@ export const CategoryTitleText = styled.div`
         height: 1px;
         margin: 0;
         border: 0;
+    }
+`;
+
+export const VideoDetail = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .des {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 400;
+        color: #424242;
+        font-size: 14px;
+    }
+
+    video {
+        width: 70%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+        margin-left: 15%;
+        margin-right: 15%;
     }
 `;

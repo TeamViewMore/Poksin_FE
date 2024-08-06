@@ -1,0 +1,556 @@
+[33mcommit 286651cb2440d844b27d58f0112d195de6059ad2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Tue Aug 6 12:58:02 2024 +0900
+
+    🐛 More 버튼 오류 해결
+    
+    More.js 수정
+
+[33mcommit 657e1e475785d9ccfd86b3159a9085299214618b[m
+Merge: dfa1e35 fe49015
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Tue Aug 6 12:56:34 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit fe49015a35aed02321bdbc9a52091f91db3ee0fc[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 12:42:20 2024 +0900
+
+    💄 Design: ChatStyle css 수정
+    
+    ChatStyle css 수정
+
+[33mcommit dfa1e3567f356ee71e593ae849853921dba095fd[m
+Merge: dcc034f 6f64caf
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Tue Aug 6 11:35:57 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit 6f64cafd2701481e73ac31efb35a2ccbb1e74a79[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 08:39:23 2024 +0900
+
+    💄 Style : 채팅 이미지 비율 조절
+    
+    채팅 이미지 비율 조절
+
+[33mcommit ac09b302c7218c866689fd666047d06bf5155849[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 08:35:49 2024 +0900
+
+    📝 Add : netlify.toml 추가
+    
+    netlify.toml 추가
+
+[33mcommit 672ff1f9e49dbb5a697d759475a026c1e11b0abf[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 08:29:07 2024 +0900
+
+    📝 Fix : manifest.json 수정
+    
+    manifest.json 수정
+
+[33mcommit 95f391d4f867f22efd6bda32527c350f8fcea793[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 07:58:33 2024 +0900
+
+    🐛 Fix : 프로필 최근 상담일 반영
+    
+    프로필 최근 상담일 반영
+
+[33mcommit 867126ca7865bb67fd001cd5ec1499203d1fe384[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 07:51:40 2024 +0900
+
+    🐛 Fix : 채팅 스크롤 이슈 해결 및 상담 재개 관련 수정
+    
+    상담 open/close 여부도 서버에게 데이터 요청 후 반영해야될 것 같음.
+
+[33mcommit c82bf9e8ff0991d4dcf00c45a47131253a74a4c9[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 06:54:12 2024 +0900
+
+    ✨ Feat : 캘린더에 채팅 필터링 추가
+    
+    캘린더에 채팅 필터링 추가
+
+[33mcommit dcc034f8f17d84edb8aba0139c63769c870ae9a7[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Tue Aug 6 05:37:34 2024 +0900
+
+    ✅ App의 분석 유알엘 수정
+    
+    .
+
+[33mcommit a91172288b31b9b9215356a87167f32e170465f8[m
+Merge: b6491cb f76c94c
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Tue Aug 6 05:36:04 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit b6491cbdc3ed050445dd99a47841c5f00655676a[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Tue Aug 6 05:33:54 2024 +0900
+
+    ✨ 업로드 오류 수정, 분석 결과 연동
+    
+    분석 결과 연동 동영상 이슈 해결 필요
+
+[33mcommit f76c94c82634b9f5214ef18ba14a02d3a40d3c2c[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 05:23:25 2024 +0900
+
+    💄 Style : ChatStyle css 수정
+    
+    ChatStyle css 수정
+
+[33mcommit 33616ca162cbd9db1c5f18c18238c674fdc06ca1[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 05:16:21 2024 +0900
+
+    🚨 Chore : eslint 경고 해결
+    
+    eslint 경고 해결
+
+[33mcommit 20949875c243f697011e79a4f2eb12a97e44b568[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 05:11:03 2024 +0900
+
+    🚨 Chore : eslint 경고 및 의존성 문제 해결
+    
+    eslint 경고 및 의존성 문제 해결
+
+[33mcommit e52509aa0b6ece3fbfbdf3974f16155726ef101d[m
+Merge: b20dee6 2c3b282
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 04:58:36 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit b20dee6d243de937cedf84d4870eb9637fa8b655[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 04:58:30 2024 +0900
+
+    ✨ Feat : 채팅 상담하기 구현
+    
+    90% 구현 완료, 이미지 클릭 시 상세 보기 추후 추가 예정
+
+[33mcommit 2c3b28234b7d136aa2b27d7303b1602025d78f8e[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Tue Aug 6 04:06:19 2024 +0900
+
+    ✨ 로그아웃 구현
+    
+    로그아웃 구현
+
+[33mcommit a2f7726149314c608ace8a5956f310a3670a30d3[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Tue Aug 6 01:32:03 2024 +0900
+
+    🐛 Fix : data 접근 수정
+    
+    data 접근 수정
+
+[33mcommit 770da869f97b30a0841ff9d99e6ce81be0ba7a8b[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Tue Aug 6 00:15:15 2024 +0900
+
+    📝 [Fix] 메인 id 다시 살림
+    
+    [Fix] 메인 id 다시 살림
+
+[33mcommit 370ee56149bb0179117059b3ed322fcf470fc28b[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Mon Aug 5 23:30:31 2024 +0900
+
+    💄 메인 수정 추가
+    
+    메인 스타일 수정 추가 (깃 충돌로 인해 반영되지 않은 것들)
+
+[33mcommit d126f8a38ad0d474c3b510158dd6cd68168996c2[m
+Merge: 3723d52 7575729
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Mon Aug 5 23:22:08 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit 3723d52f99d863e316568c0b2c13511929976113[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Mon Aug 5 23:18:30 2024 +0900
+
+    💄 메인 스타일 수정, 캘린더로 가는 버튼 추가
+    
+    커밋 메세지와 동일
+
+[33mcommit 7575729d32a885198e767e990e0139073f0088f9[m
+Merge: 05e02bf 3f32c9e
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 22:30:52 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit 05e02bffb40b902aa5c7ace02b8a28c8a2873a5b[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 22:30:44 2024 +0900
+
+    💄 메인버튼 디자인, 어드민 가입
+    
+    메인버튼 디자인, 어드민 가입
+
+[33mcommit 3f32c9e0b2f21a48eaa1a54d9cf91fd8d9acb11f[m
+Merge: b66994e c36053a
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 20:49:01 2024 +0900
+
+    🚧 Merge : userApi.js 충돌 해결
+    
+    userApi.js 충돌 해결
+
+[33mcommit b66994e4b77b7ad6856171d737da309a6e1930c7[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 20:42:15 2024 +0900
+
+    ✨ Feat : 채팅 생성 및 이동 관련 연동
+    
+    채팅 생성 및 이동 관련 연동
+
+[33mcommit 1593f16ae1fffb8b93dd5584a2d0814615de07f3[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 20:40:27 2024 +0900
+
+    🐛 Fix : 프로필 업데이트 에러 해결 실패 2
+    
+    프로필 업데이트 에러 해결 실패 2
+
+[33mcommit ac7b2365eb1d71fdb8c7fffab066ce195aeeae30[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 20:39:52 2024 +0900
+
+    🐛 Fix : 프로필 업데이트 에러 해결 실패
+    
+    프로필 업데이트 에러 해결 실패
+
+[33mcommit 85d74374d0cdb009ad836f3aca0d85c43217d13a[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 20:38:56 2024 +0900
+
+    💄 Fix : 유저 데이터 null인 경우 비공개로 표시 추가
+    
+    유저 데이터 null인 경우 비공개로 표시 추가
+
+[33mcommit c36053a5553e020bace69c6ebb3cfcfa256bb571[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Mon Aug 5 20:20:24 2024 +0900
+
+    ✨ 자료 삭제, 업로드, 캘린더 조회 연동 완료
+    
+    자료 삭제, 업로드, 캘린더 조회, 월/일 별 증거 조회 연동 완료
+
+[33mcommit 925b0dc729bd93c3ee33cacf40dbccbfd542e6dc[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 14:21:24 2024 +0900
+
+    💄 Other, guide 폰트 정리
+    
+    other, guide 폰트 정리
+
+[33mcommit 55dc454f76ad23e7f78ba4c47a4e3030ffccc82b[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 08:06:49 2024 +0900
+
+    💄 CSS 수정
+    
+    cSS 수정
+
+[33mcommit 8eea93a85e40a472db5f0b7df6813228210c1a13[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 06:48:45 2024 +0900
+
+    🔥 충돌해결
+    
+    충돌해결
+
+[33mcommit 31b5704b5b867cf2e4ce972f024112fb3419baa3[m
+Merge: 6ea532c c6241cd
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 06:46:38 2024 +0900
+
+    🔥 파일삭제
+    
+    파일삭제
+
+[33mcommit 6ea532ceaf98cc6cff91e360368c5029511e5de4[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 06:43:12 2024 +0900
+
+    ✨ 메인페이지 id 연결
+    
+    메인페이지 id 연결
+
+[33mcommit c6241cd0423550af62c63783f3a54c15734b144f[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 05:14:46 2024 +0900
+
+    💄 Style : Input 컴포넌트 css 수정
+    
+    Input 컴포넌트 css 수정
+
+[33mcommit 052d6129e67eacaa9e212dc92403946dfca1ffc3[m
+Merge: 7a0ec97 91e62c9
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 04:58:07 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit 7a0ec97101b95dc72e4f6f57879796b637fecbf4[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 04:57:56 2024 +0900
+
+    ✨ Feat : 유저 정보 관련 api 연동
+    
+    userApi로 유저 정보 api 통일
+
+[33mcommit a07d6c7d51b0cb5c32c8f18392200295417cc0c8[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 04:55:43 2024 +0900
+
+    📦️ Add : 패키지 추가
+    
+     패키지 추가
+
+[33mcommit 41de5ce49228d631da2d1b3d2e83130c076ebc69[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Mon Aug 5 04:53:55 2024 +0900
+
+    ➕ Add : CookiesProvider 추가
+    
+    CookiesProvider 추가
+
+[33mcommit 0babf5729a0adf139b1383e2c4dcbe505b09a109[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 03:50:28 2024 +0900
+
+    ✨ 메인에 빈도수 반영
+    
+    메인에 빈도수 반영
+
+[33mcommit 91e62c997cd1d2e6c6130b24b5f06625b439ada1[m
+Merge: 81fc4e8 5482981
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 03:16:42 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit 81fc4e8cf6eb97f6754236421918c2f43d6858ef[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Mon Aug 5 03:16:35 2024 +0900
+
+    💄 [Design] 인풋박스 수정
+    
+    [Design] 인풋박스 수정
+
+[33mcommit 5482981d844cedd3e6b59bc28f4e5ea4d35065a0[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Mon Aug 5 03:05:06 2024 +0900
+
+    🚑️ 배포 오류 3
+    
+    정의 순서 바뀜
+
+[33mcommit d72ba222907d65e53d31bdaa79d79788b32db1ae[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Mon Aug 5 03:02:16 2024 +0900
+
+    🚑️ 배포 오류 2
+    
+    의존성 문제
+
+[33mcommit 7a52f009f9565bd8810c415de0e39f3c7af0fd1e[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Mon Aug 5 02:51:12 2024 +0900
+
+    🚑️ 배포 오류 만드는 요소 삭제
+    
+    캘린더리스트 -> 안쓰는 함수, 변수 삭제 / 캘린더 -> 콜백 넣어 의존성 문제 해결
+
+[33mcommit f4fa0a046b9a8d6c27435708a7b5e80b718e4bc8[m
+Merge: 7b77a4c 3a750c2
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Mon Aug 5 02:40:39 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit 7b77a4ccb97c8c25954e5f961a871bd4951680d9[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Mon Aug 5 02:38:32 2024 +0900
+
+    🚧 증거 조회 (월, 일) 연동
+    
+    캘린더 리스트 페이지, 캘린더 디테일 페이지 증거 조회 백과 연동. 증거 삭제는 진행 중.
+
+[33mcommit 3a750c23a02e9e8ba27a3b744a5c787030125539[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Sun Aug 4 21:49:46 2024 +0900
+
+    🔥 Fix : 프로필 관련 path url 수정
+    
+    프로필 관련 path url 수정
+
+[33mcommit fbf4c6d8bcd9ea9420ce8f15bb2c5261190ee9b2[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Sun Aug 4 21:37:42 2024 +0900
+
+    🚨 Chore : eslint 경고 해결
+    
+    Login, Signup eslint 경고 해결
+
+[33mcommit fe1e6927db173c3ebcb60247a643a45bcb4f364a[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Sun Aug 4 21:31:52 2024 +0900
+
+    ✨ Feat : 일반 유저  프로필, 프로필 수정 api 연동
+    
+    프로필 관련 api 연동 완료, admin 프로필 연동 추가 필요
+
+[33mcommit f49cc4c34cbdf45a01ca4c1e479a66736785c5fc[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Sun Aug 4 21:11:12 2024 +0900
+
+    ✨ Feat : 프로필 수정 퍼블리싱
+    
+    ProfileUpdate.js 퍼블리싱 완료 api 연동 추후 예정
+
+[33mcommit 359cd0eed1bc6fc4678b1b816bf4efb412ff5da2[m
+Merge: 503fe84 e34973c
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Sun Aug 4 20:26:32 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit 503fe84911483b07c3b3466f3e46614080164850[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Sun Aug 4 20:26:24 2024 +0900
+
+    💄 [Design] 가이드 애니메이션 해결
+    
+    [Design] 가이드 애니메이션 해결
+
+[33mcommit e34973cf569e5f774811bf90618664e57309f8d7[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Sun Aug 4 19:32:03 2024 +0900
+
+    🚨 Chore : eslint 경고 해결
+    
+    eslint 경고 해결
+
+[33mcommit 6f900f5af28b1b00ad025847248a21efdc946421[m
+Author: mogg22 <ahrthdus1@gmail.com>
+Date:   Sun Aug 4 19:27:57 2024 +0900
+
+    🚨 Chore : eslint 경고 및 의존성 문제 해결
+    
+    eslint 경고 및 의존성 문제 해결
+
+[33mcommit e94eb54b782ca1f82c4c28d8e4808e07bcecb09b[m
+Merge: d77a8d7 bce2fbd
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Sun Aug 4 16:38:39 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit d77a8d75d73bbe2703f011bde26c5755ec4bcf82[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Sun Aug 4 16:37:30 2024 +0900
+
+    👽️ 충돌 방지
+    
+    충돌 방지
+
+[33mcommit bce2fbdfd7ef88ffa33ce4f1fe9056b1e52af290[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Sun Aug 4 16:31:27 2024 +0900
+
+    🔥 로그인 api 수정
+    
+    로그인 api 수정
+
+[33mcommit 34e32df64509292fa58763fc6a6355a75920caad[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Sun Aug 4 05:11:14 2024 +0900
+
+    💄 [Design] 사진 수정
+    
+    [Design] 사진 수정
+
+[33mcommit 2a24d7399673cd47a1dd23c3e154273d69eef4e8[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Sun Aug 4 05:09:17 2024 +0900
+
+    ✨ [Design] 메인 디자인  조금
+    
+    [Design] 메인 디자인  조금
+
+[33mcommit e9c26e0ee84eee8eb05a6a208f478b6aeddc132b[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Sun Aug 4 04:49:43 2024 +0900
+
+    ✨ [Api 연동] 로그인 쿠키 조금 수정
+    
+    [Api 연동] 로그인 쿠키 조금 수정
+
+[33mcommit 1f8d6cbc5ae1a5576adefb7822a0914d2829ba34[m
+Merge: 9f65275 53f1b74
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Sun Aug 4 04:42:36 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit 9f652751b9064b91d6b21e9f6c0d6db49f2dbdfa[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Sun Aug 4 04:42:28 2024 +0900
+
+    ✨ [api연동] 로그인, 회원가입
+    
+    [api연동] 로그인, 회원가입
+
+[33mcommit 53f1b74264c6e4bbcb2dbcfa6920bc5193f85170[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Sun Aug 4 02:40:05 2024 +0900
+
+    ✨ 파일 업로드 카테고리 추가
+    
+    파일 업로드 폼 페이지에 카테고리를 추가하여 카테고리에 따라 다른 확장자를 받도록 함!
+
+[33mcommit 043fe0607ca995209eae9f7d8255140e497bd000[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Sat Aug 3 19:49:30 2024 +0900
+
+    🐛 자료 업로드 페이지 버튼 추가, 버튼 크기 조정
+    
+    자료 업로드 페이지에 기록하러 가기 버튼 추가. 버튼 크기 일정하게 조정. 바텀 시트 스크롤 문제 해결.
+
+[33mcommit 4cc2afa214441042125f83f01ec10ba4efa9f597[m
+Merge: 42b370a 9f12493
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Thu Aug 1 18:55:16 2024 +0900
+
+    Merge branch 'main' of https://github.com/TeamViewMore/Poksin_FE
+
+[33mcommit 42b370add369652f2882884091b1e769088d7017[m
+Author: khjhyunji <khjhyunji2003@naver.com>
+Date:   Thu Aug 1 18:55:07 2024 +0900
+
+    💄 [Design] 가이드라인 애니메이션
+    
+    [Design] 가이드라인 애니메이션
+
+[33mcommit 9f12493daac022b212c26578bd5898d823b35335[m
+Author: Yunji-Yun <dbswlvkdlxld2022@naver.com>
+Date:   Thu Aug 1 16:53:44 2024 +0900
+
+    ✨ Feat : 분석 결과 페이지 추가
+    
+    분석 결과 페이지 레이아웃 구성 완료
