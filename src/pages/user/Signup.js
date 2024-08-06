@@ -12,12 +12,12 @@ function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [emergencyContact, setEmergencyContact] = useState("");
+    const [phoneNum, setPhoneNum] = useState(""); // 상태 변수 이름 'phoneNum'
+    const [emergencyNum, setEmergencyNum] = useState(""); // 상태 변수 이름 'emergencyNum'
     const [address, setAddress] = useState("");
-    const [isPhonePublic, setIsPhonePublic] = useState(false);
-    const [isEmergencyContactPublic, setIsEmergencyContactPublic] = useState(false);
-    const [isAddressPublic, setIsAddressPublic] = useState(false);
+    const [phoneOpen, setphoneOpen] = useState(false);
+    const [emergencyOpen, setemergencyOpen] = useState(false);
+    const [addressOpen, setaddressOpen] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false); // 관리자 여부 추가
 
     const goToLogin = () => {
@@ -40,15 +40,26 @@ function Signup() {
                 username,
                 password,
                 passwordConfirm,
-                phoneNumber,
-                emergencyContact,
+                phoneNum,
+                emergencyNum,
                 address,
-                isPhonePublic,
-                isEmergencyContactPublic,
-                isAddressPublic,
+                phoneOpen,
+                emergencyOpen,
+                addressOpen,
             });
 
             console.log("서버 응답:", response);
+            console.log({
+                username,
+                password,
+                passwordConfirm,
+                phoneNum,
+                emergencyNum,
+                address,
+                phoneOpen,
+                emergencyOpen,
+                addressOpen,
+            });
 
             if (isAdmin) {
                 if (response.data.code === "SUCCESS_COUNSELOR_REGISTER") {
@@ -107,30 +118,26 @@ function Signup() {
                     value={passwordConfirm}
                     onChange={(e) => setPasswordConfirm(e.target.value)}
                 />
-                <S.InputNumber
-                    placeholder="전화번호"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                />
+                <S.InputNumber placeholder="전화번호" value={phoneNum} onChange={(e) => setPhoneNum(e.target.value)} />
                 <S.CheckBox>
                     전화번호 공개&nbsp;
                     <S.CheckCustom
                         type="checkbox"
-                        checked={isPhonePublic}
-                        onChange={(e) => setIsPhonePublic(e.target.checked)}
+                        checked={phoneOpen}
+                        onChange={(e) => setphoneOpen(e.target.checked)}
                     />
                 </S.CheckBox>
                 <S.InputAlert
                     placeholder="긴급 연락처"
-                    value={emergencyContact}
-                    onChange={(e) => setEmergencyContact(e.target.value)}
+                    value={emergencyNum}
+                    onChange={(e) => setEmergencyNum(e.target.value)}
                 />
                 <S.CheckBox>
                     긴급 연락처 공개&nbsp;
                     <S.CheckCustom
                         type="checkbox"
-                        checked={isEmergencyContactPublic}
-                        onChange={(e) => setIsEmergencyContactPublic(e.target.checked)}
+                        checked={phoneOpen}
+                        onChange={(e) => setemergencyOpen(e.target.checked)}
                     />
                 </S.CheckBox>
                 <S.InputAddress placeholder="주소" value={address} onChange={(e) => setAddress(e.target.value)} />
@@ -138,8 +145,8 @@ function Signup() {
                     주소 공개&nbsp;
                     <S.CheckCustom
                         type="checkbox"
-                        checked={isAddressPublic}
-                        onChange={(e) => setIsAddressPublic(e.target.checked)}
+                        checked={addressOpen}
+                        onChange={(e) => setaddressOpen(e.target.checked)}
                     />
                 </S.CheckBox>
                 <S.CheckBox>

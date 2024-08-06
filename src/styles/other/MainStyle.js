@@ -8,6 +8,8 @@ export const Main = styled.div`
     justify-content: center;
     align-items: center;
     font-family: "Pretendard-Regular.woff2";
+    height: 93vh;
+    margin: 0;
 `;
 
 export const Happen = styled.div`
