@@ -15,6 +15,7 @@ function UploadForm() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
+    const [loading, setLoading] = useState(false);
 
     // 모든 필드가 채워졌는지 확인
     const isFormValid = title && description && category && selectedFiles.length > 0 && selectedDate;
@@ -122,6 +123,8 @@ function UploadForm() {
                 return;
             }
 
+            setLoading(true);
+
             const formData = new FormData();
 
             const formattedDate = moment(selectedDate).format("YYYY-MM-DD");
@@ -151,15 +154,14 @@ function UploadForm() {
 
                 if (response.data.code === "SUCCESS_CREATE_EVIDENCE") {
                     console.log("업로드 성공:", response.data);
-                    // 업로드 성공 시 필요한 처리 추가
+                    setLoading(false);
+                    setModalIsOpen(true);
                 } else {
                     console.error("업로드 실패:", response.data.message);
                 }
             } catch (error) {
                 console.error("업로드 중 오류 발생:", error.response, error.response.data, error.message);
             }
-
-            setModalIsOpen(true);
         },
         [title, description, category, selectedFiles, selectedDate, cookies.accessToken, isFormValid]
     );
@@ -237,6 +239,16 @@ function UploadForm() {
                         기록하기
                     </U.UploadButton>
                 </form>
+                {loading && (
+                    <U.LoadingBackground>
+                        <U.LoadingContent>
+                            <div className="box">
+                                <div className="loader9"></div>
+                            </div>
+                            <div>증거를 업로드하는 중...</div>
+                        </U.LoadingContent>
+                    </U.LoadingBackground>
+                )}
                 {modalIsOpen && <UploadModal onClose={handleCloseModal} />}
             </U.UploadForm>
         </>
