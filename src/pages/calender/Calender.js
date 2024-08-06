@@ -16,6 +16,7 @@ import VideoModal from "../../components/VideoModal";
 import PlusBtn from "../../components/PlusBtn";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import Chat from "../chat/Chat";
 
 function Calender() {
     const { date } = useParams();
@@ -143,6 +144,12 @@ function Calender() {
             fetchEvidenceData(date, currentCategory);
         }
     }, [date, currentCategory, fetchEvidenceData]);
+
+    // date 형태 바꿔서 Chat.js에 넣기
+    const convertDateFormat = (date) => {
+        const [year, month, day] = date.split('-');
+        return `${year}. ${parseInt(month, 10)}. ${parseInt(day, 10)}.`;
+    };
 
     return (
         <>
@@ -306,13 +313,8 @@ function Calender() {
                             ))}
 
                         {tab === 3 &&
-                            (evidenceDayData.length > 0 ? (
-                                evidenceDayData
-                                    .filter((item) => item.category === "CONSULTATION")
-                                    .map((item) => <C.chatContent key={item.id}></C.chatContent>)
-                            ) : (
-                                <C.NoContent>앗, 아직 등록된 증거가 없어요!</C.NoContent>
-                            ))}
+                            <Chat date={convertDateFormat(date)}/>
+                        }
 
                         {tab === 4 &&
                             (evidenceDayData.length > 0 ? (
