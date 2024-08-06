@@ -16,7 +16,6 @@ function AI() {
     const [cookies] = useCookies(["accessToken"]);
     const [isLoading, setIsLoading] = useState(true);
 
-    // 데이터를 가져오는 함수
     const fetchViolenceEvidenceData = useCallback(async () => {
         try {
             const token = cookies.accessToken;
@@ -31,7 +30,7 @@ function AI() {
 
             const response = await axios.get(`https://poksin-backend.store/evidence/detail/${evidence_id}`, {
                 headers: {
-                    Authorization: `${token}`, // 인증 토큰
+                    Authorization: `${token}`,
                 },
             });
 
@@ -45,18 +44,15 @@ function AI() {
         } catch (error) {
             console.error("Error fetching evidence data:", error);
         } finally {
-            // 로딩 완료 상태로 설정
             setIsLoading(false);
         }
     }, [cookies, evidence_id]);
 
     useEffect(() => {
-        // 로딩 애니메이션 표시
         const timer = setTimeout(() => {
             fetchViolenceEvidenceData();
-        }, 3000); // 3000ms = 3초
+        }, 3000);
 
-        // 컴포넌트가 언마운트될 때 타이머를 정리
         return () => clearTimeout(timer);
     }, [fetchViolenceEvidenceData]);
 
