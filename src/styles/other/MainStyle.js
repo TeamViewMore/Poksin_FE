@@ -48,6 +48,7 @@ export const Precious = styled.div`
     margin-bottom: 22px;
     width: 328px;
     margin-left: 10px;
+    padding-top: 59px;
 `;
 
 export const Want = styled.div`
