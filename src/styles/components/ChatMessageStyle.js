@@ -20,6 +20,7 @@ export const Message = styled.div`
     }
     & img, video, audio {
         max-width: 200px;
+        height: auto;
     }
 `;
 
