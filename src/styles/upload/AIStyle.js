@@ -107,7 +107,7 @@ export const VideoDetail = styled.div`
     }
 
     video {
-        width: 330px;
+        width: 70%;
         height: auto;
         display: flex;
         justify-content: center;

@@ -88,7 +88,13 @@ function AI() {
                         {evidenceData.length > 0 ? (
                             evidenceData.map((video, index) => (
                                 <A.VideoDetail key={index}>
-                                    <video url={video.fileurl} controls width="100%" height="auto" />
+                                    <video
+                                        preload="metadata"
+                                        src={`${video.fileurl}#t=0.2`}
+                                        controls
+                                        width="100%"
+                                        height="auto"
+                                    />
                                     <div className="des">폭력 지속시간 {video.duration}초</div>
                                 </A.VideoDetail>
                             ))

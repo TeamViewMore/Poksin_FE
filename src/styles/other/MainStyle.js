@@ -8,7 +8,7 @@ export const Main = styled.div`
     justify-content: center;
     align-items: center;
     font-family: "Pretendard-Regular.woff2";
-    height: 93vh;
+    height: 105vh;
     margin: 0;
 `;
 
