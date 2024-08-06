@@ -85,10 +85,12 @@ export const Date = styled.div`
 export const Bottom = styled.div`
     position: fixed;
     bottom: 0;
-    width: 100%;
     background: #F5F5F5;
     padding: 10px 0;
     padding-bottom: 18px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 393px;
 `;
 
 export const InputArea = styled.div`
