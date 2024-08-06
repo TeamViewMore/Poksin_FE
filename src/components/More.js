@@ -2,6 +2,7 @@ import React from "react";
 import * as M from "../styles/components/MoreStyle";
 
 function More({ menu, menu1, menu2, onMenuClick, evidenceId }) {
+    // videoUrl 삭제
     return (
         <>
             {menu2 ? (
