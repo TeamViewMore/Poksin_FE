@@ -27,6 +27,7 @@ function Header({ title }) {
                     throw new Error("토큰을 찾을 수 없음");
                 }
                 const { user, roomId } = await fetchUserData(token);
+                console.log("헤더에서 함수실행");
                 setUsername(user.username);
                 setRoomId(roomId);
             } catch (error) {
