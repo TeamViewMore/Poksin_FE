@@ -38,7 +38,7 @@ function Login() {
                 setCookie("accessToken", accessToken, { path: "/" });
                 setCookie("refreshToken", refreshToken, { path: "/" });
                 setCookie("username", username, { path: "/" });
-                alert("로그인 성공!");
+                // alert("로그인 성공!");
                 navigate("/main");
             } else {
                 alert("로그인 실패: 서버에서 반환된 토큰이 없습니다.");
