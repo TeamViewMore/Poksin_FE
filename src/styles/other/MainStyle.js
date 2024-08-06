@@ -8,7 +8,7 @@ export const Main = styled.div`
     justify-content: center;
     align-items: center;
     font-family: "Pretendard-Regular.woff2";
-    height: 93vh;
+    height: 105vh;
     margin: 0;
 `;
 
@@ -48,7 +48,6 @@ export const Precious = styled.div`
     margin-bottom: 22px;
     width: 328px;
     margin-left: 10px;
-    padding-top: 59px;
 `;
 
 export const Want = styled.div`

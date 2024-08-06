@@ -146,7 +146,7 @@ function Main() {
                     <img src={Group7} alt="logo" style={{ width: "360px", height: "auto" }} />
                 </M.GuideBox>
                 <br />
-                <br />
+
                 <ChatBtn onClick={goToChat} />
             </M.CalenderList>
         </M.Main>
