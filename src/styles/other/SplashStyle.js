@@ -44,7 +44,7 @@ export const Logo1 = styled.img`
     top: 20%;
     left: 50%;
     transform: translate(-50%, 0%);
-    animation: ${anim(20, 20, 10)} ${totalDuration}s ease-out forwards;
+    animation: ${anim(20, 20, 7)} ${totalDuration}s ease-out forwards;
 `;
 
 export const Logo2 = styled.img`
@@ -57,7 +57,7 @@ export const Logo2 = styled.img`
     left: 50%;
     transform: translate(-50%, 0%);
     opacity: 0;
-    animation: ${anim(20, 29, 19)} ${totalDuration - delays[1]}s ease-out ${delays[1]}s forwards;
+    animation: ${anim(20, 29, 16)} ${totalDuration - delays[1]}s ease-out ${delays[1]}s forwards;
 `;
 
 export const Logo3 = styled.img`
@@ -70,7 +70,7 @@ export const Logo3 = styled.img`
     left: 50%;
     transform: translate(-50%, 0%);
     opacity: 0;
-    animation: ${anim(29, 38, 28)} ${totalDuration - delays[2]}s ease-out ${delays[2]}s forwards;
+    animation: ${anim(29, 38, 25)} ${totalDuration - delays[2]}s ease-out ${delays[2]}s forwards;
 `;
 
 export const Logo4 = styled.img`
@@ -83,7 +83,7 @@ export const Logo4 = styled.img`
     left: 50%;
     transform: translate(-50%, 0%);
     opacity: 0;
-    animation: ${anim(38, 47, 37)} ${totalDuration - delays[3]}s ease-out ${delays[3]}s forwards;
+    animation: ${anim(38, 47, 34)} ${totalDuration - delays[3]}s ease-out ${delays[3]}s forwards;
 `;
 
 export const Logo5 = styled.img`
@@ -96,7 +96,7 @@ export const Logo5 = styled.img`
     left: 50%;
     transform: translate(-50%, 0%);
     opacity: 0;
-    animation: ${anim(47, 56, 46)} ${totalDuration - delays[4]}s ease-out ${delays[4]}s forwards;
+    animation: ${anim(47, 56, 43)} ${totalDuration - delays[4]}s ease-out ${delays[4]}s forwards;
 `;
 
 const animBtn = keyframes`
