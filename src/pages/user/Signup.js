@@ -18,7 +18,7 @@ function Signup() {
     const [phoneOpen, setphoneOpen] = useState(false);
     const [emergencyOpen, setemergencyOpen] = useState(false);
     const [addressOpen, setaddressOpen] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false); // 관리자 여부 추가
+    // const [isAdmin, setIsAdmin] = useState(false); // 관리자 여부 추가
 
     const goToLogin = () => {
         navigate("/login");
@@ -33,10 +33,10 @@ function Signup() {
         }
 
         const apiUrl = process.env.REACT_APP_API_URL;
-        const signupUrl = isAdmin ? `${apiUrl}/counselor/register` : `${apiUrl}/user/register`;
+        // const signupUrl = isAdmin ? `${apiUrl}/counselor/register` : `${apiUrl}/user/register`;
 
         try {
-            const response = await axios.post(signupUrl, {
+            const response = await axios.post(`${apiUrl}/counselor/register`, {
                 username,
                 password,
                 passwordConfirm,
@@ -60,24 +60,30 @@ function Signup() {
                 emergencyOpen,
                 addressOpen,
             });
-
-            if (isAdmin) {
-                if (response.data.code === "SUCCESS_COUNSELOR_REGISTER") {
-                    setCookie("authToken", response.data.authToken, { path: "/" });
-                    alert(response.data.message); // 성공 메시지 표시
-                    navigate("/login"); // 회원가입 후 로그인 페이지로 이동
-                } else {
-                    alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지 표시
-                }
+            if (response.data.code === "SUCCESS_REGISTER") {
+                setCookie("authToken", response.data.authToken, { path: "/" });
+                alert(response.data.message); // 성공 메시지 표시
+                navigate("/login"); // 회원가입 후 로그인 페이지로 이동
             } else {
-                if (response.data.code === "SUCCESS_REGISTER") {
-                    setCookie("authToken", response.data.authToken, { path: "/" });
-                    alert(response.data.message); // 성공 메시지 표시
-                    navigate("/login"); // 회원가입 후 로그인 페이지로 이동
-                } else {
-                    alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지 표시
-                }
+                alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지 표시
             }
+            // if (isAdmin) {
+            //     if (response.data.code === "SUCCESS_COUNSELOR_REGISTER") {
+            //         setCookie("authToken", response.data.authToken, { path: "/" });
+            //         alert(response.data.message); // 성공 메시지 표시
+            //         navigate("/login"); // 회원가입 후 로그인 페이지로 이동
+            //     } else {
+            //         alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지 표시
+            //     }
+            // } else {
+            //     if (response.data.code === "SUCCESS_REGISTER") {
+            //         setCookie("authToken", response.data.authToken, { path: "/" });
+            //         alert(response.data.message); // 성공 메시지 표시
+            //         navigate("/login"); // 회원가입 후 로그인 페이지로 이동
+            //     } else {
+            //         alert(`회원가입 실패: ${response.data.message}`); // 실패 메시지 표시
+            //     }
+            // }
         } catch (error) {
             console.error("회원가입 실패:", error);
             if (error.response && error.response.data && error.response.data.message) {
@@ -149,10 +155,10 @@ function Signup() {
                         onChange={(e) => setaddressOpen(e.target.checked)}
                     />
                 </S.CheckBox>
-                <S.CheckBox>
+                {/* <S.CheckBox>
                     관리자 등록&nbsp;
                     <S.CheckCustom type="checkbox" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} />
-                </S.CheckBox>
+                </S.CheckBox> */}
             </S.InputBox>
 
             <S.LoginButtonBox>
