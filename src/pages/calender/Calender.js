@@ -54,31 +54,9 @@ function Calender() {
     }, []);
 
     const handleMenuClick = useCallback(
-        async (menu, evidenceId, videoUrl) => {
+        async (menu, evidenceId) => {
             if (menu === "분석 결과 보기") {
-                try {
-                    const formData = new FormData();
-                    formData.append("file", videoUrl);
-
-                    const uploadResponse = await axios.post("https://poksin-backend.store/detect-violence", formData, {
-                        headers: {
-                            Authorization: `${cookies.accessToken}`,
-                            "Content-Type": "multipart/form-data",
-                        },
-                    });
-
-                    if (uploadResponse.data.message === "업로드가 완료되었습니다. 비디오 처리 중입니다.") {
-                        const videoId = uploadResponse.data.video_id;
-                        // const resultUrl = uploadResponse.data.s3_url;
-
-                        // 분석 결과 페이지로 이동
-                        navigate(`/analysis/${videoId}`);
-                    } else {
-                        console.error("Video processing failed or unexpected response");
-                    }
-                } catch (error) {
-                    console.error("Error processing video:", error);
-                }
+                navigate(`/analysis/${evidenceId}`);
             } else if (menu === "기록 삭제") {
                 try {
                     const response = await axios.delete(`https://poksin-backend.store/evidence/delete/${evidenceId}`, {
@@ -216,7 +194,6 @@ function Calender() {
                                                             menu2="분석 결과 보기"
                                                             onMenuClick={handleMenuClick}
                                                             evidenceId={item.id}
-                                                            videoUrl={item.url[0]}
                                                         />
                                                     </div>
                                                 )}

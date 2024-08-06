@@ -103,7 +103,7 @@ function UploadForm() {
                 return "video/*";
             case "audio":
                 return "audio/*";
-            case "document":
+            case "diagnosis":
                 return "image/*,.pdf,.txt,.doc,.docx";
             default:
                 return "*";
@@ -183,11 +183,11 @@ function UploadForm() {
                     </U.Preview>
 
                     <U.CategorySelect value={category} onChange={handleCategoryChange}>
-                        <option value="">카테고리 선택</option>
+                        <option value="">카테고리</option>
                         <option value="image">사진 자료</option>
                         <option value="video">영상 자료</option>
                         <option value="audio">음성 자료</option>
-                        <option value="document">진단서</option>
+                        <option value="diagnosis">진단서</option>
                     </U.CategorySelect>
 
                     {category && (
@@ -195,7 +195,7 @@ function UploadForm() {
                             <U.FileInput onClick={filePlusClick}>
                                 {selectedFiles.length > 0
                                     ? selectedFiles.map((file) => file.name).join(", ")
-                                    : "파일 선택"}
+                                    : "파일 첨부"}
                             </U.FileInput>
                             <input
                                 type="file"
