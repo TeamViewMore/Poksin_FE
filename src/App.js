@@ -22,6 +22,7 @@ import ProfileUpdate from "./pages/chat/ProfileUpdate";
 import Self from "./pages/other/Self";
 import Result from "./pages/other/Result";
 import Fake from "./pages/other/Fake";
+import AdminProfile from "./pages/chat/AdminProfile";
 
 function App() {
     const location = useLocation();
@@ -194,6 +195,14 @@ function App() {
                     element={
                         <ProtectedRoute publicRoutes={publicRoutes}>
                             <Fake />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/admin/profile"
+                    element={
+                        <ProtectedRoute publicRoutes={publicRoutes}>
+                            <AdminProfile />
                         </ProtectedRoute>
                     }
                 />
