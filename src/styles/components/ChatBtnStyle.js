@@ -14,4 +14,8 @@ export const ChatBtn = styled.div`
         justify-content: center;
         align-items: center;
     }
+
+    @media (hover: hover) and (pointer: fine) {
+        right: calc(50vw - 196.5px + 30px);
+    }
 `;

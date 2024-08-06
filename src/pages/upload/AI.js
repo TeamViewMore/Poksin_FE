@@ -5,7 +5,6 @@ import Clock from "../../img/ai_clock.png";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import ReactPlayer from "react-player";
 import Loading from "../../components/Loading";
 
 function AI() {
@@ -89,7 +88,7 @@ function AI() {
                         {evidenceData.length > 0 ? (
                             evidenceData.map((video, index) => (
                                 <A.VideoDetail key={index}>
-                                    <ReactPlayer url={video.fileurl} controls width="100%" height="auto" />
+                                    <video url={video.fileurl} controls width="100%" height="auto" />
                                     <div className="des">폭력 지속시간 {video.duration}초</div>
                                 </A.VideoDetail>
                             ))

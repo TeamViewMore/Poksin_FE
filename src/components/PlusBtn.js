@@ -13,7 +13,7 @@ function PlusBtn() {
     return (
         <>
             <P.PlusBtn onClick={goToUploadForm}>
-                <img src={Upload} alt='업로드' ></img>
+                <img src={Upload} alt="업로드"></img>
             </P.PlusBtn>
         </>
     );
