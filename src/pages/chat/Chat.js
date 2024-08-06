@@ -33,7 +33,7 @@ function Chat({ date }) {
     const moreRef = useRef();
     const chatRef = useRef();
     const navigate = useNavigate();
-    // const [state, setState] = useState(true);
+    const [blocked, setBlocked] = useState(false);
 
     const handleMoreClick = () => {
         setShowMore((prevShowMore) => !prevShowMore);
@@ -56,6 +56,7 @@ function Chat({ date }) {
     };
 
     const handleConfirmClose = async () => {
+        console.log("클로즈 직전: " + blocked);
         try {
             const token = cookies.accessToken;
             const response = await axios.post(`https://poksin-backend.store/chat/rooms/${roomId}/close`, null, {
@@ -64,7 +65,7 @@ function Chat({ date }) {
                 }
             });
             if (response.status === 200) {
-                // setState(false);
+                setBlocked(true);
                 alert("상담이 종료되었습니다.");
                 navigate(`/main`);
             } else {
@@ -78,6 +79,7 @@ function Chat({ date }) {
     };
 
     const handleResumeChat = async () => {
+        console.log("오픈 직전: " + blocked);
         try {
             const token = cookies.accessToken;
             const response = await axios.post(`https://poksin-backend.store/chat/rooms/${roomId}/open`, null, {
@@ -86,7 +88,7 @@ function Chat({ date }) {
                 }
             });
             if (response.status === 200) {
-                // setState(true);
+                setBlocked(false);
                 alert("상담이 재개되었습니다.");
                 setShowModal(false);
             } else {
@@ -122,25 +124,22 @@ function Chat({ date }) {
                     throw new Error("토큰을 찾을 수 없음");
                 }
                 const data = await fetchUserData(token);
+                console.log("챗에서 함수실행");
                 setLoggedInUser(data.user);
                 setRoomId(data.roomId);
+                console.log("서버 roomId: " + roomId);
+                setBlocked(data.blocked);
+                console.log("서버 state: " + blocked);
             } catch (error) {
                 console.error("채팅에서 유저 정보 가져오기 에러:", error);
             }
         };
 
         fetchUser();
-    }, [cookies.accessToken]);
+    }, [cookies.accessToken, blocked, roomId]);
 
     useEffect(() => {
         if (!loggedInUser || !roomId) {
-            setModalType('resume');
-            setShowModal(true);
-            // if (!state) {
-            //     console.log(state);
-            //     setModalType('resume');
-            //     setShowModal(true);
-            // }
             return;
         }
 
@@ -168,6 +167,12 @@ function Chat({ date }) {
 
         client.activate();
         setStompClient(client);
+
+        if (blocked) {
+            console.log(blocked);
+            setModalType('resume');
+            setShowModal(true);
+        }
 
         const fetchMessages = async () => {
             try {
@@ -197,7 +202,7 @@ function Chat({ date }) {
         return () => {
             client.deactivate();
         };
-    }, [loggedInUser, roomId, cookies.accessToken]);
+    }, [loggedInUser, roomId, cookies.accessToken, blocked]);
 
     const sendMessage = async () => {
         if (!stompClient || !stompClient.connected) {

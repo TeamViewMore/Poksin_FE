@@ -11,8 +11,8 @@ export const fetchUserData = async (accessToken) => {
             },
         });
         const user = userResponse.data.data;
-        const roomId = await findOrCreateChatRoom(user.username, accessToken);
-        return { user, roomId };
+        const { roomId, blocked } = await findOrCreateChatRoom(user.username, accessToken);
+        return { user, roomId, blocked };
     } catch (userError) {
         if (userError.response && userError.response.status === 404) {
             // 사용자가 아닌 경우 상담사 API를 호출
@@ -23,8 +23,8 @@ export const fetchUserData = async (accessToken) => {
                     },
                 });
                 const user = counselorResponse.data.data;
-                const roomId = await findOrCreateChatRoom(user.username, accessToken);
-                return { user, roomId };
+                const { roomId, blocked } = await findOrCreateChatRoom(user.username, accessToken);
+                return { user, roomId, blocked };
             } catch (counselorError) {
                 if (counselorError.response) {
                     console.error('유저 정보 조회 실패:', counselorError.response.data.message);
@@ -41,6 +41,7 @@ export const fetchUserData = async (accessToken) => {
 };
 
 const findOrCreateChatRoom = async (username, accessToken) => {
+    let count;
     try {
         const roomsResponse = await axios.get(`${apiUrl}/chat/rooms`, {
             headers: {
@@ -53,10 +54,12 @@ const findOrCreateChatRoom = async (username, accessToken) => {
         }
 
         const rooms = roomsResponse.data.data;
+        console.log(rooms);
         const existingRoom = rooms.find(room => room.name === username);
 
         if (existingRoom) {
-            return existingRoom.roomId;
+            console.log("채팅 목록 가져온 데이터로 전달");
+            return { roomId: existingRoom.roomId, blocked: existingRoom.blocked };
         } else {
             const createResponse = await axios.post(`${apiUrl}/chat`, { roomName: username }, {
                 headers: {
@@ -70,7 +73,9 @@ const findOrCreateChatRoom = async (username, accessToken) => {
             }
 
             const newRoom = createResponse.data.data;
-            return newRoom.roomId;
+            count++;
+            console.log("새로운 채팅 생성 데이터로 전달" + count);
+            return { roomId: newRoom.roomId, blocked: newRoom.blocked };
         }
     } catch (error) {
         console.error('채팅방 생성/이동 중 에러 발생:', error);

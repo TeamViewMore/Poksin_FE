@@ -165,7 +165,7 @@ export const Send = styled.div`
 
 export const FileName = styled.div`
     position: relative;
-    bottom: 120px;
+    bottom: 90px;
     left: calc(50% - 105px);
     border-radius: 20px;
     border: 1px solid #9C9C9C;
