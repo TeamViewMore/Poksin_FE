@@ -214,3 +214,128 @@ export const UploadButton = styled.button`
     align-items: center;
     margin-top: 15px;
 `;
+
+export const LoadingBackground = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(3px);
+    background: rgba(139, 139, 139, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+`;
+
+export const LoadingContent = styled.div`
+    position: relative;
+    width: 350px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+
+    div {
+        margin: 10px;
+    }
+
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader9:before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        height: 12px;
+        width: 12px;
+        border-radius: 12px;
+        -webkit-animation: loader9g 3s ease-in-out infinite;
+        animation: loader9g 3s ease-in-out infinite;
+    }
+
+    .loader9 {
+        position: relative;
+        width: 12px;
+        height: 12px;
+        border-radius: 12px;
+        background-color: #7a29ff;
+    }
+
+    .loader9:after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        height: 12px;
+        width: 12px;
+        border-radius: 12px;
+        -webkit-animation: loader9d 3s ease-in-out infinite;
+        animation: loader9d 3s ease-in-out infinite;
+    }
+
+    @-webkit-keyframes loader9g {
+        0% {
+            left: -25px;
+            background-color: rgba(122, 41, 255, 0.8);
+        }
+        50% {
+            left: 0px;
+            background-color: rgba(122, 41, 255, 0.1);
+        }
+        100% {
+            left: -25px;
+            background-color: rgba(122, 41, 255, 0.8);
+        }
+    }
+    @keyframes loader9g {
+        0% {
+            left: -25px;
+            background-color: rgba(122, 41, 255, 0.8);
+        }
+        50% {
+            left: 0px;
+            background-color: rgba(122, 41, 255, 0.1);
+        }
+        100% {
+            left: -25px;
+            background-color: rgba(122, 41, 255, 0.8);
+        }
+    }
+
+    @-webkit-keyframes loader9d {
+        0% {
+            left: 25px;
+            background-color: rgba(122, 41, 255, 0.8);
+        }
+        50% {
+            left: 0px;
+            background-color: rgba(122, 41, 255, 0.1);
+        }
+        100% {
+            left: 25px;
+            background-color: rgba(122, 41, 255, 0.8);
+        }
+    }
+    @keyframes loader9d {
+        0% {
+            left: 25px;
+            background-color: rgba(122, 41, 255, 0.8);
+        }
+        50% {
+            left: 0px;
+            background-color: rgba(122, 41, 255, 0.1);
+        }
+        100% {
+            left: 25px;
+            background-color: rgba(122, 41, 255, 0.8);
+        }
+    }
+`;
