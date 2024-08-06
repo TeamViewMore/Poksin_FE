@@ -136,7 +136,7 @@ function Signup() {
                     긴급 연락처 공개&nbsp;
                     <S.CheckCustom
                         type="checkbox"
-                        checked={phoneOpen}
+                        checked={emergencyOpen}
                         onChange={(e) => setemergencyOpen(e.target.checked)}
                     />
                 </S.CheckBox>
@@ -148,10 +148,6 @@ function Signup() {
                         checked={addressOpen}
                         onChange={(e) => setaddressOpen(e.target.checked)}
                     />
-                </S.CheckBox>
-                <S.CheckBox>
-                    관리자 등록&nbsp;
-                    <S.CheckCustom type="checkbox" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} />
                 </S.CheckBox>
             </S.InputBox>
 
