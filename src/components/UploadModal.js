@@ -9,6 +9,7 @@ const ModalBackground = styled.div`
     width: 100vw;
     height: 100vh;
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     background: rgba(139, 139, 139, 0.1);
     display: flex;
     justify-content: center;
