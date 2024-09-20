@@ -1,20 +1,25 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import * as C from "../styles/components/ChatBtnStyle";
-import chat_button from "../img/chat_button.png";
+import map_button from "../img/map_button.png";
+import Map from "../components/Map";
 
 function ChatBtn() {
-    const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
 
-    const goToUploadForm = () => {
-        navigate("/chat/:id");
+    const mapModalOpen = () => {
+        setShowModal(true);
+    };
+
+    const mapModalClose = () => {
+        setShowModal(false);
     };
 
     return (
         <>
-            <C.ChatBtn onClick={goToUploadForm}>
-                <img src={chat_button} alt="채팅가기"></img>
+            <C.ChatBtn onClick={mapModalOpen}>
+                <img src={map_button} alt="현재 위치 전송"></img>
             </C.ChatBtn>
+            {showModal && <Map onClose={mapModalClose} />}
         </>
     );
 }
