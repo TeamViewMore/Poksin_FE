@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { fetchUserData } from '../../utils/userApi';
+// import { fetchUserData } from '../../utils/userApi';
 import * as P from '../../styles/chat/ProfileStyle';
 import profile from '../../img/profile_admin.png';
 
@@ -12,7 +12,7 @@ function Profile() {
         const fetchProfile = async () => {
             try {
                 const accessToken = cookies.accessToken;
-                const data = await fetchUserData(accessToken);
+                // const data = await fetchUserData(accessToken);
                 const apiUrl = `${process.env.REACT_APP_API_URL}/user/admin?username=poksin_admin`;
 
                 const response = await fetch(apiUrl, {
