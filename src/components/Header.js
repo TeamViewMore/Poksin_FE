@@ -8,7 +8,7 @@ import Menu from "./Menu";
 import headerLogo from "../img/logo_mini.png";
 import back from "../img/back.png";
 import menu from "../img/hamburger.png";
-import { fetchUserData } from '../utils/userApi';
+import { fetchUserData, findOrCreateChatRoom } from '../utils/userApi';
 
 function Header({ title }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +16,7 @@ function Header({ title }) {
     const [cookies] = useCookies(["accessToken"]);
     const [username, setUsername] = useState();
     const [roomId, setRoomId] = useState(null);
+    const [role, setRole] = useState(null);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -26,9 +27,11 @@ function Header({ title }) {
                 if (!token) {
                     throw new Error("토큰을 찾을 수 없음");
                 }
-                const { user, roomId } = await fetchUserData(token);
-                console.log("헤더에서 함수실행");
+                const { user } = await fetchUserData(token);
+                // console.log("헤더에서 함수실행");
                 setUsername(user.username);
+                setRole(user.role);
+                const { roomId } = await findOrCreateChatRoom(username, token);
                 setRoomId(roomId);
             } catch (error) {
                 console.error("헤더에서 에러:", error);
@@ -36,7 +39,7 @@ function Header({ title }) {
         };
 
         fetchUser();
-    }, [cookies.accessToken]);
+    }, [cookies.accessToken, username]);
 
     const handleNavLinkClick = (path) => {
         navigate(path);
@@ -82,7 +85,15 @@ function Header({ title }) {
         <>
             <H.Header>
                 {showLogo && (
-                    <H.Logo onClick={() => handleNavLinkClick("/main")}>
+                    <H.Logo
+                        onClick={() => {
+                            if (role === 'ROLE_ADMIN') {
+                                handleNavLinkClick("/poksin/admin/chat-list");
+                            } else {
+                                handleNavLinkClick("/main");
+                            }
+                        }}
+                    >
                         <img src={headerLogo} alt="폭신폭신" />
                     </H.Logo>
                 )}
@@ -92,12 +103,12 @@ function Header({ title }) {
                     </H.Back>
                 )}
                 <H.Title>{title}</H.Title>
-                {!hideMenu && (
+                {(!hideMenu && role !== 'ROLE_ADMIN') && (
                     <H.Menu onClick={toggleMenu}>
                         <img src={menu} alt="메뉴" />
                     </H.Menu>
                 )}
-                {hideMenu && (
+                {(!hideMenu && role == 'ROLE_ADMIN') && (
                     <H.None></H.None>
                 )}
             </H.Header>

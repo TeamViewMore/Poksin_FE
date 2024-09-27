@@ -97,7 +97,11 @@ export const Date = styled.div`
         line-height: normal;
     }
     & .date {
-        width: 62px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 40px;
         color: var(--Text, #000);
         text-align: center;
         font-family: Pretendard;

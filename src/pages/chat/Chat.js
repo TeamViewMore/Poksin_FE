@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import * as C from "../../styles/chat/ChatStyle";
 import axios from 'axios';
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { useCookies } from 'react-cookie';
 import ChatMessage from "../../components/ChatMessage";
-import { fetchUserData } from '../../utils/userApi';
+import { fetchUserData, findOrCreateChatRoom } from '../../utils/userApi';
 import More from '../../components/More';
 import Modal from '../../components/Modal';
 
@@ -17,9 +17,10 @@ import send from "../../img/send.png";
 import close from "../../img/close.png";
 
 function Chat({ date }) {
+    const { id: routeRoomId } = useParams();
     const [cookies] = useCookies(["accessToken"]);
     const [loggedInUser, setLoggedInUser] = useState(null);
-    const [roomId, setRoomId] = useState(null);
+    const [roomId, setRoomId] = useState(routeRoomId || null);
     const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
@@ -60,7 +61,7 @@ function Chat({ date }) {
     };
 
     const handleConfirmClose = async () => {
-        console.log("클로즈 직전: " + blocked);
+        // console.log("클로즈 직전: " + blocked);
         try {
             const token = cookies.accessToken;
             const response = await axios.post(`https://poksin-backend.store/chat/rooms/${roomId}/close`, null, {
@@ -83,7 +84,7 @@ function Chat({ date }) {
     };
 
     const handleResumeChat = async () => {
-        console.log("오픈 직전: " + blocked);
+        // console.log("오픈 직전: " + blocked);
         try {
             const token = cookies.accessToken;
             const response = await axios.post(`https://poksin-backend.store/chat/rooms/${roomId}/open`, null, {
@@ -127,20 +128,28 @@ function Chat({ date }) {
                 if (!token) {
                     throw new Error("토큰을 찾을 수 없음");
                 }
-                const data = await fetchUserData(token);
-                console.log("챗에서 함수실행");
-                setLoggedInUser(data.user);
-                setRoomId(data.roomId);
-                console.log("서버 roomId: " + roomId);
-                setBlocked(data.blocked);
-                console.log("서버 state: " + blocked);
+    
+                // 사용자 데이터 가져오기
+                const userData = await fetchUserData(token);
+                setLoggedInUser(userData);
+    
+                // 어드민 계정일 경우, URL에서 가져온 roomId를 사용
+                if (userData.user.role === 'ROLE_ADMIN') {
+                    setRoomId(routeRoomId);
+                } else {
+                    // 일반 유저일 경우, 채팅방 찾기 또는 생성하기
+                    const { roomId, blocked } = await findOrCreateChatRoom(userData.user.username, token);
+                    setRoomId(roomId);
+                    setBlocked(blocked);
+                }
+    
             } catch (error) {
                 console.error("채팅에서 유저 정보 가져오기 에러:", error);
             }
         };
-
+    
         fetchUser();
-    }, [cookies.accessToken, blocked, roomId]);
+    }, [cookies.accessToken, routeRoomId]);
 
     useEffect(() => {
         if (!loggedInUser || !roomId) {
@@ -173,7 +182,7 @@ function Chat({ date }) {
         setStompClient(client);
 
         if (blocked) {
-            console.log(blocked);
+            // console.log(blocked);
             setModalType('resume');
             setShowModal(true);
         }
@@ -214,7 +223,7 @@ function Chat({ date }) {
             return;
         }
 
-        if (!loggedInUser || !loggedInUser.username) {
+        if (!loggedInUser || !loggedInUser.user.username) {
             console.error('Logged-in user information is missing');
             return;
         }
@@ -229,7 +238,7 @@ function Chat({ date }) {
 
         const chatMessage = {
             type: 'TALK',
-            sender: loggedInUser.username,
+            sender: loggedInUser.user.username,
             roomId: roomId,
             message: message,
             timestamp: timestamp
@@ -375,7 +384,7 @@ function Chat({ date }) {
                         </C.Date>
                         {hasMessagesForDate ? (
                             filteredMessages.map((msg) => (
-                                <ChatMessage key={msg.id} message={msg} loggedInUser={loggedInUser} />
+                                <ChatMessage key={msg.id} message={msg} loggedInUser={loggedInUser.user} />
                             ))
                         ) : (
                             <div style={{display: 'flex', justifyContent: 'center',}}>앗, 해당 날짜의 상담 내용이 없어요!</div>
@@ -412,7 +421,7 @@ function Chat({ date }) {
                                 <div className='line'></div>
                             </C.Date>
                             {group.messages.map((msg) => (
-                                <ChatMessage key={msg.id} message={msg} loggedInUser={loggedInUser} />
+                                <ChatMessage key={msg.id} message={msg} loggedInUser={loggedInUser.user} />
                             ))}
                         </div>
                     ))

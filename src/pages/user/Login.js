@@ -30,16 +30,24 @@ function Login() {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            console.log("Response data:", response.data);
+            // console.log("Response data:", response.data);
             const accessToken = response.headers["accesstoken"];
             const refreshToken = response.headers["refreshtoken"];
+            const userRole = response.data.data.role;
+            // console.log(userRole);
 
             if (accessToken && refreshToken) {
                 setCookie("accessToken", accessToken, { path: "/" });
                 setCookie("refreshToken", refreshToken, { path: "/" });
                 setCookie("username", username, { path: "/" });
-                // alert("로그인 성공!");
-                navigate("/main");
+
+                if (userRole === 'ROLE_ADMIN') {
+                    // Redirect to admin chat-list if user is admin
+                    navigate("/poksin/admin/chat-list");
+                } else {
+                    // Redirect to the main page if user is not admin
+                    navigate("/main");
+                }
             } else {
                 alert("로그인 실패: 서버에서 반환된 토큰이 없습니다.");
             }
