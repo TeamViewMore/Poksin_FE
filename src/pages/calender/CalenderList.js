@@ -34,7 +34,7 @@ function CalenderList() {
                     },
                 });
                 if (response.data.code === "SUCCESS_RETRIEVE_MONTH_EVIDENCE") {
-                    console.log("Fetch Evidence Data Response:", response);
+                    // console.log("Fetch Evidence Data Response:", response);
                     setEvidenceData(response.data.data);
                 }
             } catch (error) {
@@ -52,7 +52,7 @@ function CalenderList() {
 
     // 달 바뀔 때 호출하는 함수
     const handleActiveStartDateChange = ({ activeStartDate }) => {
-        console.log(`Active month:`, { activeStartDate });
+        // console.log(`Active month:`, { activeStartDate });
         setClickMonth(activeStartDate);
         onChange(activeStartDate); // value 상태 업데이트
     };
@@ -111,7 +111,7 @@ function CalenderList() {
                     {evidenceData.length > 0 ? (
                         evidenceData.map((evidence, index) => {
                             const date = moment(evidence.createdAt).format("YYYY-MM-DD"); // 날짜 포맷
-                            console.log("Evidence Date:", date); // 디버깅을 위한 로그
+                            // console.log("Evidence Date:", date); // 디버깅을 위한 로그
 
                             return (
                                 <C.DayRecordBox key={index} onClick={() => handleDayClick(moment(date).toDate())}>

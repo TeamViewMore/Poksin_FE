@@ -38,7 +38,7 @@ function ChatList() {
         navigate(`/chat/${roomId}`);
     };
 
-    console.log(rooms);
+    // console.log(rooms);
 
     const formatLastUpdated = (lastUpdated) => {
         const koreanTimeZone = new Date(lastUpdated).toLocaleString("en-US", { timeZone: "Asia/Seoul" });

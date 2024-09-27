@@ -160,7 +160,7 @@ function Chat({ date }) {
         const client = new Client({
             webSocketFactory: () => socket,
             onConnect: (frame) => {
-                console.log('Connected: ' + frame);
+                // console.log('Connected: ' + frame);
                 client.subscribe(`/topic/${roomId}`, (message) => {
                     const newMessage = JSON.parse(message.body);
                     setMessages((prevMessages) => {
@@ -281,7 +281,7 @@ function Chat({ date }) {
                     'Authorization': `${token}`,
                 }
             });
-            console.log('File upload response:', response.data);
+            // console.log('File upload response:', response.data);
             const newMessage = response.data;
             newMessage.timestamp = convertToKST(newMessage.timestamp).toISOString();
             setMessages((prevMessages) => {

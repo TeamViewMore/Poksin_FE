@@ -15,7 +15,7 @@ function ProfileUpdate() {
         emergency: false,
         address: false,
     });
-    console.log("프로필: " + [checkedStates.phone, checkedStates.emergency, checkedStates.address]);
+    // console.log("프로필: " + [checkedStates.phone, checkedStates.emergency, checkedStates.address]);
 
     const [formValues, setFormValues] = useState({
         phoneNum: '',
@@ -36,7 +36,7 @@ function ProfileUpdate() {
                 const data = await fetchUserData(token);
                 // console.log(data);
                 const userData = data.user;
-                    console.log(userData);
+                    // console.log(userData);
                     setFormValues({
                         phoneNum: userData.phoneNum || '',
                         emergencyNum: userData.emergencyNum || '',
@@ -75,7 +75,7 @@ function ProfileUpdate() {
                 ...prevState,
                 [type]: !prevState[type],
             };
-            console.log("Checkbox State Changed:", newState);
+            // console.log("Checkbox State Changed:", newState);
             return newState;
         });
     };
@@ -87,14 +87,14 @@ function ProfileUpdate() {
                 ...prevState,
                 [type]: value,
             };
-            console.log("Input Value Changed:", newState);
+            // console.log("Input Value Changed:", newState);
             return newState;
         });
     };
 
     const handleSubmit = async () => {
-        console.log("프로필 업데이트: ", checkedStates);
-        console.log("폼 값: ", formValues);
+        // console.log("프로필 업데이트: ", checkedStates);
+        // console.log("폼 값: ", formValues);
         const token = cookies.accessToken;
         if (!token) {
             console.error("토큰을 찾을 수 없음");
@@ -114,13 +114,24 @@ function ProfileUpdate() {
                     Authorization: `${token}`
                 }
             });
-            console.log("API 응답: ", response.data);
+            // console.log("API 응답: ", response.data);
             if (response.data.code === "SUCCESS_UPDATE_USER") {
-                console.log("User information updated successfully:", response.data.data);
+                // console.log("User information updated successfully:", response.data.data);
                 navigate('/profile');
             }
         } catch (error) {
-            console.error("프로필 업데이트에서 프로필 업데이트 에러:", error);
+            console.error("프로필 업데이트 실패:", error);
+    
+            // 400 응답 처리
+            if (error.response && error.response.status === 400) {
+                alert("전화번호 및 긴급 연락처는 11개의 숫자로만 구성되어야 합니다.");
+            } 
+            // 다른 에러 처리
+            else if (error.response && error.response.data && error.response.data.message) {
+                alert(`프로필 업데이트 실패: ${error.response.data.message}`);
+            } else {
+                alert("프로필 업데이트 실패: 네트워크 오류가 발생했습니다.");
+            }
         }
     };
 

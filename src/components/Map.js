@@ -115,7 +115,7 @@ const Map = ({ onClose }) => {
                             geocoder.coord2Address(lon, lat, (result, status) => {
                                 if (status === window.kakao.maps.services.Status.OK) {
                                     var address = result[0].address.address_name;
-                                    console.log("현재 위치 주소:", address);
+                                    // console.log("현재 위치 주소:", address);
                                     setLoc(address);
                                 }
                             });
@@ -153,7 +153,7 @@ const Map = ({ onClose }) => {
                 });
 
                 if (response.data.code === "SUCCESS_SEND_MESSAGE") {
-                    console.log("메시지 전송 성공:", response.data);
+                    // console.log("메시지 전송 성공:", response.data);
                     alert("메시지를 성공적으로 전송하였습니다.");
                     onClose();
                 } else {

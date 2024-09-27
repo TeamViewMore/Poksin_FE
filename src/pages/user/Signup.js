@@ -46,7 +46,7 @@ function Signup() {
                 addressOpen,
             });
 
-            console.log("서버 응답:", response);
+            // console.log("서버 응답:", response);
 
             if (response.data.code === "SUCCESS_REGISTER") {
                 setCookie("authToken", response.data.authToken, { path: "/" });
@@ -57,7 +57,13 @@ function Signup() {
             }
         } catch (error) {
             console.error("회원가입 실패:", error);
-            if (error.response && error.response.data && error.response.data.message) {
+    
+            // 400 응답 처리
+            if (error.response && error.response.status === 400) {
+                alert("전화번호 및 긴급 연락처는 11개의 숫자로만 구성되어야 합니다.");
+            } 
+            // 다른 에러 처리
+            else if (error.response && error.response.data && error.response.data.message) {
                 alert(`회원가입 실패: ${error.response.data.message}`);
             } else {
                 alert("회원가입 실패: 네트워크 오류가 발생했습니다.");

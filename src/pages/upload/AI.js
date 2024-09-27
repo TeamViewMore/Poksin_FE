@@ -24,8 +24,8 @@ function AI() {
                 return;
             }
 
-            console.log("Fetching data with evidence_id:", evidence_id);
-            console.log("Using token:", token);
+            // console.log("Fetching data with evidence_id:", evidence_id);
+            // console.log("Using token:", token);
 
             const response = await axios.get(`https://poksin-backend.store/evidence/detail/${evidence_id}`, {
                 headers: {

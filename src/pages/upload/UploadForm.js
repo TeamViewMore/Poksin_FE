@@ -23,7 +23,7 @@ function UploadForm() {
     // 프리뷰 보이게 하기
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
-        console.log("Files selected:", files);
+        // console.log("Files selected:", files);
         const previews = files.map((file) => {
             const url = URL.createObjectURL(file);
             return { url, type: file.type || "unknown", name: file.name };
@@ -51,7 +51,7 @@ function UploadForm() {
     // 카테고리 재설정 시 리셋
     const handleCategoryChange = (e) => {
         const newCategory = e.target.value;
-        console.log("Selected category:", newCategory);
+        // console.log("Selected category:", newCategory);
         setCategory(newCategory);
         setSelectedFiles([]);
         setFilePreviews([]);
@@ -128,7 +128,7 @@ function UploadForm() {
             const formData = new FormData();
 
             const formattedDate = moment(selectedDate).format("YYYY-MM-DD");
-            console.log("포맷된 날짜:", formattedDate);
+            // console.log("포맷된 날짜:", formattedDate);
 
             formData.append(
                 "createEvidenceDTO",
@@ -153,7 +153,7 @@ function UploadForm() {
                 });
 
                 if (response.data.code === "SUCCESS_CREATE_EVIDENCE") {
-                    console.log("업로드 성공:", response.data);
+                    // console.log("업로드 성공:", response.data);
                     setLoading(false);
                     setModalIsOpen(true);
                 } else {

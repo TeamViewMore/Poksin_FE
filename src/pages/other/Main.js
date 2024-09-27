@@ -56,7 +56,7 @@ function Main() {
                     },
                 });
                 if (response.data.code === "SUCCESS_RETRIEVE_MONTH_EVIDENCE") {
-                    console.log("Fetch Evidence Data Response:", response);
+                    // console.log("Fetch Evidence Data Response:", response);
                     setEvidenceData(response.data.data);
                 }
             } catch (error) {

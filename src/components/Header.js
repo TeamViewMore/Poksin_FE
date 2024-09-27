@@ -108,7 +108,7 @@ function Header({ title }) {
                         <img src={menu} alt="메뉴" />
                     </H.Menu>
                 )}
-                {(!hideMenu && role == 'ROLE_ADMIN') && (
+                {(hideMenu || role === 'ROLE_ADMIN') && (
                     <H.None></H.None>
                 )}
             </H.Header>

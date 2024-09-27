@@ -22,7 +22,7 @@ function Profile() {
                     throw new Error("토큰을 찾을 수 없음");
                 }
                 const data = await fetchUserData(token);
-                console.log(data);
+                // console.log(data);
                 setProfileData(data.user);
             } catch (error) {
                 console.error('프로필 정보를 가져오는 데 실패했습니다:', error);
@@ -68,7 +68,7 @@ function Profile() {
     };
 
     const { username, phoneNum, emergencyNum, address, createdAt, lastChated } = profileData;
-    console.log(profileData);
+    // console.log(profileData);
 
     return (
         <>

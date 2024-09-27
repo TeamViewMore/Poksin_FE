@@ -16,7 +16,7 @@ function Self() {
 
     const handleSubmit = () => {
         const checkedCount = Object.values(checkedItems).filter(Boolean).length;
-        console.log("Checked Count:", checkedCount); // 디버깅을 위해 추가
+        // console.log("Checked Count:", checkedCount); // 디버깅을 위해 추가
         navigate("/self/result", { state: { checkedCount } });
     };
 

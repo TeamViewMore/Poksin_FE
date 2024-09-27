@@ -20,7 +20,7 @@ import Chat from "../chat/Chat";
 
 function Calender() {
     const { date } = useParams();
-    console.log(date);
+    // console.log(date);
     const [cookies] = useCookies(["accessToken"]);
 
     // 탭 버튼
@@ -32,8 +32,8 @@ function Calender() {
     const navigate = useNavigate();
 
     const handleMoreClick = (evidenceId) => {
-        console.log(evidenceId);
-        console.log(showMore[evidenceId]);
+        // console.log(evidenceId);
+        // console.log(showMore[evidenceId]);
         setShowMore((prevShowMore) => ({
             ...prevShowMore,
             [evidenceId]: !prevShowMore[evidenceId],
@@ -66,7 +66,7 @@ function Calender() {
                     });
                     if (response.data.code === "SUCCESS_DELETE_EVIDENCE") {
                         setEvidenceDayData((prevData) => prevData.filter((item) => item.id !== evidenceId));
-                        console.log("Evidence deleted successfully.");
+                        // console.log("Evidence deleted successfully.");
                     }
                 } catch (error) {
                     console.error("Error deleting evidence:", error);
@@ -129,7 +129,7 @@ function Calender() {
                     },
                 });
                 if (response.data.code === "SUCCESS_RETRIEVE_DAY_EVIDENCE") {
-                    console.log("Fetch Evidence Data Response:", response);
+                    // console.log("Fetch Evidence Data Response:", response);
                     setEvidenceDayData(response.data.data);
                 }
             } catch (error) {

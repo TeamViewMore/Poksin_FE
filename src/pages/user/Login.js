@@ -54,7 +54,7 @@ function Login() {
         } catch (error) {
             console.error("로그인 실패:", error);
             if (error.response && error.response.data) {
-                console.log("Error data:", error.response.data); // 에러 데이터를 콘솔에 출력
+                // console.log("Error data:", error.response.data); // 에러 데이터를 콘솔에 출력
                 alert(`로그인 실패: ${error.response.data.message}`);
             } else {
                 alert("로그인 실패: 서버에 연결할 수 없습니다.");
